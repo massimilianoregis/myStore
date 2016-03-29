@@ -1,0 +1,62 @@
+/* CSS generali della lista di SHOPS   */
+
+/*
+===========================================
+			shops/list.html
+===========================================
+*/
+
+
+.card.pub
+    {
+    margin:0;
+    }
+.card.pub .item
+    {
+    border:0;
+    }
+.card.pub .item-body
+    {
+    padding:0;
+    }
+div.arrow-down
+    {
+    width: 0;
+    position: absolute;
+    height: 0;
+    border-left: 19px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid white;
+    font-size: 0;
+    line-height: 0;
+    top: 0px;
+    z-index: 100000000;
+    right: 17px;
+    }
+.search-wrapper-light.item-input-wrapper
+    {
+    background: white;
+    color: black;
+    margin: 3px;
+    }
+
+.search-wrapper-light.item-input-wrapper input
+    {
+    height:24px;
+    padding-left:4px;
+    }
+.lista .loader
+    {
+    font-size: 50px;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    margin-top: -25px;
+    margin-left: -25px;
+    }
+.lista .ion-trash-b
+    {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    }

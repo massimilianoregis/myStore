@@ -1,0 +1,32 @@
+<ion-view title="Addresses">    
+	  	<ion-nav-buttons side="right">
+          <button class="button"  ui-sref="^.profileAddressNew">
+            <i class="icon ion-plus-circled"></i>
+          </button>
+        </ion-nav-buttons>	
+    	
+    <ion-content padding="false" scroll="true" class="sheet">	
+    
+    	<div ng-if="user.addresses==null || user.addresses.length==0" style="text-align:center" class="icon ion-compass void">
+	 		<p>
+	 			Ciao {{user.firstName}}!<BR> 
+	 			Non hai nessun indirizzo<BR>	 			
+	 		</p><BR>
+	 		<button class="button icon-left ion-plus-circled" ui-sref="^.profileAddressNew">Aggiungine uno</button>
+	 	</div>
+		 	
+    	<div class="list"  ng-if="user.addresses!=null && user.addresses.length>0">
+    	    	
+    	  <a class="item item-icon-left item-icon-right" ui-sref="pub.profileAddressEdit({id:name})" ng-repeat="(name,address) in user.addresses">    	  
+		    <i class="icon"  ng-class="{'ion-home':address.type=='home','ion-briefcase':address.type=='work'}"></i>
+		    <b>{{address.firstName}} {{address.lastName}}</b>
+		    <div>{{address.line1}}</div>
+		    <div>{{address.zip}} {{address.city}}</div>
+		    <div>{{address.country}}</div>
+		    <i class="icon ion-chevron-right"></i>
+		  </a>    	  
+    	</div>
+    	
+    	
+    </ion-content>
+</ion-view>

@@ -1,0 +1,100 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+       <meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link href="/css/ionic.app.css" rel="stylesheet">
+		
+		<script src="/lib/ionic/js/ionic.bundle.min.js"></script>
+		<script src="/cordova.js"></script>   
+    </head>
+    <body class="container"  class="slide-left-right-ios" ng-app="masonryApp">
+    	<ion-pane>
+	      <ion-header-bar class="bar-stable">
+	        <h1 class="title">Ionic Blank Starter</h1>
+	      </ion-header-bar>
+	      <ion-content class="has-header" ng-controller="DemoCtrl">
+	      	 
+            
+                <h2>In Action</h2>
+                <div class="btn-group">
+                    <button class="btn btn-primary" ng-click="add()">Add</button>
+                    <button class="btn btn-danger" ng-click="remove()">Remove</button>
+                </div>
+                
+                <div class="row">
+                <div class="col-50">
+	                <div class="card" ng-repeat="card in bricks" ng-if="$even">
+					  <div class="item item-divider">
+					    {{card.title}}
+					  </div>
+					  <div class="item item-text-wrap">
+					    <img src="" data-ng-src="{{card.src}}">
+					  </div>
+					  <div class="item item-divider">
+					    I'm a Footer in a Card!
+					  </div>
+					</div>
+        		</div>
+        		<div class="col-50">
+	                <div class="card" ng-repeat="card in bricks"  ng-if="$odd">
+					  <div class="item item-divider">
+					    {{card.title}}
+					  </div>
+					  <div class="item item-text-wrap">
+					    <img src="" data-ng-src="{{card.src}}">
+					  </div>
+					  <div class="item item-divider">
+					    I'm a Footer in a Card!
+					  </div>
+					</div>
+        		</div>
+        		</div>
+	      </ion-content>
+	    </ion-pane>
+    
+    
+		
+
+	
+
+        <script>
+            angular.module('masonryApp', ["ionic"]).
+                controller('DemoCtrl', function ($scope) {
+                    function genBrick() {
+                        var height = ~~(Math.random() * 500) + 100;
+                        var id = ~~(Math.random() * 10000);
+                        return {
+                            src: 'http://lorempixel.com/g/150/' + height + '/?' + id
+                        };
+                    };
+
+                    $scope.bricks = [
+                        genBrick(),
+                        genBrick(),
+                        genBrick(),
+                        genBrick(),
+                        genBrick()
+                    ];
+                    $scope.bricks2 = [
+                                     genBrick(),
+                                     genBrick(),
+                                     genBrick(),
+                                     genBrick(),
+                                     genBrick()
+                                 ];
+                    $scope.add = function add() {
+                        $scope.bricks.push(genBrick());
+                    };
+
+                    $scope.remove = function remove() {
+                        $scope.bricks.splice(
+                            ~~(Math.random() * $scope.bricks.length),
+                            1
+                        )
+                    };
+                });
+        </script>
+    </body>
+</html>

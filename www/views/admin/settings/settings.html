@@ -1,0 +1,37 @@
+<ion-view title="Settings" hide-nav-bar="true" class="newshop settings">
+    					
+    <ion-content padding="false" scroll="true">
+    	<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>	    
+    	<div ng-click="changeBackground()" style="width:100%; height:200px; background-size:cover; background-image:url('{{shop.background}}'); position:relative;">
+    		
+    		<div ng-show="shop.logo!=null" ng-bkg="{{shop.logo}}" ng-click="changeLogo(); $event.stopPropagation();" class="logo"></div>
+    	</div>
+    	
+    	<!--div style="position:absolute; top:70px; left:50%;width:150px; height:150px;margin-left:-75px; border:solid 2px black; z-index:100; overflow:hidden;">
+    		<img ng-src="{{shop.logo}}" ng-show="shop.logo!=null" style="width:150px;" ng-click="changeLogo(); $event.stopPropagation();"/>
+    	</div>
+    	<div style="width:100%; height:200px; overflow:hidden;position:relative;">    		
+			<img ng-click="changeBackground()" ng-src="{{shop.background}}" style="width:100%; height:auto;"/>			
+		</div-->
+		<ion-list>        		     						
+			<ion-item class="item-divider">{{shop.name}}</ion-item>
+			<ion-item class="item-icon-left" ng-click="changeLogo()" ng-show="shop.logo==null"><i class="icon ion-leaf"></i>Logo</ion-item>						
+			<ion-item class="item-icon-left item-icon-right" ui-sref="^.contacts"><i class="icon ion-android-textsms"></i>Contacts<i class="icon ion-checkmark-circled positive" ng-show="shop.tel"></i></ion-item>					
+			<ion-item class="item-icon-left item-icon-right" ui-sref="^.address.edit"><i class="icon ion-compass"></i><span ng-show="shop.address==null">Address</span><span ng-show="shop.address!=null">{{shop.address.line1}} {{shop.address.zip}} {{shop.address.country}}</span> <i class="icon ion-checkmark-circled positive"  ng-show="shop.address!=null"></i></ion-item>
+			<ion-item class="item-icon-left item-icon-right" ui-sref="^.address" ng-show="shop.addresses.length>0"><i class="icon ion-compass"></i>{{shop.addresses[0].line1}} {{shop.addresses[0].city}}<i class="icon ion-checkmark-circled positive"></i></ion-item>
+			<ion-item class="item-icon-left item-icon-right" ui-sref="^.whoare"><i class="icon ion-planet"></i>Who are we<i class="icon ion-checkmark-circled positive" ng-show="shop.whoarewe!=null && (shop.whoarewe.gallery.length>0 || shop.whoarewe.description!='')"></i></ion-item>			
+			<ion-item class="item-divider">E-Commerce</ion-item>	
+			<!--ion-item class="item-icon-left item-icon-right" ui-sref="pub.profileAddress()"><i class="icon ion-ios-information-outline"></i>Info Privacy<i class="icon ion-checkmark-circled positive" ng-show="false"></i></ion-item-->
+			<ion-item class="item-icon-left item-icon-right" ui-sref="^.shipping"><i class="icon ion-paper-airplane"></i>Shipping<i class="icon ion-checkmark-circled positive" ng-show="shop.shipping"></i></ion-item>
+			<ion-item class="item-icon-left item-icon-right" ui-sref="^.legal"><i class="icon ion-clipboard"></i>Legal data<i class="icon ion-checkmark-circled positive" ng-show="shop.legalData"></i></ion-item>
+			<ion-item class="item-icon-left item-icon-right" ui-sref="^.paypal"><i class="icon fa fa-paypal"></i>Paypal<i class="icon ion-checkmark-circled positive" ng-show="shop.paypal"></i></ion-item>
+			<ion-item class="item-divider">Extra</ion-item>				
+			<label class="item item-input item-icon-left">
+				<i class="icon ion-code-download"></i>
+			    <span class="input-label" style="padding-left:40px;">Easy Code</span>
+			    <input type="text" ng-model="shop.code" disabled>
+			  </label>					
+		</ion-list>
+    </ion-content>
+    
+</ion-view>

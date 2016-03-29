@@ -1,0 +1,72 @@
+
+ 		
+ 			<ion-view id="singleWish" class="lista sheet preferiti" title="Preferiti" show-footer>
+ 			
+ 			<ion-content scroll="true" padding="false">	            	  		
+ 				 	<div ng-if="list.length==0" style="text-align:center" class="icon ion-ios-heart-outline void">
+ 				 		<p>
+ 				 			Ciao!<BR> 
+ 				 			in questo momento la tua lista preferiti &egrave; vuota.<BR>
+ 				 			Personalizza la tua lista
+ 				 		</p><BR> 				 		
+ 				 	</div>
+ 				 		  						
+	  				<div class="list"  ng-if="list.length>0">	  				  				
+	  					<div class="list list-inset">
+	  						<label class="item item-input">	  						
+            				<i class="icon ion-search placeholder-icon"></i><input type="text" placeholder="to search..." ng-model="filter">
+            				</label>
+            			</div>      				  
+	  				  	<div class="row" style="min-height:{{device.height}}px">
+		            		<div class="col col-50">		  			
+				  				<div class="good" ng-repeat="item in list | filter:{name:filter}"  ng-if="$even" ui-sref="pub.item({shop:item.shop,id:item.id})">	  		  			              						    
+								    	<!--div class="topbar" ng-class="{active:item.row.qta>0}">
+									    	<div class="sub" ng-click="basket.sub(item)">					    		
+									    		<i class="icon ion-ios-minus" ng-show="item.row.qta>0"></i>
+									    	</div>
+									    	<div class="qta" ng-show="item.row.qta>10">{{item.row.qta}}</div>
+									    	<div class="add" ng-click="basket.sum(item)">					    		
+									    		<i class="icon" ng-class="{'ion-ios-plus-outline':item.row==null,'ion-ios-plus':item.row.qta>0}"></i>
+									    	</div>
+								    	</div-->
+								    	<img ng-src="{{item.gallery[0].img}}" ui-sref="index.item({id:item.id})">
+								    	
+								    	<div class="bottombar" ng-class="{active:item.row.qta>0}">	
+								    		<div class="preferred">					    		
+									    		<i class="icon ion-ios-heart-outline" ng-hide="wish.inside(item)" ng-click="wish.add(item)"></i>
+									    		<i class="icon ion-ios-heart" ng-show="wish.inside(item)" ng-click="wish.remove(item)"></i>
+									    	</div>						    	
+									    	<div class="price"><SPAN ng-show="item.row.qta>0">{{item.row.qta}} X </SPAN> {{item.price|currency}}</div>							    	
+								    	</div>						    						    				    					 
+								</div>
+							</div>
+							<div class="col col-50">		  			
+				  				<div class="good" ng-repeat="item in list | filter:{name:filter}"  ng-if="$odd"  ui-sref="pub.item({shop:item.shop,id:item.id})">	  		  			              						    
+								    	<!--div class="topbar" ng-class="{active:item.row.qta>0}">
+									    	<div class="sub" ng-click="basket.sub(item)">					    		
+									    		<i class="icon ion-ios-minus" ng-show="item.row.qta>0"></i>
+									    	</div>
+									    	<div class="qta" ng-show="item.row.qta>10">{{item.row.qta}}</div>
+									    	<div class="add" ng-click="basket.sum(item)">					    		
+									    		<i class="icon" ng-class="{'ion-ios-plus-outline':item.row==null,'ion-ios-plus':item.row.qta>0}"></i>
+									    	</div>
+								    	</div-->
+								    						    	
+								    	<img ng-src="{{item.gallery[0].img}}" ui-sref="index.item({id:item.id})">
+								    	
+								    	<div class="bottombar" ng-class="{active:item.row.qta>0}">	
+								    		<div class="preferred">					    		
+									    		<i class="icon ion-ios-heart-outline" ng-hide="wish.inside(item)" ng-click="wish.add(item)"></i>
+									    		<i class="icon ion-ios-heart" ng-show="wish.inside(item)" ng-click="wish.remove(item)"></i>
+									    	</div>						    	
+									    	<div class="price"><SPAN ng-show="item.row.qta>0">{{item.row.qta}} X </SPAN> {{item.price|currency}}</div>							    	
+								    	</div>						    						    				    					 
+								</div>
+							</div>
+						</div>
+					</div>	  					
+					
+			</ion-content>	
+					
+            </ion-view>
+

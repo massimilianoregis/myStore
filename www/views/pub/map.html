@@ -1,0 +1,27 @@
+
+<ion-view id="listaMap" class="lista map">
+	<ion-content scroll="false" padding="false" class="inArt" scroll-event-interval="5" has-bouncing="true">
+
+	<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+		<ui-gmap-marker ng-repeat="item in list" coords="item.pos" idkey="item.uuid"></ui-gmap-marker>
+   	</ui-gmap-google-map>
+
+    <ion-slide-box on-slide-changed="slideHasChanged(index)" show-pager="false">
+      <ion-slide ng-repeat="item in list" ng-init="updateSlider()">
+      	<ion-content scroll="true" ng-if="$index >= (currentSlide-1) && $index <= (currentSlide+1)">      	
+        	<div class="list card pub"> 
+			  <div class="item">	    	  
+			    <h2>{{item.name}}</h2>
+			    <p>{{item.type}}</p>	    
+			  </div>	
+			  <div class="item item-body">
+			  	<div class="arrow-down"></div>
+			    <img class="full-image" ng-src="{{item.img}}">	   
+			  </div>	
+			</div>
+		</ion-content>	
+      </ion-slide>      
+    </ion-slide-box>
+
+	</ion-content>		
+</ion-view>

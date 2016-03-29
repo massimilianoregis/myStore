@@ -1,0 +1,18 @@
+
+
+    
+    <ion-content padding="false"  scroll="false" has-bouncing="false"  class="newshop">
+    	<presentation-bar 
+					title="Currency" 
+					icon="ion-cash" 
+					background="img/background.png" 
+					text="Quali valute accetti?"
+					>				
+			</presentation-bar>    	
+    	<div class="list">    		
+			<ion-item class="item-divider">Currencies</ion-item>
+			<ion-checkbox name="currencies" ng-repeat="item in shop.currencies" ng-model="item.selected" ng-required="isCurrencyRequired()">{{item.name}}</ion-checkbox>		   		    
+		</div>
+	    	              
+    </ion-content>
+    

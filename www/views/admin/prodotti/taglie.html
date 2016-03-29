@@ -1,0 +1,47 @@
+				
+    <ion-content padding="false" scroll="true" class="newgood">
+        	
+        <div  ng-controller="shopController">
+    	<presentation-bar    			
+				title="Taglie" 
+				icon="ion-cash" 
+				background="{{shop.background}}" 
+				text="quanto costa? e a quanto lo vendi sull'app?">				
+		</presentation-bar>
+		</div>		
+		
+		<ion-list>		
+						  		  
+			<ion-item class="item item-divider row">								
+					<div class="col col-40" style="padding-left: 12px;">Prezzi</div>
+					<div class="col col-30 text-left">base</div>
+					<div class="col col-30 text-left">web</div>				
+			</ion-item>			
+			<ion-item class="row item-input" ng-repeat="(key,item) in prices">
+				<div class="col col-40 input-label" style="padding-left: 12px;">{{key}}</div>
+				<div class="col col-30 text-center"><input type="number" placeholder="100 {{key}}" ng-model="item.base"></div>
+				<div class="col col-30 text-center"><input type="number" placeholder="100 {{key}}" ng-model="item.web"></div>							
+			</ion-item>
+			
+			<ion-item class="item item-divider">Special</ion-item>   			  
+			<div class="item item-toggle">
+		     Categoria offerte
+		     <label class="toggle toggle-assertive">
+		       <input type="checkbox" ng-model="item.extra.offer">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  	</div>	
+		  	<div class="item item-toggle">
+		     Categoria novit&agrave;
+		     <label class="toggle toggle-assertive">
+		       <input type="checkbox"  ng-model="item.extra.news">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  	</div>				
+		</ion-list>
+		
+    </ion-content>

@@ -1,0 +1,48 @@
+{
+"id":"1",
+"name":"Miky's",
+"type":"type",
+"mail":"amministrazione@mikys.com",
+"ragioneSociale":"ekaros srl",
+"piva":"023700030024",
+"capitale":"20000euro i.v.",
+"rea":"BI187852",
+"web":"www.ekaros.it",
+"tel":"+3920055977",
+"background":"data/1/img/macchine-fotografiche.jpg",
+"logo":"data/1/img/logo.png",
+"style":"css/style2.css",
+"gallery":[
+	{"img":"data/1/img/macchine-fotografiche.jpg"}
+],
+"addresses":[
+			{
+			"type":"sede legale",
+			"line1":"via Lamarmora 16",
+			"line2":"",
+			"zip":"13900",
+			"city":"Biella",
+			"country":"Italia",
+			"type":"home"
+			},
+			{
+			"type":"Ronco",
+			"firstName":"Oriella",
+			"lastName":"Zaghi",			
+			"line1":"via Roma 72",
+			"line2":"",
+			"zip":"13845",
+			"city":"Ronco Biellese",
+			"country":"Italia",
+			"type":"work"
+			}
+	],
+"whoarewe":{
+	"text":"Nasco come grafica ­web nel 2013 dopo aver affrontato diversi mestieri e professioni che toccavano svariate mansioni, ma sempre in qualche modo legate al mondo della progettazione, della grafica e della comunicazione.<BR><BR> Per questo decido di mettere a frutto tutte le sfaccettature lavorative maturate negli anni e intraprendo la strada della creatività e della comunicazione, forte del fatto che avevo voglia di partecipare a questa sfida continua che la società mi proponeva costantemente ovvero il cambiamento attraverso nuove forme di comunicazione.<BR><BR> una voglia di scoprire e sperimentare come tutto fosse legato da un filo conduttore; la creatività è comunicazione, 'la comunicazione è fatta di strumenti e di mezzi il cui fine ultimo è il benessere delle persone, con le loro attività e le loro esigenze'. Da questa sfida continua nasce l’idea di un progetto nuovo che mette a nudo le mie esperienze più intime, le mie sensazioni più primordiali, la necessità di comunicare il proprio vissuto e la propria visione di futuro; e quale strumento migliore per fare tutto questo se non la fotografia.",
+	"gallery":[
+		{"src":"data/1/img/gallery1.jpg"},
+		{"src":"data/1/img/gallery2.jpg"},
+		{"src":"data/1/img/me.jpg"}
+		]
+	}
+}

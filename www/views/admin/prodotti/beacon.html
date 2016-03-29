@@ -1,0 +1,29 @@
+
+<!-- admin/prodotti/categorie.html -->
+    
+    <ion-content padding="false" scroll="true" ng-controller="shopController" class="newgood" style="margin-top:-2px;">    	      	 
+		<ion-list ng-controller="paintingController">			
+			<presentation-bar 
+				title="iBeacon" 
+				icon="ion-bluetooth" 				 
+				text="Per trovarlo senza movere dito"				
+				>				
+			</presentation-bar>
+			 
+			
+				<ion-item class="item item-divider">Beacon id</ion-item>		
+				<label class="item item-input">		
+			 		<input type="text" placeholder="UUID" ng-model="item.beacon.id"/>	      
+			    </label>
+			    <label class="item item-input">		
+			 		<input type="text" placeholder="Minor" ng-model="item.beacon.minor"/>	      
+			    </label>
+				<label class="item item-input">		
+			 		<input type="text" placeholder="Major" ng-model="item.beacon.major"/>	      
+			    </label>
+		</ion-list>
+	
+	
+    </ion-content>
+    
+<!-- admin/prodotti//categorie.html -->

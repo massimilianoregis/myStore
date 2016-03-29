@@ -1,0 +1,41 @@
+
+<!-- admin/prodotti/categorie.html -->
+    
+    <ion-content padding="false" scroll="true" ng-controller="shopController" class="newgood" style="margin-top:-2px;">    	      	 
+		<ion-list>			
+			<presentation-bar 
+				title="Categorie" 
+				icon="ion-qr-scanner" 				 
+				text="In quali categorie deve comparire?"				
+				>				
+			</presentation-bar>
+			  
+			<ion-item class="item item-divider">Name</ion-item>
+			
+		 	<label class="item item-input">		
+		 		<input type="text" placeholder="Name" ng-model="item.name" name="name" required/>	      
+		    </label>
+		    <label class="item item-input">		
+		 		<input type="number" placeholder="Qta" ng-model="item.qta"/>	      
+		    </label>				    						    			
+			
+			<ion-item class="item item-divider">Categories</ion-item>		
+			<label class="item item-radio" ng-repeat="itm in item.groups">
+			    <input type="checkbox" name="group" ng-model="itm.checked" ng-click="inGroupCount()" ng-required="isGroupRequired()"/>
+			    <div class="item-content">
+			      {{itm.name}}
+			    </div>
+			    <i class="radio-icon ion-checkmark"></i>
+			</label>
+			<ion-item class="item-input-inset">			
+			 	<label class="item-input-wrapper">		
+			 		<input type="text" placeholder="Name" ng-model="group">	      
+			    </label>				    
+			    <button type="button" class="button button-small" ng-click="addGroup({id:group,name:group})">Nuova</button>				 
+			</ion-item>
+		</ion-list>
+	
+	
+    </ion-content>
+    
+<!-- admin/prodotti//categorie.html -->

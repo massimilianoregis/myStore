@@ -1,0 +1,75 @@
+<style>
+.gallery.colors .close
+	{
+	right: 1px;
+    left: inherit;
+    top: 1px;	
+	}
+	
+.gallery.colors .list
+	{
+	margin-top: -15px;
+	padding-left: 10px;
+	padding-right: 10px;
+	}
+</style>
+		
+    					
+    <ion-content padding="false" scroll="true" class="whoare newgood">
+    	<div  ng-controller="shopController">
+    	<presentation-bar 
+				title="Colors" 
+				icon="ion-paintbrush" 
+				text="Ricordati che sono molto pi&ugrave; importati le immagini di qualsiasi descrizione">				
+			</presentation-bar>
+    	</div>
+			
+    	<div class="gallery colors">	        		
+    		<div class="row">	
+	    		<div class="col col-50">
+	    			<div ng-repeat="itm in item.colors" ng-if="$even">    			
+	    			<div class="img">
+	    				<i class="icon ion-close-circled close" ng-click="item.colors.splice($index,1)"></i>    				    					
+	    				<img ng-src="{{itm.image|resize:500}}"/>
+	    			</div>     		
+		    		<div class="list">	    			    		
+						 <label class="item item-input">
+						 	<span class="input-label">Name</span>
+						    <input type="text" placeholder="Name" ng-model="itm.name">
+						  </label>													    		
+						 <label class="item item-input">
+						 	<span class="input-label">Qta</span>
+						    <input type="text" placeholder="Qta"  ng-model="itm.qta">
+						  </label>								
+					</div>
+					</div>
+				</div>
+				<div class="col col-50">
+					<div  ng-repeat="itm in item.colors" ng-if="$odd">    			
+	    			<div class="img">
+	    				<i class="icon ion-close-circled close" ng-click="item.colors.splice($index,1)"></i>    				    					
+	    				<img ng-src="{{itm.image|resize:500}}"/>
+	    			</div>     		
+		    		<div class="list">	    			    		
+						 <label class="item item-input">
+						 	<span class="input-label">Name</span>
+						    <input type="text" placeholder="Name" ng-model="itm.name">
+						  </label>													    		
+						 <label class="item item-input">
+						 	<span class="input-label">Qta</span>
+						    <input type="text" placeholder="Qta"  ng-model="itm.qta">
+						  </label>								
+					</div>
+					</div>
+				</div>
+			</div>
+			
+	    	<div class="row">
+    			<div class="col" >
+	    			<a class="button button-block icon ion-camera" ng-click="addColor()"></a>
+	    		</div>
+	    	</div>
+	    </div>  
+	    	              
+    </ion-content>
+    

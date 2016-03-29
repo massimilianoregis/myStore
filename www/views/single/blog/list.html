@@ -1,0 +1,38 @@
+
+ 			<ion-view id="news" title="News" class="news sheet" show-footer>
+                <ion-content padding="true" scroll="true">					                
+ 
+ 					<div ng-if="list.length==0" style="text-align:center" class="icon ion-ios-lightbulb-outline void">
+ 				 		<p> 				 			
+ 				 			in questo momento non ci sono news<BR> 				 			
+ 				 		</p><BR> 		
+ 				 				 	
+ 				 	</div>
+ 				 	
+					<div class="list card" ng-repeat="item in list">
+					
+					  <div class="item">							  					
+					    <h2>{{item.title}}</h2>
+					    <p>{{item.date|date:'MMMM dd, yyyy'}}</p>
+					  </div>
+					
+					  <div class="item item-body">							    
+					    <img class="full-image" ng-src="{{item.image}}">
+					    <p>
+					     {{item.text}}
+					    </p>					    
+					  </div>
+					
+					  <div class="item tabs tabs-secondary tabs-icon-left">					   
+					    <a class="tab-item" ng-click="share(item.title,item.title,item.image,null)">
+					      <i class="icon ion-share"></i>
+					      Share
+					    </a>
+					  </div>
+					
+					</div>
+						
+					
+                </ion-content>
+                
+            </ion-view>

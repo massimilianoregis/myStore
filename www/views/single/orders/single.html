@@ -1,0 +1,107 @@
+
+<ion-view title="Ordine" class="shop">    	
+    	<ion-content>    		
+    				<presentation-bar 
+				title="{{shop.name}}" 
+				icon="ion-ios-cart-outline" 
+				background="{{shop.background||'img/background.png'}}" 				
+				>				
+			</presentation-bar>	       
+			<ion-list>			
+				<ion-item class="item-divider">Status</ion-item>
+				<ion-item class="item-icon-right">
+					<span ng-show="basket.status=='closed'">Arrivato</span>			
+					<span ng-show="basket.status=='working'">In gestione <i class="icon ion-briefcase"></i></span>	
+					<span ng-show="basket.status=='confirm'">Confermato <i class="icon ion-thumbsup"></i></span>
+					<span ng-show="basket.status=='topack'">Tutti i prodotti nel pacco <i class="icon ion-thumbsup"></i></span>
+					<span ng-show="basket.status=='packed'">Pacco chiuso <i class="icon ion-cube"></i></span>
+					<span ng-show="basket.status=='shipped'">Spedito <i class="icon ion-paper-airplane"></i></span>						
+				</ion-item>									
+				  <div class="item item-button-right" ng-show="basket.status=='shipped'">
+				    Ok, prodotto arrivato!
+				    <button class="button " ng-click="received(basket)">
+				      <i class="icon ion-thumbsup"></i>
+				    </button>
+				  </div>
+								 				
+				<ion-item class="item-divider">Order code: {{basket.easycode}}</ion-item>							
+				<ion-item class="item-icon-left" ng-repeat="row in basket.rows" style="height:52px;">
+					<div class="icon" style="width:52px;height:52px; overflow:hidden"><img ng-src="{{row.img|resize:150:180}}" style="width:50px;"/></div>
+					<div class="name" style="padding-left:10px;">{{row.name}}&nbsp;</div>
+					<span class="badge badge-stable"><span ng-show="row.qta>1">{{row.qta}} X&nbsp;</span> {{row.price|currency}}</span>						
+   					<ion-option-button style="font-size: 38px;padding-top: 4px;" class="button-assertive ion-ios-trash" ng-click="basket.remove(row)"></ion-option-button>
+				</ion-item>				 						
+				
+				<ion-item class="item-divider">Shipping</ion-item>
+				<ion-item class="item-icon-right" >						
+					<B>{{basket.shipping.firstName}} {{basket.shipping.lastName}}</B><BR>
+					{{basket.shipping.line1}} {{basket.shipping.zip}} {{basket.shipping.city}} ({{basket.shipping.country}})			
+				</ion-item>
+				<span ng-show="basket.shipping.courier && basket.status!='closed'">						
+				<ion-item class="item-icon-right">
+					<H2>Courier</H2>
+					{{basket.shipping.courier}}						
+				</ion-item>
+				<ion-item class="item-icon-right">
+					<H2>Track number</H2>
+					{{basket.shipping.courierTrack}}						
+				</ion-item>
+				</span>
+					
+				<ion-item class="item-divider">Customer care</ion-item>
+				<ion-item class="item-icon-right" ui-sref="pub.messages.single">
+					<H2>Chat</H2>
+					<I class="icon ion-chevron-right"></I>	
+				</ion-item>	
+			</ion-list>
+			
+					
+    	</ion-content>
+</ion-view>
+<script id="vote.html" type="text/ng-template">
+  <ion-modal-view>	
+		<ion-header-bar class="bar-assertive">            
+		<h1 class="title">Vota il tuo ordine...</h1>
+		<div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+	<ion-content class="shop">
+			<presentation-bar 
+				title="{{shop.name}}" 
+				icon="ion-ios-cart-outline" 
+				background="{{shop.background||'img/background.png'}}" 				
+				>				
+			</presentation-bar>	  
+		<ion-list>
+	<ion-item class="item-divider">Qualit&agrave; della spedizione</ion-item>
+		<div class="item range range-positive">
+				    <i class="icon ion-ios-paperplane-outline" ></i>
+				    <input type="range" name="volume" min="0" max="10" value="-1" ng-model="order.vote.shipping">
+				    <i class="icon ion-ios-paperplane"></i>
+				  </div>
+<ion-item class="item-divider">Qualit&agrave; del servizio</ion-item>
+				 <div class="item range range-positive">
+				    <i class="icon ion-ios-gear-outline"></i>
+				    <input type="range" name="volume" min="0" max="10" value="-1" ng-model="order.vote.service">
+				    <i class="icon ion-ios-gear"></i>
+				  </div>
+<ion-item class="item-divider">Qualit&agrave; dei prodotti</ion-item>
+				  <div class="item range range-positive">
+				    <i class="icon ion-ios-flask-outline"></i>
+				    <input type="range" name="volume" min="0" max="10" value="-1" ng-model="order.vote.quality">
+				    <i class="icon ion-ios-flask"></i>
+				  </div>
+<ion-item class="item-divider">Prezzo dei prodotti</ion-item>
+				  <div class="item range range-positive">
+				    <i class="icon ion-ios-calculator"></i>
+				    <input type="range" name="volume" min="0" max="10" value="-1"  ng-model="order.vote.price">
+				    <i class="icon ion-ios-calculator-outline"></i>
+				  </div>
+				   <div class="item item-button-right">
+    				Conferma
+    				<button class="button positive" ng-click="voted()"><i class="icon ion-thumbsup"></i></button>
+  				</div>
+	</ion-list>
+	</ion-content>
+  </ion-modal-view>
+</script>
+ 

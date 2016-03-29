@@ -1,0 +1,51 @@
+<ion-view title="Shipping" hide-nav-bar="true" class="newshop">
+    			
+    <ion-content padding="false" scroll="true" class="shipping">
+    		<presentation-bar 
+				title="Shipping" 
+				icon="ion-log-in" 
+				background="{{shop.background}}" 
+				text="Come consegni la tua merce, e in quanto tempo"
+				on-save-click="saveShop('pub.admin.settings')"
+				>					
+			</presentation-bar>
+    
+    	<ion-list>
+    		<div ng-repeat="(key,cur) in shop.shipping">        		     						
+			<ion-item class="item-divider">Costo {{key}}</ion-item>
+			<ion-item class="item-icon-left item-icon-right input"><i class="icon ion-arrow-move"></i>
+				<div class="input-group"><input type="text" style="width:60px" placeholder="10.00" ng-model="cur.world" class="text-right"><div class="input-group-addon">{{key}}</div></div>
+				<span class="item-note">Mondo</span> 
+				<i class="icon ion-checkmark-circled positive" ng-show="cur.world!=null"></i>
+			</ion-item>	
+			<ion-item class="item-icon-left item-icon-right input"><i class="icon ion-arrow-expand"></i>
+				<div class="input-group"><input type="text" style="width:60px" placeholder="10.00" ng-model="cur.europe" class="text-right"><div class="input-group-addon">{{key}}</div></div>
+				<span class="item-note">Europa</span> 
+				<i class="icon ion-checkmark-circled positive" ng-show="cur.europe"!=null"></i>
+			</ion-item>					
+			<ion-item class="item-icon-left item-icon-right input"><i class="icon ion-arrow-shrink"></i>			
+				<div class="input-group"><input type="text" style="width:60px" placeholder="10.00" ng-model="cur.italy" class="text-right"><div class="input-group-addon">{{key}}</div></div>
+				<span class="item-note">Italia</span> 
+				<i class="icon ion-checkmark-circled positive" ng-show="cur.italy!=null"></i>
+			</ion-item>
+			</div>
+			
+			<!--ion-item class="item-divider">Corrieri</ion-item>
+			<ion-item class="item-icon-left item-icon-right input"><i class="icon ion-arrow-move"></i>
+			    10-20 Eur				
+				<span class="item-note">DHL</span> 
+				<i class="icon ion-information-circled positive"></i>
+			</ion-item>
+			<ion-item class="item-icon-left item-icon-right input"><i class="icon ion-arrow-move"></i>
+				10-20 Eur				
+				<span class="item-note">UPS</span> 
+				<i class="icon ion-information-circled positive"></i>
+			</ion-item>		
+			<ion-item class="item-icon-left item-icon-right input"><i class="icon ion-arrow-move"></i>				
+				<span class="item-note">Bartolini</span> 
+				<i class="icon ion-information-circled positive"></i>
+			</ion-item-->	
+		</ion-list>
+    </ion-content>
+    
+</ion-view>

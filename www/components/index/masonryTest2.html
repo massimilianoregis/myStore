@@ -1,0 +1,95 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>AngularJS Masonry Directive</title>
+        <link href="//netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                margin-top: 1em;
+            }
+
+            .masonry-brick {
+                margin: 1em;
+                
+            }
+
+            .masonry-brick.loaded {
+                display: block;
+            }
+            
+            
+.deckgrid[deckgrid]::before {    
+    content: '4 .column.column-1-4';
+    font-size: 0; /* See https://github.com/akoenig/angular-deckgrid/issues/14#issuecomment-35728861 */
+    visibility: hidden;
+}
+
+.deckgrid .column {
+    float: left;
+}
+
+.deckgrid .column-1-4 {
+    width: 25%;
+}
+        </style>
+    </head>
+    <body class="container" ng-app="masonryApp">
+
+        <div class="row" ng-controller="DemoCtrl">
+            <div class="span12">
+                <h2>In Action</h2>
+                <div class="btn-group">
+                    <button class="btn btn-primary" ng-click="add()">Add</button>
+                    <button class="btn btn-danger" ng-click="remove()">Remove</button>
+                </div>
+                
+                <div deckgrid class="deckgrid" source="bricks">
+				    <div class="masonry-brick">
+				        <h1>{{card.title}}</h1>
+				
+				        <img src="" data-ng-src="{{card.src}}">
+				    </div>
+				</div>
+                          
+            </div>
+        </div>
+
+<script src="/components/community/assets/lib/ionic/js/ionic.bundle.min.js"></script>
+<script src="/lib/angular-deckgrid/angular-deckgrid.js"></script>
+	
+
+        <script>
+            angular.module('masonryApp', ['akoenig.deckgrid']).
+                controller('DemoCtrl', function ($scope) {
+                    function genBrick() {
+                        var height = ~~(Math.random() * 500) + 100;
+                        var id = ~~(Math.random() * 10000);
+                        return {
+                            src: 'http://lorempixel.com/g/280/' + height + '/?' + id
+                        };
+                    };
+
+                    $scope.bricks = [
+                        genBrick(),
+                        genBrick(),
+                        genBrick(),
+                        genBrick(),
+                        genBrick()
+                    ];
+
+                    $scope.add = function add() {
+                        $scope.bricks.push(genBrick());
+                    };
+
+                    $scope.remove = function remove() {
+                        $scope.bricks.splice(
+                            ~~(Math.random() * $scope.bricks.length),
+                            1
+                        )
+                    };
+                });
+        </script>
+    </body>
+</html>

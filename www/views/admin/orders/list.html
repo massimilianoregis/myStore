@@ -1,0 +1,83 @@
+<style>
+.ordini .scroll
+	{
+	height:100%;
+	}
+.ordini .void
+	{
+	width: 100%;			    
+    font-size: 150px;
+    text-align: center;
+    color: red;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    margin-top: -150px;
+	}
+.ordini .void p
+	{
+	font-size:14px;
+	color:black;
+	}
+</style>
+<ion-view title="Ordini" class="ordini shop" show-footer>    	
+    	<ion-content>    		    	    		
+    		<div ng-if="orders==null || orders.length==0" style="text-align:center" class="icon ion-ios-cart-outline void">
+		 		<p>
+		 			Ciao!<BR> 
+		 			in questo momento non hai ordini.<BR>
+		 			Procedi ad un acquisto!
+		 		</p><BR>
+		 		<button class="button icon-left ion-home" ui-sref="pub.goods()">Torna indietro</button>
+		 	</div>
+		 	
+    	    <div ng-if="orders.length>0">
+    	    <presentation-bar 
+				title="Orders" 
+				icon="ion-ios-cart-outline" 
+				background="{{shop.background}}" 
+				text="your orders are here... please remember it"
+				>				
+			</presentation-bar>
+    	    	<ion-list>
+    	    		<label class="item item-input">
+						    <span class="input-label">Easy code</span>
+						    <input type="text" ng-model="find">
+						  </label>
+    	    	</ion-list>  
+				<ion-list>												
+					<ion-item class="item-divider">work in progress</ion-item>							
+					<ion-item  ng-repeat="item in orders | filter:{status:'confirm',easycode:find}" class="item-icon-left item-icon-right" ng-class="item.status" ui-sref="^.item({id:item.id})">
+						<i class="icon ion-ios-cart"></i>{{item.total|currency}} {{item.date|date:"dd/MM/yyyy HH:mm"}} <div class="easycode">{{item.easycode}}</div>
+						<i class="icon ion-chevron-right"></i>
+					</ion-item> 
+					<ion-item  ng-repeat="item in orders | filter:{status:'payed',easycode:find}" class="item-icon-left item-icon-right" ng-class="item.status" ui-sref="^.item({id:item.id})">
+						<i class="icon ion-ios-cart"></i>{{item.total|currency}} {{item.date|date:"dd/MM/yyyy HH:mm"}} <div class="easycode">{{item.easycode}}</div>
+						<i class="icon ion-chevron-right"></i>
+					</ion-item> 	
+					<ion-item  ng-repeat="item in orders | filter:{status:'topack',easycode:find}" class="item-icon-left item-icon-right" ng-class="item.status" ui-sref="^.item({id:item.id})">
+						<i class="icon ion-ios-cart"></i>{{item.total|currency}} {{item.date|date:"dd/MM/yyyy HH:mm"}} <div class="easycode">{{item.easycode}}</div>
+						<i class="icon ion-chevron-right"></i>
+					</ion-item>
+					<ion-item  ng-repeat="item in orders | filter:{status:'working',easycode:find}" class="item-icon-left item-icon-right" ng-class="item.status" ui-sref="^.item({id:item.id})">
+						<i class="icon ion-ios-cart"></i>{{item.total|currency}} {{item.date|date:"dd/MM/yyyy HH:mm"}} <div class="easycode">{{item.easycode}}</div>
+						<i class="icon ion-chevron-right"></i>
+					</ion-item> 												 																										
+				</ion-list>
+				
+				<ion-list>								
+					<ion-item class="item-divider">Packed</ion-item>							
+					<ion-item  ng-repeat="item in orders | filter:{status:'packed',easycode:find}" class="item-icon-left" ng-class="item.status" ui-sref="^.item({id:item.id})">
+						<i class="icon ion-ios-cart"></i>{{item.total|currency}} {{item.date|date:"dd/MM/yyyy HH:mm"}} <div class="easycode">{{item.easycode}}</div>
+					</ion-item> 														
+				</ion-list> 	
+				
+				<ion-list>								
+					<ion-item class="item-divider">Shipped</ion-item>							
+					<ion-item  ng-repeat="item in orders | filter:{status:'shipped',easycode:find}" class="item-icon-left" ng-class="item.status" ui-sref="^.item({id:item.id})">
+						<i class="icon ion-ios-cart"></i>{{item.total|currency}} {{item.date|date:"dd/MM/yyyy HH:mm"}} <div class="easycode">{{item.easycode}}</div>
+					</ion-item> 														
+				</ion-list> 	
+			</div>		
+    	</ion-content>
+</ion-view>

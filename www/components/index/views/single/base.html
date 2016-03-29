@@ -1,0 +1,135 @@
+
+<style>
+
+.gallery-view .row 
+	{
+    display: none;
+    padding: 0;
+	}
+.gallery-view .col
+	{
+	padding: 0;
+	}
+.gallery-view .row:first-child 
+	{
+    padding: 0;
+    display: block;
+	}
+.gallery-view  img
+	{
+	width: 100%;
+   // height: initial;
+    }
+    
+ .singleItem .price
+ 	{
+ 	position: absolute;
+    background-color: rgba(0,0,0,.8);
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    top: -64px;
+    right: 0;
+    z-index: 100;
+    border: solid 1px white;
+    border-right: 0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    }
+  .singleItem .priceBase
+ 	{
+ 	 position: absolute;
+    background-color: rgba(100,100,100,.7);
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    top: -64px;
+    right: 68px;
+    z-index: 100;
+    border: solid 1px white;
+    border-right: 0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 106px;
+    text-decoration: line-through;
+    }
+    .singleItem .discount
+ 		{
+ 	    position: absolute;
+	    background-color: rgba(200,1,1,.8);
+	    color: white;
+	    font-size: 20px;
+	    padding: 10px;
+	    white-space: nowrap;
+	    top: -100px;
+	    z-index: 100;
+	    border: solid 1px white;
+	    border-right: 0;
+	    right: 0;
+	    border-left: solid 1px white;
+	    border-top-left-radius: 10px;
+	    border-bottom-left-radius: 0px;
+	    height: 37px;
+	    font-weight: bold;
+	    line-height: 14px;
+	    width: 166px;
+	    text-align: center;
+	    text-transform: capitalize;
+	    }
+    .singleItem .heart
+    	{
+    	position: absolute;
+       top: -72px;
+    	font-size: 55px;
+    	left: 58px;
+    	z-index: 1000;
+    	}
+    .singleItem .heart2
+    	{
+    	position: absolute;
+	    top: -74px;
+	    font-size: 58px;
+	    left: 57px;
+	    color: white;
+	    z-index: 999;
+    	}
+    .close
+    	{
+    	right: 185px;
+    	position: absolute;
+    	}
+    .far
+    	{
+    	right: 281px;
+    	position: absolute;
+    	}
+</style>
+<ion-view title="{{item.name}}" class="singleItem"><!-- hide-nav-bar="true"-->	  
+    	<ion-content>    	
+    		    	
+    		<ion-gallery ion-gallery-items="items" ion-gallery-row="0"></ion-gallery>
+    		
+			<div style="position:relative" ng-if="item!=null">
+				<div ng-if="item.discount!=null" class="discount slideInRight animated" style="animation-duration: .8s;">sconto -{{item.discount|percentage}}</div>		
+				<div ng-show="item.base!=null" class="priceBase  slideInRight animated" style="animation-duration: .5s;">{{item.base|currency}}</div>
+				<div ng-show="item.price!=null" class="price slideInRight animated" style="animation-duration: .3s;">{{item.price|currency}}</div>
+				<div ng-class="{'close':item.discount==null,'far':item.discount!=null}">
+				<i class="ion-heart heart bounceIn animated" style="animation-delay: .6s;"></i>		
+				<i class="ion-heart heart2 bounceIn animated" style="animation-delay: .6s;"></i>
+				</div>						
+			</div>
+			<ion-list>        		     														
+				<ion-item class="item-icon-left">{{item.name}}</ion-item>					
+				<ion-item ng-show="item.description" class="item-text-wrap item-icon-left item-icon-right" ui-sref="pub.profileAddress()"><i class="icon ion-compass"></i>{{item.description}}<i class="icon ion-chevron-right"></i></ion-item>
+				<ion-item class="item-icon-left item-icon-right"><i class="icon ion-headphone"></i>Dentro il prodotto<i class="icon ion-play"></i></ion-item>
+			</ion-list>
+				
+    	</ion-content>
+    	<ion-footer-bar class="bar-positive food">
+				<div class="button-bar row" style="padding:0">
+						<div class="col-25"><a class="button button-icon icon ion-location" ng-click="slideTo(0)"></a></div>
+						<div class="col-25"><a class="button button-icon icon ion-share" ng-click="item.share()"></a></div>
+						<div class="col-50"><a class="button button-block icon ion-ios-cart" style="margin-top:0" ng-click="basket.sum(item)">Acquista</a></div>					
+				</div>
+			</ion-footer-bar>
+  	</ion-view>

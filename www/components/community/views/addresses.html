@@ -1,0 +1,23 @@
+<ion-view title="Addresses">    
+	  	<ion-nav-buttons side="right">
+          <button class="button"  ui-sref="^.profileAddressNew">
+            <i class="icon ion-plus-circled"></i>
+          </button>
+        </ion-nav-buttons>	
+    	
+    <ion-content padding="false" scroll="true">	
+    
+    	<div class="list">    	
+    	  <a class="item item-icon-left item-icon-right" ui-sref="pub.profileAddressEdit({id:name})" ng-repeat="(name,address) in addresses">    	  
+		    <i class="icon"  ng-class="{'ion-home':address.type=='home','ion-briefcase':address.type=='work'}"></i>
+		    <b>{{address.firstName}} {{address.lastName}}</b>
+		    <div>{{address.line1}}</div>
+		    <div>{{address.zip}} {{address.city}}</div>
+		    <div>{{address.country}}</div>
+		    <i class="icon ion-chevron-right"></i>
+		  </a>    	  
+    	</div>
+    	
+    	
+    </ion-content>
+</ion-view>

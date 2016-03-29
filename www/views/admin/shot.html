@@ -1,0 +1,91 @@
+
+
+ <ion-view title="List" id="shot">
+                
+                <ion-content padding="true" scroll="true" class="has-subheader">
+                	<ion-slide-box on-slide-changed="slideHasChanged($index)">
+					  <ion-slide>
+					    <div class="item item-icon-left" >    						
+    						<div class="list">
+							    <label class="item item-radio"  ng-click="slide.slide(1,1000)">
+							    <input type="radio" name="group" ng-model="type">
+							    <div class="item-content">Ristorante</div>
+							    <i class="radio-icon ion-checkmark"></i>
+							  </label>
+							  <label class="item item-radio"  ng-click="slide.slide(1,1000)">
+							    <input type="radio" name="group" ng-model="type">
+							    <div class="item-content">Street food</div>
+							    <i class="radio-icon ion-checkmark"></i>
+							  </label>
+							</div>    						    						
+  						</div>
+					  </ion-slide>
+					  <ion-slide>
+					  	<div class="list">
+					  		
+	  						<div class="item item-image" ng-repeat="file in files">
+	  					
+	  						<div style="width:100%; text-align:center">
+		  						<div style="height:54px;width:50px;  display: inline-table;">
+		  							<div style="width:50px; height:50px; float:left;background-color:rgb({{file.color[0]}},{{file.color[1]}},{{file.color[2]}})"></div>
+		  						</div>
+		  						<div></div>
+		  						<div style="height:41px;  display: inline-table;">
+		  							<div ng-repeat="color in file.palette" style="width:35px; height:35px; float:left;background-color:rgb({{color[0]}},{{color[1]}},{{color[2]}})"></div>
+		  						</div>
+	  						</div>
+	  						 <ion-scroll style="width:414px; height:200px" zooming="true" direction="xy" scrollbar-x="true" scrollbar-y="true" min-zoom="1">	  						
+	    						<img ng-src="{{file.img}}" addTo="files" class="add" upload="base" style="width:300px;"">	    							    					
+	    					 </ion-scroll>
+	    						<!--image-crop
+						         data-width="400"
+						         data-height="150"
+						         data-shape="square"
+						         data-step="2"
+						         data-result="imageCropResult"
+						         src="{{file.img}}"
+						       ></image-crop-->
+						       
+	  						</div>
+	  						<div class="item item-image">
+	  							<button class="button button-positive round  ion-plus" addTo="files" class="add" upload="base"></button>
+	  						</div>
+	  						<div class="item item-image">
+	  							<button class="button button-positive" ng-click="slide.slide(2,1000)">Continua</button>
+	  						</div>
+  						</div>
+					  </ion-slide>
+					  <ion-slide>					  
+					  	<div class="list">
+						    <label class="item item-input">
+						    	<span class="input-label">Name</span>
+	    						<input class="name" type="text" placeholder="Name" ng-model="name"/>
+	  						</label>
+							<label class="item item-input">
+							    <span class="input-label">Tags</span>
+		  						<tags-input ng-model="tags" style="width:100%"></tags-input>
+							</label>							
+							<label class="item item-input">
+								<span class="input-label">Text</span>
+								<textarea placeholder="Description" ng-model="description"></textarea>
+							</label>
+							<div class="item item-image">
+	  							<button class="button button-positive" ng-click="slide.slide(3,1000)">Continua</button>
+	  						</div>
+						</div>
+					  </ion-slide>
+					  <ion-slide>
+					  	<div class="list">
+						    <label class="item item-input" ng-show="code!=null">
+						    	<span class="input-label">CODE</span>
+	    						<input class="name" type="text" ng-model="code" disabled>
+	  						</label>
+	  						<div class="item" ng-show="code==null">	  				  						
+	  									
+					  			<button class="button button-block button-positive" ng-click="save()">SAVE</button>
+					  		</div>
+					  	</div>
+					  </ion-slide>					  
+					</ion-slide-box>
+                                   
+                </ion-content>

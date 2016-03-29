@@ -1,0 +1,34 @@
+	
+    <ion-content padding="false" scroll="true" class="whoare newgood">
+    	<div  ng-controller="shopController">
+    	<presentation-bar 
+				title="Gallery" 
+				icon="ion-images" 				 
+				text="Ricordati che sono molto pi&ugrave; importati le immagini di qualsiasi descrizione">				
+			</presentation-bar>
+    	</div>
+			
+    	<div class="gallery">	    
+    		<div class="row">
+    			<div class="col-50" >
+    				<div ng-repeat="itm in item.gallery" ng-if="$even" class="img">    				
+    					<i class="icon ion-close-circled close" ng-click="item.gallery.splice($index,1)"></i>
+    					<img ng-src="{{itm.img}}"/>
+    				</div> 
+    			</div>
+    			<div class="col-50">
+    				<div ng-repeat="itm in item.gallery" ng-if="$odd" class="img">
+    					<i class="icon ion-close-circled close"  ng-click="item.gallery.splice($index,1)"></i>
+    					<img  ng-src="{{itm.img}}"/>
+    				</div>
+    			</div>
+    		</div>	    	
+	    	<div class="row">
+    			<div class="col" >
+	    			<A class="button button-block icon ion-camera" ng-click="addImage()"></A>
+	    		</div>
+	    	</div>
+	    </div>   
+	    	              
+    </ion-content>
+    

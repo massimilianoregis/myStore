@@ -1,0 +1,62 @@
+<style>
+	.lista .wish	
+		{
+		 float: right;
+    	margin-bottom: -31px;
+    	margin-top: -10px;
+		}
+	.lista .ion-trash-b	
+		{
+		right:60px;
+		top:4px;
+		}
+</style>
+<ion-view class="lista" title="Lista Negozi" hideFooter>
+
+	<div class="bar bar-subheader bar-positive">
+	       	<ion-search class="search-wrapper-light" placeholder="Cerca un negozio" min-length="1" filter="search"></ion-search> 
+	</div>	
+		    		  		   		
+	<ion-content scroll="true" padding="false" class="inArt shrink" scroller header-shrink scroll-event-interval="5" ng-controller="shopWishController">
+		
+	<div class="list card pub" ng-if="item.visible" ng-repeat="item in list |filter:{name:search.value}">
+	  <div class="item">	    	  
+	  
+	  	<a ng-class="{'ion-ios-heart-outline':!item.wish,'ion-ios-heart':item.wish}" class="button button-icon icon  wish" ng-click="item.setWish()"></a>	  	
+	    <h2>{{item.name}}</h2>
+	    <p>{{item.type}}</p>		    	    
+	    <a ng-if="user.canAccess('base.admin')" class="button button-icon icon ion-trash-b" ng-click="delete(item)"></a>    
+	  </div>	
+	  <div class="item item-body"  ui-sref="pub.goods({shop:item.id})">
+	  	<div class="arrow-down"></div>
+	  	<div style="width:100%; height:200px; overflow:hidden; background-color:rgba(0,0,0,.1)">
+	  		<img class="full-image" imagenie="{{item.background|resize:1080:750}}">
+	  	</div>   
+	  </div>	
+	</div>
+	
+	<div ng-if="secret" class="list card pub" >
+	  <div class="item">	
+	  	<a ng-class="{'ion-ios-heart-outline':!secret.wish,'ion-ios-heart':secret.wish}" class="button button-icon icon  wish" ng-click="wish.set(secret);"></a>    	  
+	    <h2>{{secret.name}}</h2>
+	    <p>{{secret.type}}</p>	
+	    
+	    <a ng-if="user.canAccess('base.admin')" class="button button-icon icon ion-trash-b" ng-click="delete(secret)"></a>    
+	  </div>	
+	  <div class="item item-body" ui-sref="pub.goods({shop:secret.id})">
+	  	<div class="arrow-down"></div>
+	  	<div style="width:100%; height:200px; overflow:hidden; background-color:rgba(0,0,0,.1)">
+	  		<img class="full-image" imagenie="{{secret.background|resize:1080:750}}">	  		
+	  	</div>   
+	  </div>	
+	</div>	  	
+		   
+	<BR><BR><BR>        	  		
+	</ion-content>	
+	
+	<ion-footer-bar align-title="left" class="bar-positive">  
+		<div class="button-bar">					
+		<button class="button icon-left ion-ios-color-wand button-stable" ui-sref="shop">Make your shop</button>						
+		</div>
+	</ion-footer-bar>		
+</ion-view>

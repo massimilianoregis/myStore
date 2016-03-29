@@ -1,0 +1,76 @@
+
+<!-- admin/prodotti/categorie.html -->
+    
+    <ion-content padding="false" scroll="true" ng-controller="shopController" class="newgood" style="margin-top:-2px;">    	      	 
+		<ion-list ng-controller="paintingController">			
+			<presentation-bar 
+				title="Autore" 
+				icon="ion-ribbon-a" 				 
+				text="Tutti vogliono sapere qualcosa sull'autore"				
+				>				
+			</presentation-bar>
+			 
+			<div ng-show="newAuthor">
+				<ion-item class="item item-divider">Nome</ion-item>		
+				<label class="item item-input">		
+			 		<input type="text" placeholder="Name" ng-model="item.author.firstName"/>	      
+			    </label>
+			    <label class="item item-input">		
+			 		<input type="text" placeholder="Cognome" ng-model="item.author.lastName"/>	      
+			    </label>
+			    <ion-item class="item item-divider">Nascita</ion-item>
+			    <label class="item item-input">		
+			 		<input type="text" placeholder="Luogo" ng-model="item.author.borncity"/>	      
+			    </label>
+			    <label class="item item-input">		
+			 		<input type="text" placeholder="Stato" ng-model="item.author.borncountry"/>	      
+			    </label>				
+			    <label class="item item-input">		
+			 		<input type="date" placeholder="Data" ng-model="item.author.borndate"/>	      
+			    </label>
+			    <div class="item item-toggle">
+			     In vita
+			     <label class="toggle toggle-assertive">
+			       <input type="checkbox" ng-model="live">
+			       <div class="track">
+			         <div class="handle"></div>
+			       </div>
+			     </label>
+			  	</div>
+			  	<div ng-hide="live">
+			  	<ion-item class="item item-divider">Morte</ion-item>
+			  	<label class="item item-input">		
+			 		<input type="text" placeholder="Luogo" ng-model="item.author.diecity"/>	      
+			    </label>
+			    <label class="item item-input">		
+			 		<input type="text" placeholder="Stato" ng-model="item.author.diecountry"/>	      
+			    </label>				
+			    <label class="item item-input">		
+			 		<input type="date" placeholder="Data" ng-model="item.author.diedate"/>	      
+			    </label>
+			    
+			    </div>
+			    <ion-item menu-close class="item-icon-right" ng-click="cerca()"><i class="icon ion-ios-arrow-forward" ng-class="item.icon"></i>Cerca autore</ion-item>
+			    <BR><BR>
+			</div>
+			  
+			<div ng-hide="newAuthor">
+				<ion-item class="item item-divider">Name</ion-item>			
+			 	<label class="item item-input">		
+			 		<input type="text" placeholder="Name" ng-model="authName"/>	      
+			    </label>		    				    						    	
+				
+				<ion-item class="item item-divider">Found</ion-item>			
+				<label class="item item-radio" ng-repeat="item in authors | filter:authName |limitTo:10">
+				    <input type="checkbox" name="group"/>
+				    <div class="item-content">{{item.name}} {{item.surname}}</div>
+				    <i class="radio-icon ion-checkmark"></i>
+				</label>		
+				<ion-item menu-close class="item-icon-right" ng-click="nuovo()"><i class="icon ion-ios-arrow-forward" ng-class="item.icon"></i>Nuovo autore</ion-item>
+			</div>						
+		</ion-list>
+	
+	
+    </ion-content>
+    
+<!-- admin/prodotti//categorie.html -->

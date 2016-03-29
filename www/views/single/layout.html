@@ -1,0 +1,101 @@
+<ion-view>
+<!-- views/single/layout.html -->
+<ion-side-menus delegate-handle="menu" enable-menu-with-back-views="true"> 
+		<ion-side-menu-content drag-content="true">
+			<ion-nav-bar class="bar-positive">						
+ 				<ion-nav-buttons side="left">
+ 					<button menu-toggle="left" class="button button-icon icon ion-navicon"></button> 					 					 			
+ 				</ion-nav-buttons>
+ 				<ion-nav-back-button></ion-nav-back-button>			
+ 				<h1 class="title"></h1>	 					
+ 				<ion-nav-buttons side="right">	 					 					
+ 					<span ng-show="basket.rows.length>0">    			
+ 					<button menu-toggle="right" class="button button-icon icon ion-ios-cart"></button> 					
+ 					<span class="badge badge-assertive" style="height: 20px;margin-left: -18px;">{{basket.items}}</span>
+ 					</span>
+ 					<a class="button button-icon icon ion-android-exit" ui-sref="shops.list"></a>
+ 				</ion-nav-buttons> 				
+	  		</ion-nav-bar>		  	
+	  			
+			<ion-nav-view animation="slide-left-right"></ion-nav-view>
+						
+			<div class="tabs tabs-icon-top" ng-if="showFooter">
+			  <a class="tab-item" ui-sref=".card" menu-close nav-direction="forward">
+			    <i class="icon ion-qr-scanner"></i>QR
+			  </a>
+			  <a class="tab-item" ui-sref=".wish" menu-close nav-direction="forward">
+			    <i class="icon ion-heart"></i>Preferiti
+			  </a>
+			  <a class="tab-item" ui-sref=".messages.single" menu-close nav-direction="forward">
+			    <i class="icon ion-email"></i>Messages
+			  </a>
+			  <a class="tab-item"  ui-sref=".blog.list" menu-close nav-direction="forward">
+			    <i class="icon ion-ios-lightbulb"></i>News
+			  </a>			 
+			</div>
+			
+			
+		</ion-side-menu-content> 	
+		<ion-side-menu side="left" expose-aside-when="large">									
+			<ui-view name="sx"></ui-view>
+			
+			<ion-footer-bar ng-class="config.data.bar.menu.class" ng-show="shop.tel">									
+				<a href="tel:{{shop.tel}}"><button class="button button-icon icon ion-ios-telephone">Chiama</button></a> 				
+			</ion-footer-bar>
+		</ion-side-menu> 			
+		<ion-side-menu side="right" expose-aside-when="large">
+			<ion-header-bar ng-class="config.data.bar.menu.class"><h1 class="title">Ordine</h1></ion-header-bar> 
+			<ion-content padding="false" scroll="true" class="has-header basket" ng-controller="basketController">
+				<ion-list ng-show="basket.rows.length==0">
+					<ion-item>
+						Nessun prodotto nel carrello...<BR>
+						Non hai voglia di fare acquisti?
+					</ion-item>
+				</ion-list>					
+				<ion-list ng-show="basket.rows.length>0">											
+					<ion-item class="item-divider">{{user.firstName}} {{user.lastName}}</ion-item>
+												
+					<ion-item class="item-icon-left" ng-repeat="row in basket.rows" style="height:52px;">																						
+						<div class="icon" style="width:52px;height:52px; overflow:hidden"><img ng-src="{{row.img|resize:50:50}}" style="width:50px;"/></div>						
+						<div class="name">{{row.obj.name}}&nbsp;</div>
+						<span class="badge badge-stable"><span ng-show="row.qta>1">{{row.qta}} X&nbsp;</span> {{row.price|currency}}</span>						
+    					<ion-option-button style="font-size: 38px;padding-top: 4px;" class="button-assertive ion-ios-trash" ng-click="basket.remove(row)"></ion-option-button>
+					</ion-item>	
+					<ion-item class="item-divider"></ion-item>									
+					<ion-item class="item-icon-left" style="height:52px;" >										
+						<i class="icon ion-paper-airplane"></i>																	
+						Shipping
+						<span ng-if="basket.shipping.price==0" class="badge badge-stable">Free!</span>
+						<span ng-if="basket.shipping.price && basket.shipping.price>0" class="badge badge-stable">{{basket.shipping.price|currency}}</span>
+						<span ng-if="!basket.shipping.price && basket.shipping.country==null" class="badge badge-stable">Da definire</span>						    					
+					</ion-item> 							 							
+					<ion-item class="item-icon-left">
+						<i class="icon ion-calculator"></i>
+						Totale	
+						<span class="badge badge-balanced">{{basket.total|currency}}</span>						 					    					
+					</ion-item>	
+					<ion-item class="item-divider"></ion-item>	
+					<!--ion-item class="item-divider">Aggiungi persona</ion-item-->
+					<span ng-show="basket.peoples.length>0">
+					<ion-item class="item-divider"></ion-item>
+					<ion-item class="item-icon-left">
+						<i class="icon ion-calculator"></i>
+						Totale Tutti
+						<span class="badge badge-balanced">{{basket.total|currency}}</span>						 					    					
+					</ion-item>	
+					</span>					
+					<ion-item ng-show="basket.rows.length>0">					
+						<!-- button class="button button-block button-balanced icon-left ion-checkmark" ng-click="orario()" ng-show="time==null">Conferma</button-->
+						<!--button class="button button-block button-positive icon-left ion-android-time" ng-click="orario()">Consegna: {{time|date:'HH:mm'}}</button-->
+						<button class="button button-block button-positive icon-left ion-earth" ng-click="shipping()"><span>{{basket.shipping.name||'Shipping'}}</span></button>
+						<button ng-show="$scope.shop.payments.length>0" class="button button-block button-positive icon-left ion-card" ng-click="payment()"><SPAN>{{basket.payment.name||'Payment'}}</SPAN></button>
+						<button class="button button-block button-balanced icon-left ion-checkmark" ng-click="inviaOrdine(basket)">Conferma</button>
+						<!--button class="button button-block button-positive icon-left ion-card" ng-hide="saving" ng-click="saveBasket(basket)">Conferma</button-->											
+						<button class="button button-block button-positive" ng-show="saving"><i class="icon ion-refreshing" style="float:left"></i>Conferma B</button>						 
+					</ion-item>		
+				</ion-list> 
+			</ion-content> 
+		</ion-side-menu> 		
+	</ion-side-menus>
+<!--/ views/single/layout.html -->
+</ion-view>

@@ -1,0 +1,45 @@
+
+<ion-view class="lista shrink" title="Lista Pub">
+   		
+	<ion-content scroller scroll="true" padding="false" class="inArt" header-shrink scroll-event-interval="5" has-bouncing="false">
+	
+	<BR><BR><BR><BR>		
+	<div class="list card pub" ng-repeat="item in list |filter:{name:search.value}" ui-sref="pub.home({id:item.uuid})">
+	  <div class="item">	    	  
+	    <h2>{{item.name}}</h2>
+	    <p>{{item.type}}</p>	    
+	  </div>	
+	  <div class="item item-body">
+	  	<div class="arrow-down"></div>
+	  	<div style="width:100%; height:200px; overflow:hidden; background-image:url('http://placehold.it/414x200')">
+	  		<img class="full-image" image-lazy-src="{{item.img}}" image-lazy-loader="lines" style="width:100%">
+	  	</div>
+	    	   
+	  </div>
+	
+	  <!-- div class="item tabs tabs-secondary tabs-icon-left">
+	    <a class="tab-item" href="#">
+	      <i class="icon ion-thumbsup"></i>
+	      Like
+	    </a>
+	    <a class="tab-item" href="#">
+	      <i class="icon ion-chatbox"></i>
+	      Comment
+	    </a>
+	    <a class="tab-item" href="#">
+	      <i class="icon ion-share"></i>
+	      Share
+	    </a>
+	  </div-->
+	</div>	    
+	<BR><BR><BR><BR>        	  		
+	</ion-content>	
+	
+	<ion-footer-bar align-title="left" class="bar-assertive">  
+	<div class="button-bar">					
+	<a class="button button-icon icon ion-ios-location" ui-sref="pubs.maps"></a>
+	<a class="button button-icon icon ion-ios-camera-outline" ui-sref="pubs.shot"></a>
+	<a class="button button-icon icon ion-ios-list" ui-sref="pubs.list"></a>				
+	</div>
+</ion-footer-bar>		
+</ion-view>

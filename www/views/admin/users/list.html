@@ -1,0 +1,18 @@
+<ion-view title="Users">
+    					
+    <ion-content padding="false" scroll="true">	
+                      
+		<div class="list">
+		
+		    <a class="item item-avatar item-icon-right" ui-sref="^.single.sheet({mail:item.mail})" ng-repeat="item in list">
+		      <img ng-src="{{item.avatar|resize:150:150}}" ng-if="item.avatar"">
+		      <h2>{{item.firstName}} {{item.lastName}}</h2>
+		      <p>{{item.mail}}</p>
+		      <i class="icon ion-chevron-right"></i>
+		    </a>
+			
+		
+		</div>
+    </ion-content>
+    
+</ion-view>

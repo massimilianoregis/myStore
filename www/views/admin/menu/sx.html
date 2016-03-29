@@ -1,0 +1,34 @@
+			
+			<ion-header-bar ng-class="config.data.bar.menu.class">				
+				<h1 class="title">{{shop.name}}</h1>
+				<button  ng-if="owner" class="button button-icon icon ion-settings positive"  ui-sref="pub.goods"></button>				
+			</ion-header-bar> 
+			
+			<ion-content padding="false" scroll="true">			
+				<ion-list>
+					<ion-item class="item-icon-left item-icon-right" href="#" ng-click="visible()" ng-show="!shop.visible">
+					   <i class="icon ion-alert-circled" style="animation:bounce 2s infinite"></i>
+					   Shop non Pubblicato
+					   <i class="icon ion-chevron-right"></i>
+					</ion-item>					
+					<div ng-show="user.logged">	
+					<ion-item menu-close class="profile" ui-sref="pub.profile">
+						<div class="avatar" ng-bkg="{{user.avatar}}"></div>{{user.firstName}} {{user.lastName}}
+					</ion-item>
+					<ion-item menu-close class="item-icon-left" ui-sref=".shop"><i class="icon ion-bag"></i>Shop</ion-item>
+																
+					</div>					
+					<ion-item class="item-icon-left" ui-sref="community.welcome"  ng-if="!user.logged"><i class="icon ion-briefcase"></i>Login</ion-item>
+					
+					<ion-item class="item-divider"></ion-item>
+					
+					<ion-item menu-close class="item-icon-left" ui-sref=".users.list"><i class="icon ion-ios-people"></i>Clienti</ion-item>
+					<ion-item menu-close class="item-icon-left" ui-sref=".orders.list"><i class="icon ion-ios-cart"></i>Ordini</ion-item>
+					<ion-item  menu-close class="item-icon-left" ui-sref=".settings"><i class="icon ion-gear-a"></i>Impostazioni</ion-item>
+					<ion-item  menu-close class="item-icon-left" ui-sref=".good.list"><i class="icon ion-ios-pricetag"></i>Prodotti</ion-item>
+					<ion-item  menu-close class="item-icon-left" ui-sref=".news.list"><i class="icon ion-ios-paper"></i>News</ion-item>						 																										
+					<ion-item menu-close class="item-icon-left" ui-sref="pub.admin.messages"><i class="icon ion-email"></i>Chat<!--span class="badge badge-assertive">3</span--></ion-item>
+					
+							
+				</ion-list> 				
+			</ion-content>

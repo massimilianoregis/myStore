@@ -1,0 +1,50 @@
+<ion-view title="Dati legali" class="newshop" hide-nav-bar="true">
+    			
+    <ion-content padding="false" scroll="true" class="whoare">
+    		<presentation-bar 
+				title="Dati legali" 
+				icon="ion-clipboard" 
+				background="{{shop.background}}" 
+				text="Per fatturare, per incassare"
+				on-save-click="saveShop('pub.admin.settings')"
+				>				
+			</presentation-bar>
+    
+    	<div class="list">
+    		  <label class="item item-divider">Societ&agrave;</label>
+    		  <label class="item item-input">
+			    <input type="text" placeholder="Ragione sociale" ng-model="shop.legalData.name">
+			  </label>
+			  <label class="item item-divider">Sede Legale</label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Address line 1" ng-model="shop.legalData.address.line1">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Address line 2" ng-model="shop.legalData.address.line2">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="City" ng-model="shop.legalData.address.city">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Zip" ng-model="shop.legalData.address.zip">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Country" ng-model="shop.legalData.address.country">
+			  </label>
+			  
+			  <label class="item item-divider">Partita iva</label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="P.iva/cod fiscale" ng-model="shop.legalData.piva">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="REA" ng-model="shop.legalData.rea">			    
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Capitale Sociale" ng-model="shop.legalData.capitale">			    
+			  </label>			  
+		</div>
+		
+		<!--button class="button button-full button-positive" ng-click="save()">Save</button-->
+    </ion-content>
+    
+</ion-view>

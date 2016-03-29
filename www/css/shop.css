@@ -1,0 +1,158 @@
+/* single/goods/listCols.html */
+
+.food.bar .button.button-icon .icon.food-italian:before , .food.bar .button.button-icon.food-italian:before, .food.bar .button.button-icon.icon-left.food-italian:before, .food.bar .button.button-icon.icon-right.food-italian:before 
+ 				{
+				vertical-align: top;
+				font-size: 34px;
+				line-height: 32px;
+				}
+ 			.food.bar .button.button-icon .icon:before, .food.bar .button.button-icon:before, .food.bar .button.button-icon.icon-left:before, .food.bar .button.button-icon.icon-right:before 
+ 				{
+				vertical-align: top;
+				font-size: 27px;
+				line-height: 32px;
+				}
+				
+			.preferred
+				{
+				position: absolute;
+			    font-size: 34px;
+			    }
+			.goods .slider
+				{
+				height:100%;
+				}
+				
+			.goods.gallery .masonry
+				{
+				-webkit-column-count:2;
+    			-webkit-column-gap: 2px;  
+				}
+			.goods.gallery .good 
+				{
+				width:100%;
+				}
+			.goods.gallery .good img
+				{
+				height:initial;
+				width:100%;					
+				} 
+ 	
+ 				
+ 				.lista .row .col
+ 					{
+ 					overflow:hidden;
+ 					position:relative;
+ 					}
+ 				.good
+ 					{ 		 					 				
+ 					width:100%;
+ 					position:relative;
+ 					border:solid 5px rgba(0, 0, 0, 0.08);
+ 					margin-bottom:10px;
+					padding: 5px;
+ 					}
+ 				.good .name
+ 					{
+ 					text-align:center;
+ 					}
+ 				.good img
+ 					{ 					
+ 					width:100%;
+ 					margin-bottom: -5px;
+ 					} 				
+ 				.good .add
+ 					{ 					
+ 					  position: absolute;
+					  font-size: 33px;
+					  right: 2px;
+					  top: 2px;
+					  font-weight: bold;
+					  background: white;
+					  color: black;
+					  border-radius: 50px;
+					  width: 33px;
+					  border-top-right-radius: 0px; 	
+					   padding-left: 3px;
+					  				
+ 					}
+ 				.good .sub
+ 					{ 					
+ 					position: absolute;
+				  font-size: 33px;
+				  left: 5px;
+				  top: 2px;
+				  font-weight: bold;
+				  background: white;
+				  color: black;
+				  border-radius: 50px;
+				  width: 33px;
+				  border-top-left-radius: 0px;
+ 					}
+ 				.good .qta
+ 					{
+ 					position:absolute;
+ 					font-size:20px;
+ 					left:50%;
+ 					top:10px;
+ 					}
+ 
+ 				.good .topbar
+ 					{
+ 					transition-duration:1s;
+ 					//position: absolute; 					
+				    left: 0;
+				    right: 0;
+				    height: 30px;
+ 					}
+ 				
+ 				.good .bottombar
+ 					{
+ 					  transition-duration: 1s;
+					  //position: absolute;
+					  right: 0;
+					  height: 35px;
+					  bottom: 18px;
+					  background: rgba(255,255,255,.7);
+					  line-height: 35px;
+					  text-align: right;
+					  padding-right: 10px;
+					  padding-left: 10px;
+					  font-size: 20px;
+					  width: 100%;
+					  border-top: solid 1px;
+					  border-bottom: solid 1px black;
+					  color:black;
+					 }
+			    .good .bottombar.active
+			    	{
+			      background: black;
+				  color: white;
+				  border-bottom: solid 1px white;
+  					}
+ 				.good .bottombar .price
+ 					{}
+ 				.good .topbar.active
+ 					{ 					
+				  //  background: rgba(255,255,255,.8);
+				    }
+				    
+				 .item-icon-left.confirm A
+				 	{
+				 	background:#f0b840; 
+				 	color:white;
+				 	}
+				 .item-icon-left.confirmed A
+				 	{
+				 	background:#498f24; 
+				 	color:white;				 	
+				 	}
+				 .item-icon-left.rejected A
+				 	{
+				 	background:#ef4e3a; 
+				 	color:white;
+				 	}
+				 	.view-container {    
+    				top: 0px;
+					}
+

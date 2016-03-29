@@ -1,0 +1,34 @@
+    <ion-content padding="false"  scroll="true" has-bouncing="false"  class="newshop">
+            	
+        <presentation-bar 
+				title="Gallery" 
+				icon="ion-images" 
+				background="img/background.png" 
+				text="Basta una foto, un disegno, un'illustrazione...<BR> perch&egrave; una foto vale pi&ugrave; di mille parole"
+				>				
+		</presentation-bar>
+    	<div class="list gallery">	 
+    		<ion-item class="item-divider">Gallery</ion-item>   
+    		<div class="row">
+    			<div class="col-50" >
+    				<div ng-repeat="item in shop.gallery" ng-if="$even" class="img">
+    					<i class="icon ion-close-circled remove" ng-click="shop.gallery.splice($index,1)"></i>
+    					<img ng-src="{{item.img}}"/>
+    				</div> 
+    			</div>
+    			<div class="col-50">
+    				<div ng-repeat="item in shop.gallery" ng-if="$odd" class="img">
+    					<i class="icon ion-close-circled remove" ng-click="shop.gallery.splice($index,1)"></i>
+    					<img  ng-src="{{item.img}}"/>
+    				</div>
+    			</div>
+    		</div>	    	
+	    	<div class="row">
+    			<div class="col" >
+	    			<A class="button button-block icon ion-camera" ng-click="addImage()"></A>
+	    		</div>
+	    	</div>	    	
+	    </div>   
+	    	              
+    </ion-content>
+    

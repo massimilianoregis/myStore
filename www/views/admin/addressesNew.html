@@ -1,0 +1,65 @@
+<ion-view title="New Addresses">    
+	  	<ion-nav-buttons side="right">
+          <button class="button"  ng-click="nuovo()">
+            Add
+          </button>
+        </ion-nav-buttons>	
+    <ion-content padding="false" scroll="true">	
+    
+    	
+    	<div class="list">
+    		  <label class="item item-input">
+			    <input type="text" placeholder="Name" ng-model="address.name">
+			  </label>		  
+			  <label class="item item-input">
+			    <input type="text" placeholder="First Name" ng-model="address.firstName">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Last Name"  ng-model="address.lastName">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Address line 1" ng-model="address.line1">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Address line 2" ng-model="address.line2">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="City" ng-model="address.city">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Zip" ng-model="address.zip">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Country" ng-model="address.country">
+			  </label>
+		</div>
+		<ul class="list">
+		  <li class="item item-checkbox item-icon-right">
+		  <i class="icon ion-home"></i>
+		     <label class="checkbox">
+		       <input type="checkbox" ng-model="type.home">
+		     </label>
+		     Casa
+		  </li>
+		  <li class="item item-checkbox item-icon-right">
+		  <i class="icon ion-briefcase"></i>
+		     <label class="checkbox">
+		       <input type="checkbox" ng-model="type.work">
+		     </label>
+		     Lavoro
+		  </li>		
+		  <li class="item item-checkbox item-icon-right">
+		  <i class="icon ion-card"></i>
+		     <label class="checkbox">
+		       <input type="checkbox">
+		     </label>
+		     Fatturazione
+		  </li>		
+		</ul>	
+				
+		 
+		
+		
+		
+    </ion-content>
+</ion-view>

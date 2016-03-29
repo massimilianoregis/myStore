@@ -1,0 +1,45 @@
+<ion-view class="wizard newgood" ng-controller="sliderController" title="Prodotto generico" hide-nav-bar="true">
+	<!-- admin/prodotti/layout.html --> 
+	<presentation-bar background="{{shop.background}}" ></presentation-bar>
+	<form name="form" ng-submit="save('pub.admin.good.list')" novalidate>
+		<div class="close ion-close-circled" ui-sref="pub.admin.good.list" style="z-index:10"></div>
+		<div class="save ion-checkmark-circled" ng-click="save('pub.admin.good.list')"  style="z-index:10"></div>
+		
+		<ion-content padding="false" scroll="false" has-bouncing="false" ng-controller="paintingController" >
+				
+		<ion-slide-box on-slide-changed="change()" delegate-handle="wizard">	
+		  <ion-slide>
+		    <ng-include src="'views/admin/prodotti/categorie.html'"/>
+		  </ion-slide>
+		  <ion-slide>
+		    <ng-include src="'views/admin/prodotti/gallery.html'"/>
+		  </ion-slide>
+		  <ion-slide>
+		    <ng-include src="'views/admin/prodotti/painting.html'"/>
+		  </ion-slide>
+		  <ion-slide>
+		    <ng-include src="'views/admin/prodotti/autore.html'"/>
+		  </ion-slide>
+		  <ion-slide>
+		    <ng-include src="'views/admin/prodotti/prezzi.html'"/>
+		  </ion-slide>
+		  <ion-slide>
+		    <ng-include src="'views/admin/prodotti/descrizione.html'"/>
+		  </ion-slide>
+		  <ion-slide ng-if="beacon">
+		    <ng-include src="'views/admin/prodotti/beacon.html'"/>
+		  </ion-slide>
+		  <ion-slide ng-if="!beacon">
+		    <ng-include src="'views/admin/prodotti/optionPicture.html'"/>
+		  </ion-slide>
+		</ion-slide-box>
+	</ion-content>
+	</form>
+	<!--ion-nav-view cache-view='false'></ion-nav-view-->
+	<!-- /admin/prodotti/layout.html -->
+	<ion-footer-bar class="bar-positive">
+    	<button class="button button-small button-clear icon-left ion-chevron-left" ng-show="hasBack" ng-click="backSlide()">BACK</button>
+    	<button class="button button-small button-clear icon-right ion-chevron-right" ng-show="hasNext"  ng-click="nextSlide()">NEXT</button>		
+    </ion-footer-bar>
+    
+</ion-view>

@@ -1,0 +1,29 @@
+<style>
+textarea
+	{    
+    width: 100%;
+    height: 200px;
+    }
+</style>
+
+<ion-view title="Testo">    			
+	<ion-nav-buttons side="right">
+          <button class="button"  ui-sref="pub.admin.settings">
+            Save
+          </button>
+        </ion-nav-buttons>				
+    <ion-content padding="false" scroll="false">
+    	<presentation-bar 
+				title="Who are we" 
+				icon="ion-pin" 
+				background="{{shop.background}}" 
+				text="Una breve presentazione per far capire chi sei anche a chi non ti conosce">				
+			</presentation-bar>
+		<ion-list>  
+	    	<ion-item class="item-divider">Gallery</ion-item>
+	    	<ion-item class="item-input">
+	    		<textarea ng-model="shop.whoarewe.text"></textarea>
+	    	</ion-item>
+    	</ion-list>	
+    </ion-content>
+</ion-view>    

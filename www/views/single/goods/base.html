@@ -1,0 +1,67 @@
+<ion-view title="{{item.name}}" class="singleItem">
+
+		<div>    		
+    			<i class="ion-arrow-left-b back animated" ng-click="back()"></i>
+    			<i class="ion-ios-upload-outline share animated" ng-click="item.share()"></i>
+				<A ng-hide="wish.inside(item)" ng-click="wish.add(item)"><i class="ion-ios-heart-outline heart animated"></i></A>
+				<A ng-show="wish.inside(item)" ng-click="wish.remove(item)"><i class="ion-ios-heart heart animated"></i></A>						
+			</div>	  
+    	<ion-content ng-controller="paypalController" class="has-footer" has-header="false">						    	    		    	
+    		<ion-gallery ion-gallery-items="items" ion-gallery-row="0"></ion-gallery>
+    		
+    		
+			<div style="position:relative" ng-if="item!=null && item.currency==currency" >
+				<div ng-if="item.discount!=null && item.discount>=.08" class="discount animated">-{{item.discount|percentage:0}}</div>		
+				<div ng-show="item.base!=null" class="priceBase animated" style="animation-duration: .5s;">{{item.basePrice|currency}}</div>
+				<div ng-show="item.price!=null" class="price slideInRight animated" style="animation-duration: .3s;">{{item.price|currency}}</div>
+			</div>
+			
+			<ion-list>				     		    			 										
+				<ion-item class="item-divider"> {{item.name}}</ion-item>			
+				<!-- ion-item class="item-icon-left">{{item.name}}</ion-item-->				
+				<a class="item item-icon-left" ng-if="item.currency==currency">
+				    <i class="icon ion-cash"></i>				    
+				    {{item.price|currency}}
+				    <span class="item-note" style="text-decoration: line-through; color:black;">
+				      {{item.basePrice|currency}}
+				    </span>
+				  </a>
+				<ion-item class="item-icon-left" ng-if="item.discount>0 && item.currency==currency"><i class="icon ion-scissors"></i> Risparmi {{item.basePrice-item.price|currency}}!</ion-item>
+				<ion-item class="item-icon-left item-icon-right" ng-if="item.currency==currency" ng-click="pay(item.code,item.name,item.price)"><i class="icon ion-bag"></i>Buy now!!<i class="icon ion-chevron-right"></i></ion-item>				
+				<ion-item ng-show="item.description" class="item-icon-left item-icon-right" ui-sref="#" ng-click="modal.show()"><i class="icon ion-document-text"></i><span ng-bind-html="item.description"></span><i class="icon ion-chevron-right"></i></ion-item>
+				
+				<div ng-if="item.colors.length>0">
+				<ion-item class="item-divider"> Choice your preferite color</ion-item>
+				<ion-item>
+					<div ng-repeat="itm in item.colors"  style="float:left">
+						<img ng-src="{{itm.image}}" style="width:100px;" ng-click="basket.add(item,{color:itm})">
+						
+					</div>					
+				</ion-item>
+				</div>
+				<ion-item class="item-icon-left item-icon-right" ng-if="item.audio"><i class="icon ion-headphone"></i>Dentro il prodotto<i class="icon ion-play"></i></ion-item>				
+			</ion-list>
+				<BR><BR>
+    	</ion-content>
+    	<ion-footer-bar class="bar-positive food" ng-controller="paypalController">
+				<div class="button-bar row" style="padding:0">
+						<div class="col-25"><a class="button button-icon icon icon-left ion-bag button-clear" ng-if="item.currency==currency" ng-click="pay(item.code,item.name,item.price)"> Buy Now</a></div>
+						<div class="col-25" ng-if="item.gps!=null"><a class="button button-icon icon ion-location" ng-click="slideTo(0)"></a></div>						
+						<div class="col-25" ng-if="item.gps==null"></div>
+						<div class="col-50" ng-show="!item.colors && item.currency==currency"><a class="button button-block icon icon-left ion-ios-cart" style="margin-top:0" ng-click="basket.sum(item)">ADD TO CART</a></div>
+						<div class="col-50" ng-show="item.colors && item.currency==currency"><a class="button button-block icon icon-left ion-ios-cart" style="margin-top:0" ng-click="colorChoice(item)">ADD TO CART</a></div>					
+				</div>
+		</ion-footer-bar>
+		
+  	</ion-view>
+  	<script id="description.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar-positive"">      
+        <h1 class="title">{{item.name}}</h1>
+    	<div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>      
+    </ion-header-bar>
+    <ion-content style="padding:10px; text-align:justify">
+      <div ng-bind-html="item.description|br"></div>
+    </ion-content>
+  </ion-modal-view>
+	</script>

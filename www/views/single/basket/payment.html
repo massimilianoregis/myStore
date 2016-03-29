@@ -1,0 +1,27 @@
+ <ion-modal-view class="shop" show-nav-bar="false">
+    <ion-header-bar class="bar-assertive">            
+		<h1 class="title">Consegna...</h1>
+		<div class="button button-clear" ng-click="paymentModal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+    <ion-content ng-controller="paymentController">
+    	<presentation-bar 
+					title="pagamento" 
+					icon="ion-card" 
+					background="{{shop.background}}" 
+					text="Come vuoi pagare?"					
+					>				
+		</presentation-bar>	
+        
+      	<div class="list">
+      		<ion-radio ng-show="shop.payments.indexOf('money')>=0" ng-model="choice" ng-click="setPayment({name:'contanti'})">
+	      		<B>Contanti</B><BR>
+	      		Paghi in contanti direttamente al negoziante
+      		</ion-radio>
+      		<ion-radio ng-show="shop.payments.indexOf('paypal')>=0" ng-model="choice" ng-click="setPayment({name:'paypal'})">
+	      		<B>Paypal o carte</B><BR>
+	      		potrai pagare tramite il tuo conto paypal o con carta di credito
+      		</ion-radio>																		
+		</div>		
+		
+    </ion-content>
+  </ion-modal-view>

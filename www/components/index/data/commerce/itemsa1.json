@@ -1,0 +1,9 @@
+{
+		    			"id":"a1",
+				    	"code":"a1",
+				    	"name":"Cannelloni al forno",
+				    	"gallery":[{"img":"http://www.ekaros.it/InPub/app/img/daLone/primi/cannelloni.jpg"},{"img":"http://www.ekaros.it/InPub/app/img/daLone/primi/carbonara.jpg"}],
+				    	"categories":["primi"],
+				    	"description":"Floating labels are just like Stacked Labels, except that their labels animate, or 'float' up when text is entered in the input. Each item should have item-floating-label assigned, and the input's label should have input-label assigned. Enter text in the example to the right to see the floating labels in action. This example also uses the placeholder attribute so user's have a hint of what type of text the input is looking for.",
+				    	"price":5.7
+		    	 		}

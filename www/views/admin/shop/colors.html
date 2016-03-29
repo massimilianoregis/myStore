@@ -1,0 +1,45 @@
+<style>
+	.templates .check {
+	position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 56px;
+    color: white;
+    text-shadow: 0 0 8px black;
+	}
+	
+	.templates .item p
+	{	    
+    text-overflow: initial;
+    white-space: initial;
+	}
+</style>
+
+    <ion-content padding="false"  scroll="true" has-bouncing="false"  class="newshop templates" ng-controller="templateController">
+    
+ 		<presentation-bar 
+				title="Template" 
+				icon="ion-qr-scanner" 
+				background="img/background.png" 
+				text="Scegli la grafica che descriver&agrave; il tuo negozio"
+				>				
+		</presentation-bar>
+		<div class="list">
+				<ion-item class="item-divider">Template</ion-item>
+				
+		<div class="list card pub" ng-class="{'active':item.name==active}" ng-repeat="item in list" ng-click="select(item)">
+		  <div class="item">	    	  
+		    <h2>{{item.name}}</h2>
+		    <p>{{item.descr}}</p>			       
+		  </div>	
+		  <div class="item item-body">
+		  	<div class="arrow-down"></div>
+		  	<div style="width:100%; height:200px; overflow:hidden; background-color:rgba(0,0,0,.1)">		  		
+		  		<img class="full-image" ng-src="{{item.img|resize:1080:750}}">
+		  		<div ng-show="item.name==active" class="check ion-checkmark-circled"></div>
+		  	</div>   
+		  </div>	
+		</div>
+		</div>		
+	    	              
+    </ion-content>

@@ -1,0 +1,17 @@
+{
+"shops":{
+	"title":"Mall",
+	"search":
+		{
+		"placeholder":"Find a shop"
+		}
+	},		
+            "WELCOME": "Welcome",
+            "LANG": {
+                    "LABEL": "Language",
+                    "EN": "English",
+                    "ES": "Spanish"                    
+                },
+            "LOGOFF": "Log Off",
+            "PROFILE": "Profile"
+}

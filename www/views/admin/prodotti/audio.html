@@ -1,0 +1,41 @@
+
+<ion-view title="Audio" id="prodottiAudio">
+    					
+    <ion-content padding="false" scroll="true" class="audio" ng-controller="audioController">	    
+    	<presentation-bar 
+				title="Audio" 
+				icon="ion-music-note" 
+				background="{{shop.background}}" 
+				text="vuoi descrivere il tuo prodotto? fallo ora!">				
+		</presentation-bar>
+    				                   
+		<ion-list>
+			<ion-item class="item item-divider">New Item</ion-item>			
+			    
+			<ion-item class="item-input-inset">			
+			 	<label class="item-input-wrapper">
+			 	    <input type="url" placeholder="http://www.ekjdfa">			      
+			    </label>				    
+			    <button class="button button-small" ng-click="add()">
+			      Crea
+			    </button>				 
+			</ion-item>
+			
+			<ion-item class="item item-divider">List</ion-item>
+			
+			<a class="item item-avatar" href="#" ng-repeat="item in list">
+		      <img ng-src="data:image/jpg;base64,{{item.image}}" ng-show="{{item.image!='No Image'}}">
+		      <i class="icon ion-music-note" ng-show="{{item.image=='No Image'}}"></i>		      
+		      	
+		      <h2>{{item.filename}}</h2>
+		      <p>{{item.duration| seconds|date:'mm:ss'}}</p>
+		    </a>				
+				
+		</ion-list>
+	
+    </ion-content>
+     <ion-footer-bar class="bar-positive">
+    	<button class="button button-small" style="display:none"></button>
+    	<button class="button button-small" ui-sref="^.descrizione">Prosegui</button>		
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,73 @@
+<style>
+.whoare .round{    border-radius: 20px;
+    border: solid 1px;
+    width: 40px;
+    display: inline-block;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;}
+    
+.whoare .img
+	{		
+	margin:auto;
+	
+	padding:10px;
+	}
+.whoare .img > img
+	{
+	border:solid 1px black;
+	width:100%;
+	}
+.gallery .col-50
+	{
+	text-align:center;
+	}
+</style>
+
+<ion-view title="Contact" hide-nav-bar="true">    			
+    <ion-content padding="false" scroll="true" class="newshop">
+    		<presentation-bar 
+				title="Contacts" 
+				icon="ion-android-textsms" 
+				background="{{shop.background}}" 
+				text="Una breve presentazione per far capire chi sei anche a chi non ti conosce"
+				on-save-click="saveShop('pub.admin.settings')">				
+			</presentation-bar>
+    <ion-list>  
+    	<ion-item class="item-divider">Contacts</ion-item>
+    		<ion-item class="input item-icon-left item-icon-right">
+				<i class="icon ion-email"></i>
+				<input type="text" ng-model="shop.email">
+				<i class="icon ion-checkmark-circled positive" ng-show="shop.email"></i>
+			</ion-item>			
+    		<ion-item class="input item-icon-left item-icon-right">
+				<i class="icon ion-ios-telephone"></i>
+				<input type="text" ng-model="shop.tel">
+				<i class="icon ion-checkmark-circled positive" ng-show="shop.tel"></i>
+			</ion-item>							
+			<ion-item class="input item-icon-left item-icon-right">
+				<i class="icon ion-android-globe"></i>
+				http://<input type="text" ng-model="shop.website" class="inline">
+				<i class="icon ion-checkmark-circled positive" ng-show="shop.website"></i>
+			</ion-item>
+			<ion-item class="input item-icon-left item-icon-right">
+				<i class="icon ion-social-facebook"></i>				
+				https://www.facebook.com/<input type="text" ng-model="shop.facebook" class="inline">/
+				<i class="icon ion-checkmark-circled positive" ng-show="shop.facebook"></i>
+			</ion-item>
+			
+			<ion-item class="input item-icon-left item-icon-right">
+				<i class="icon ion-social-twitter"></i>
+				https://twitter.com/<input type="text" ng-model="shop.twitter" class="inline">/
+				<i class="icon ion-checkmark-circled positive" ng-show="shop.twitter"></i>
+			</ion-item>
+			<ion-item class="input item-icon-left item-icon-right">
+				<i class="icon ion-social-linkedin"></i>
+				https://www.linkedin.com/<input type="text" ng-model="shop.linkedin" class="inline">
+				<i class="icon ion-checkmark-circled positive" ng-show="shop.linkedin"></i>
+			</ion-item>				
+		</ion-list>
+    </ion-content>
+    
+</ion-view>

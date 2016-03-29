@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title></title>
+
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/ionic/js/ionic.bundle.min.js"></script>
+<script src="lib/angular-resource/angular-resource.min.js"></script>
+
+<script src="cordova.js"></script>
+<script src="lib/ngCordova/dist/ng-cordova.js"></script>
+<script src="lib/ngCordova/dist/ng-cordova-mocks.js"></script>
+<script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+
+<!-- image cache -->
+<script src="lib/localforage/dist/localforage.min.js"></script>
+<script src="lib/angular-localforage/dist/angular-localForage.min.js"></script>
+<script src="lib/imagenie/imagenie.min.js"></script>
+
+<!-- Angular gmap -->
+<script src="lib/lodash/dist/lodash.min.js"></script>
+<script src="lib/bluebird/js/browser/bluebird.js"></script>
+<script src="lib/angular-google-maps/dist/angular-google-maps.min.js"></script>
+
+<!-- paypal -->
+<script src="js/paypal-mobile-js-helper.js"></script>
+<script src="js/ngPaypal.js"></script>
+
+<!-- gallery -->
+<link href="components/gallery/dist/ion-gallery.css" rel="stylesheet">
+<script src="components/gallery/dist/ion.gallery.js"></script>
+
+<!-- login -->
+<link href="components/community/assets/css/ionic.app.css" rel="stylesheet">
+<script src="components/community/assets/js/directives.js"></script>
+<script src="components/community/js/ngCommunity.js"></script>
+<script src="components/community/assets/lib/underscore/underscore-min.js"></script>
+
+<!-- walkthrough -->
+<link href="components/walkthrough/css/ionic.app.css" rel="stylesheet">
+<script src="components/walkthrough/js/controllers.js"></script>
+<script src="components/walkthrough/js/directives.js"></script>
+<script src="components/walkthrough/js/services.js"></script>
+<script src="components/walkthrough/js/walkthrough.js"></script>
+<!-- index -->
+<script src="components/index/js/controllers.js"></script>
+<script src="components/index/js/services.js"></script>
+<script src="components/index/js/index.js"></script>
+
+<!-- QR -->
+<script src="lib/angular-qr/lib/qrcode.js"></script>
+<script src="lib/angular-qr/angular-qr.min.js"></script>
+
+<!-- Toast -->
+<link href="lib/ngToast/dist/ngToast.min.css" rel="stylesheet">
+<link href="lib/ngToast/dist/ngToast-animations.min.css" rel="stylesheet">
+<script src="lib/ngToast/dist/ngToast.min.js"></script>
+
+
+<!-- Lazyload -->
+<!-- script src="js/map.js"></script-->
+<script src="lib/ionic-image-lazy/ionic-image-lazy-load.js"></script>
+
+<!--shrink header-->
+<script src="lib/ionic-ion-header-shrink/ionic.headerShrink.js"></script>
+
+<!-- I18N -->
+<script src="lib/angular-translate/angular-translate.js"></script>
+<script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+<script src="lib/angular-dynamic-locale/dist/tmhDynamicLocale.min.js"></script>
+
+<!-- elastic textarea-->
+<script src="js/angularElastic.js"></script>
+
+<!-- progress round-->
+<script src="lib/angular-svg-round-progressbar/build/roundProgress.min.js"></script>
+
+<!-- specific-->
+<script src="js/ngUpload.js"></script>
+<script src="js/ngBase.js"></script>
+<script src="js/ngShop.js"></script>
+<script src="js/ngBlog.js"></script>
+<script src="js/app.js"></script>
+<script src="js/inPubCordova.js"></script>
+<script src="js/route.js"></script>
+<script src="js/routeCommunity.js"></script>
+<script src="js/routeMall.js"></script>
+<script src="http://95.110.228.140:8080/openIndex/shop/shop.js"></script>
+
+<script src="js/config.js"></script>
+
+
+<link href="css/animate.css" rel="stylesheet">
+
+<!-- compiled css output -->
+<!--link href="css/ionic.app.css" rel="stylesheet"-->
+<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+<link href="css/ionicons.css" rel="stylesheet">
+<link href="css/base.css" rel="stylesheet">
+<link href="css/list.css" rel="stylesheet">
+<link href="css/alert.css" rel="stylesheet">
+<link id="custom" href="css/style1.css" rel="stylesheet">
+</head>
+
+<body ng-app="app" class="slide-left-right-ios" ng-controller="appController" ng-class="cls">
+	<toast></toast>
+	
+	<ui-view></ui-view>
+	 
+	 <style>
+
+	 .presentation-bar .close {
+    opacity: 1;
+    font-size: 30px;
+    text-shadow: 0 0 4px #fff;
+}
+	.update .progress-wrapper
+		{
+		margin-top:-50px;
+	position: relative;
+    background: white;
+    z-index: 100;
+    border-radius: 1000pc;
+		}
+	.update .progress
+		{
+    top: 50%;
+    bottom: auto;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    font-size: 35.7143px;
+    position: absolute;
+	z-index:10000000;
+		}
+		
+		.wizard .slider-slide .bar-footer {
+    display: none;
+}
+.wizard .close {
+	position:absolute;
+    left: 10px;
+    top:20px;
+    right: initial;
+    z-index:1;
+    opacity: 1;
+    font-size: 30px;
+    text-shadow: 0 0 4px #fff;
+}
+.wizard .save {
+	position:absolute;
+	top:20px;
+    right: 10px;
+    left: initial;
+    z-index:100000;
+    opacity: 1;
+    font-size: 30px;
+    text-shadow: 0 0 4px #fff;
+}
+
+
+	</style>
+
+ <script id="update.html" type="text/ng-template">
+  <ion-modal-view>
+	
+    <ion-header-bar class="bar-assertive">            
+		<h1 class="title">Update</h1>
+		<div class="button button-clear" ng-click="update.close()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+    <ion-content class="shop update">
+		 <presentation-bar 
+				title="Update" 
+				icon="ion-arrow-graph-up-right" 
+				background="img/background.png" 
+				text="Update the app"
+				>				
+			</presentation-bar>
+<div class="row">
+<div class="col-25"></div>
+<div class="col-50 progress-wrapper">
+            <div class="progress ng-cloak" ng-show="update.progress>0">{{ update.progress |number:1}}%</div>
+			<div class="progress ng-cloak" ng-show="update.progress==0" ng-click="update.install()">install</div>
+<div 
+    round-progress
+    max="100"
+    current="update.progress"
+    color="#45ccce"
+    bgcolor="#eaeaea"
+    radius="100"
+    stroke="10"
+    semi="false"
+    rounded="true"
+    clockwise="true"
+    responsive="true"
+    duration="800"
+    animation="easeInOutQuart"
+    animation-delay="0">	
+</div>
+	</div>
+</div>
+	<ion-list>
+		<ion-item>
+			{{update.info.description}}
+		</ion-item>
+		</ion-list>
+    </ion-content>
+  </ion-modal-view>
+  </script>
+  
+
+  
+<script id="colors.html" type="text/ng-template">
+ <ion-modal-view>
+    <ion-header-bar class="bar-positive"">      
+        <h1 class="title">Choice your color</h1>
+    	<div class="button button-clear" ng-click="colors.hide()"><span class="icon ion-close"></span></div>      
+    </ion-header-bar>
+    <ion-content class="lista">
+		<div class="row">
+			<div class="col-50">
+				<div ng-repeat="item in colorItem.colors" ng-if="$even">
+					<div class="good">
+						<img src="img/placeholder.jpg" ng-src="{{::item.image}}" ng-click="colors.add(basket,colorItem,item)">						
+					</div>
+				</div>
+			</div>
+			<div class="col-50">
+				<div ng-repeat="item in colorItem.colors" ng-if="$odd">
+					<div class="good">
+						<img src="img/placeholder.jpg" ng-src="{{::item.image}}"  ng-click="colors.add(basket,colorItem,item)">						
+					</div>
+				</div>
+			</div>
+		</div>
+    </ion-content>
+  </ion-modal-view>
+ </script>
+ 
+<script id="time.html" type="text/ng-template">
+  <ion-modal-view ng-controller="hoursController">
+    <ion-header-bar class="bar-assertive">            
+		<h1 class="title">Orario</h1>
+		<div class="button button-clear" ng-click="timeModal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+    <ion-content>
+      	<div class="card">
+			<div class="item">
+			<div class="row">
+				<div class="col col-50" style="text-align:center; font-size:30px" ng-click="times[0].setTime(times[0].getTime()+(1800000*2))"><I class="icon ion-ios-plus-outline"></I></div>
+				<div class="col col-50" style="text-align:center; font-size:30px" ng-click="times[0].setTime(times[0].getTime()+1800000)"><I class="icon ion-ios-plus-outline"></I></div>
+			</div>
+			<div class="row">
+				<div class="col col-50" style="text-align:center; font-size:30px">{{times[0]|date:"HH"}}</div>
+				<div class="col col-50" style="text-align:center; font-size:30px" ng-click="times[0].setTime(times[0].getTime()+1800000)">{{times[0]|date:"mm"}}</div>
+			</div>
+			<div class="row">
+				<div class="col col-50" style="text-align:center; font-size:30px" ng-click="times[0].setTime(times[0].getTime()-(1800000*2))"><I class="icon ion-ios-minus-outline"></I></div>
+				<div class="col col-50" style="text-align:center; font-size:30px" ng-click="times[0].setTime(times[0].getTime()-1800000)"><I class="icon ion-ios-minus-outline"></I></div>
+			</div>
+			</div>
+			<div class="item">
+				<button class="button button-block" ng-click="setTime(times[0])">conferma</button>
+			</div>
+		</div>	
+		
+    </ion-content>
+  </ion-modal-view>
+  </script>
+
+	<script id="iBeacon.html" type="text/ng-template">
+            <ion-view title="iBeacon">
+            	<ion-header-bar class="bar-assertive">
+		            <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        		    <h1 class="title" ng-click="start()">iBeacon</h1>
+	            </ion-header-bar>
+    	        <ion-content padding="true" class="has-header">
+        		    <form>
+		            <label class="item item-input">						
+            			<span class="input-label">UUID</span>
+			            <input type="text" placeholder="UUID">
+            		</label>
+		            </form>
+
+					<ion-list>
+						<ion-item>Immediate</ion-item>        		     
+						<ion-item ng-repeat="item in immediate" class="item-thumbnail-left">
+							<div class="item-image" style="overflow:hidden"></div><H2>{{item.name}}</h2><P>{{item.accuracy}} - {{item.proximity}}</P>
+						</ion-item>						
+					</ion-list>
+					<ion-list>
+						<ion-item>Near</ion-item>        		     
+						<ion-item ng-repeat="item in near" class="item-thumbnail-left">
+							<div class="item-image" style="overflow:hidden"></div><H2>{{item.name}}</h2><P>{{item.accuracy}} - {{item.proximity}}</P>
+						</ion-item>						
+					</ion-list>
+					<ion-list>        		     
+						<ion-item>Far</ion-item>
+						<ion-item ng-repeat="item in far" class="item-thumbnail-left">
+							<div class="item-image" style="overflow:hidden"></div><H2>{{item.name}}</h2><P>{{item.accuracy}} - {{item.proximity}}</P>
+						</ion-item>						
+					</ion-list>
+        	    </ion-content>
+	        </ion-view>
+        </script>
+
+	<script id="scan.html" type="text/ng-template"> 
+            <ion-view title="Scan">
+            	<ion-header-bar class="bar-assertive">
+		            <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        		    <h1 class="title">Barcode scan</h1>
+	            </ion-header-bar>
+
+    	        <ion-content padding="true" class="has-header">    	        
+        		    <button class="button button-full button-positive" ng-click="scan()">scan</button>
+		            <div class="list">
+						<label class="item item-input item-floating-label">
+    						<span class="input-label">Barcode</span>
+    						<input type="text" placeholder="Barcode" ng-model="code">
+						</label>
+					</div>        		    
+					<div class="gridcontainer"> 
+					<ul>
+						<li class="gridRepeats" ng-class="{deselect:!item.selected}" ng-repeat="item in list" ng-click="item.selected=!item.selected">
+							<div class="image responsive" grid-image="{{item.img}}"></div>
+							<!--div class="details responsive"  >{{grid.details}}</div-->
+						</li>
+					</ul>
+					</div>	
+        	    </ion-content>
+	        </ion-view>
+        </script>
+
+
+        
+</body>
+</html>

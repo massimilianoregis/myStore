@@ -1,0 +1,55 @@
+
+ 			<ion-view class="goods lista" title="{{activeGroup}}" show-footer >
+ 			
+ 			<div class="bar bar-subheader bar-positive" ng-show="list.length>0">
+	       		<ion-search class="search-wrapper-light" placeholder="Cerca un prodotto" min-length="1" filter="search"></ion-search> 
+			</div>	
+ 			
+ 			<span ng-if="list.length==0" >
+ 			<ion-content class="sheet" scroll="false" style="padding-top:90px" header-shrink>
+ 				<div style="text-align:center" class="icon ion-ios-cart-outline void">
+			 		<p>
+			 			Ciao!<BR> 
+			 			Questo negozio non ha ancora inserito nessun prodotto...
+			 		</p><BR>			 		
+			 	</div>
+ 			</ion-content>
+ 			</span>
+ 			
+ 			<span ng-if="list.length>0 && groups.length==1">
+ 			<ion-content  class="shrink" scroller scroll="true" style="padding-top:90px" padding="false" start-y="0" delegate-handle="main" header-shrink> 			
+				 <div class="row">
+          			 <div class="col col-50">
+                    	<div ng-include="'views/single/goods/box.html'" ng-repeat="item in list | filter:{categories:i.name,name:search.value}" ng-if="$even"></div>
+                	</div>  			          			  
+          			 <div class="col col-50">
+          			 	<div ng-include="'views/single/goods/box.html'" ng-repeat="item in list | filter:{categories:i.name,name:search.value}" ng-if="$odd"></div>                    
+          			</div>
+          		</div> 			 			
+ 			</ion-content>
+ 			</span>
+ 			
+ 			<span ng-if="groups.length>1"> 			
+ 			<ion-content  scroll="false" padding="false" class="has-footer shrink" style="padding-top: 0px !important;">	 				 
+	 			<span  ng-controller="sliderController"> 				
+		 		<ion-slide-box on-slide-changed="change($index)" active-slide="active">	 		  		 					
+		  			<ion-slide ng-repeat="i in groups" ng-init="updateSlider($index)" class="gooditem"> 				
+		  				<ion-content class="shrink" scroller scroll="true" style="padding-top:90px" padding="false" start-y="0" delegate-handle="main" header-shrink>
+		  					
+	            			 <div class="row" ng-if="$index>=current-1 && $index<=current+1" >
+		            			 <div class="col col-50">		            			 
+				                    <div class="gooditem" ng-include="'views/single/goods/box.html'" ng-repeat="item in list | filter:{categories:i.name,name:search.value}" ng-if="$even"></div>
+				                </div>  			
+		            			  
+		            			 <div class="col col-50">
+		            			 	<div class="gooditem" ng-include="'views/single/goods/box.html'" ng-repeat="item in list | filter:{categories:i.name,name:search.value}" ng-if="$odd"></div>				                    
+				                </div>
+			                </div>		                											
+						</ion-content>													
+					</ion-slide>										
+				</ion-slide-box>
+				</span>
+			</ion-content>	
+			</span>			
+					
+            </ion-view>

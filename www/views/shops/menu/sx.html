@@ -1,0 +1,26 @@
+<ion-view>
+	<ion-content padding="false" scroll="true">
+
+		<ion-list>								
+			<ion-item menu-close class="profile" ui-sref=".profile" ng-if="user.logged">
+				<div class="avatar" style="background-image:url('{{user.avatar|resize:200:200}}')"></div>{{user.firstName}} {{user.lastName}}
+			</ion-item>
+			<ion-item class="item-icon-left" ui-sref="community.welcome"  ng-if="!user.logged"><i class="icon ion-briefcase"></i>Login</ion-item>
+			<ion-item class="item-icon-left" ng-controller="profileController" ng-click="logout()" ng-if="user.logged"><i class="icon ion-briefcase"></i>Logout</ion-item>
+			<ion-item class="item-divider"></ion-item>
+			<ion-item menu-close class="item-icon-left" ui-sref=".list"><i class="icon ion-briefcase"></i>List</ion-item>					
+			<ion-item menu-close class="item-icon-left" ui-sref=".wish"><i class="icon ion-heart"></i>Preferiti</ion-item>
+			<ion-item menu-close class="item-icon-left" ui-sref=".wishShop"><i class="icon ion-heart"></i>Negozi preferiti</ion-item>
+			<ion-item menu-close class="item-icon-left" ui-sref="shop"><i class="icon ion-ios-cart"></i>Make your shop</ion-item>
+			<ion-item class="item-divider"></ion-item>
+			<ion-item menu-close class="item-icon-left" ui-sref=".orders"><i class="icon ion-ios-cart"></i>My orders</ion-item>			
+			<ion-item class="item-divider"></ion-item>			
+			<ion-item ng-repeat="item in list" menu-close class="item-avatar" ui-sref="pub.goods({shop:item.id})">						
+				<img ng-src="{{item.background|resize:150:150}}">
+				{{item.name}}
+				</ion-item>					
+					
+		</ion-list> 				
+		
+	</ion-content>
+</ion-view>			

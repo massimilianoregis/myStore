@@ -1,0 +1,74 @@
+ <ion-modal-view class="shop" show-nav-bar="false">
+    <ion-header-bar class="bar-assertive">            
+		<h1 class="title">Consegna...</h1>
+		<div class="button button-clear" ng-click="shippingModal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+    <ion-content ng-controller="shippingController">
+    	<presentation-bar 
+					title="Indirizzo di consegna" 
+					icon="ion-compass" 
+					background="{{shop.background}}" 
+					text="Dove spediamo il tuo prodotto?"					
+					>				
+		</presentation-bar>	
+        
+      	<div class="list">
+      		<ion-radio ng-repeat="address in user.addresses" ng-model="choice" ng-click="setShipping(address)">
+	      		<B>{{address.name}}</B><BR>
+	      		{{address.line1}} {{address.zip}} {{address.city}} {{address.country}}
+      		</ion-radio>
+      		<ion-radio ng-repeat="address in addresses" ng-model="choice" ng-click="setShipping(address)">
+	      		<B>{{address.name}}</B><BR>
+	      		{{address.line1}} {{address.zip}} {{address.city}} {{address.country}}
+      		</ion-radio>										
+			<ion-radio ng-show="shop.address" ng-model="choice" ng-click="setShippingToShop(shop.address)">
+				<B>Passo in negozio</B><BR>
+				{{shop.address.line1}} {{shop.address.zip}} {{shop.address.city}} {{shop.address.country}}
+			</ion-radio>
+						
+			<label class="item item-radio" ng-click="add=true" ng-hide="add">											
+ 				<input type="radio" name="group">
+				<div class="item-icon-left">
+					<i class="icon ion-car"></i>
+					<div class="item-content">Aggiungi</div>
+				</div>
+				<i class="radio-icon ion-checkmark"></i>			
+			</label>			
+		</div>
+		<div class="card" ng-show="add">
+			<div class="item">
+				<h2>Nuovo indirizzo</h2>
+			</div>
+			<div class="list">
+    		  <label class="item item-input">
+			    <input type="text" placeholder="Name" ng-model="address.name">
+			  </label>		  
+			  <label class="item item-input">
+			    <input type="text" placeholder="First Name" ng-model="address.firstName">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Last Name"  ng-model="address.lastName">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Address line 1" ng-model="address.line1">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Address line 2" ng-model="address.line2">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="City" ng-model="address.city">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Zip" ng-model="address.zip">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Country" ng-model="address.country">
+			  </label>
+		</div>
+			<div class="item" ng-click="addShipping(address)">
+    			<button class="button button-positive button-block">OK</button>
+  			</dv>
+		</div>
+		
+    </ion-content>
+  </ion-modal-view>

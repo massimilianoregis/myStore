@@ -1,0 +1,63 @@
+
+<ion-view id="adminMessagesSingle" title="{{client.firstName}} {{client.lastName}}" class="" hide-footer>
+	<ion-nav-bar class="bar-positive">						
+ 				<ion-nav-buttons side="left">
+ 					<button menu-toggle="left" class="button button-icon icon ion-navicon"></button> 					 					 			
+ 				</ion-nav-buttons>
+ 				<ion-nav-back-button></ion-nav-back-button>			
+ 				<h1 class="title"></h1>	 					
+ 				<ion-nav-buttons side="right">	 					 					
+ 					<span ng-show="basket.rows.length>0">    			
+ 					<button menu-toggle="right" class="button button-icon icon ion-ios-cart"></button> 					
+ 					<span class="badge badge-assertive" style="height: 20px;margin-left: -18px;">{{basket.items}}</span>
+ 					</span>
+ 					<a class="button button-icon icon ion-close-circled" ui-sref="pub.goods"></a>
+ 				</ion-nav-buttons> 				
+	  		</ion-nav-bar>		  
+	  		    	
+   	<ion-content class="chat has-header shop messageFS">   	
+   		<presentation-bar 
+				title="Messages" 
+				icon="ion-chatbubbles" 
+				background="{{client.avatar||shop.background}}" 
+				text="">				
+			</presentation-bar>
+			
+		<div ng-repeat="item in data">
+			<div class="row" ng-if="item.from==client.mail">
+				<div class="col-10 avatar" ng-bkg="{{img(client.logo||client.avatar,150,150)}}"></div>
+				<div class="col-80" style="position:relative">
+					<div class="me">
+						{{item.message}}
+						<div class="time">{{item.time|date:'dd/MM/yyyy hh:mm'}}</div>
+					</div>	
+				</div>
+				<div class="col-10"></div>
+			</div>
+			<div class="row" ng-if="item.from==shop.id">
+				<div class="col-10"></div>
+				<div class="col-80" style="position:relative">
+					<div class="he">
+					{{item.message}}
+					<div class="time">{{item.time|date:'dd/MM/yyyy hh:mm'}}</div>
+					</div>
+				</div>
+				<div class="col-10 avatar" ng-bkg="{{img(shop.logo||shop.background,150,150)}}"></div>
+			</div>
+		</div>	
+		
+   	</ion-content>
+   	
+   	
+   	<ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+        <label class="item-input-wrapper">
+            <textarea ng-model="message" value="" style="width:100%" placeholder="Send a message to {{client.firstName}}..." required minlength="1" maxlength="1500" msd-elastic></textarea>
+        </label>
+        <div class="footer-btn-wrap">
+          <button ng-click="sendToUser(message,mail)" class="button button-icon icon ion-android-send footer-btn" type="submit"
+              ng-disabled="!message || message === ''">
+          </button>
+        </div>
+    </ion-footer-bar>
+</ion-view>
+ 

@@ -1,0 +1,23 @@
+<ion-modal-view class="wizard newshop">
+
+	<ion-content scroll="true">
+	<presentation-bar title="Importa da Facebook" 
+					icon="ion-social-facebook" 
+					background="img/background.png" 
+					text="Poche informazioni, giusto quello che serve per capire cosa vendi"
+					on-close-click="fb.modal.hide()"						
+					>		
+	</presentation-bar>	
+	<form name="form" ng-submit="saveShop(form)" novalidate>	 
+		
+		<div class="list">
+		    <a class="item item-avatar" ng-repeat="item in fbPage" ng-click="fb.import(item)">
+		      <img ng-src="{{item.logo}}">
+		      <h2>{{item.name}}</h2>
+		      <p>{{item.description}}</p>
+		    </a>				
+		</div>		
+	</form>
+	</ion-content>
+
+</ion-modal-view>

@@ -1,0 +1,120 @@
+/* PROVA MIKI */
+
+.who
+{
+    color:black;
+    background:white;
+}
+.who h1{
+    color:#000000;
+    text-align:center;
+}
+.who p
+{
+    text-align:justify;
+}
+.who .gallery
+{
+    border-top:solid 1px #000000;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-bottom:solid 1px #000000;
+    margin-top:10px;
+}
+.who .slide
+{
+    height:300px;
+}
+.who .slide.one
+{
+    background-size:100% 100%;
+}
+.who .slide.two
+{
+    background:red;
+}
+.who .social
+{
+    text-align:right;
+}
+.who .social li
+{
+    display:inline-block;
+    font-size:20px;
+    border:solid 1px #000000;
+    border-radius:30px;
+    width:30px;
+    height:30px;
+    text-align: center;
+    line-height:30px;
+    margin:4px;
+    color:#000000;
+    background-color: white;
+    position: relative;
+    /*bottom: 40px;*/
+    bottom: 20px;
+}
+.who h2
+{color:#000000;}
+.who h3
+{text-align: center;}
+
+
+
+
+.top-grid {
+    text-align: center;
+    border: none;
+    padding: 2em 1em;
+    background-color: #C9A974;
+    /*background:linear-gradient(rgba(0, 0, 0, 0.97), #e5e8e7);*/
+}
+
+@media (max-width: 480px)
+{
+    .grid-top {
+        float: none;
+        width: 80%;
+        margin: 0 auto 2em;
+    }
+    hr {
+        background-color:#999;
+        border-width:0;
+        color:#999;
+        height:1px;
+        line-height:0;
+        margin: 0.5em 0;
+        text-align: center;
+    }
+
+    hr:after {
+        content:"\a7\a7";
+        font-size:1.25em;
+        position: relative;
+        left: -0.5em;
+    }​}
+.news .void {
+    width: 100%;
+    font-size: 50px;
+    text-align: center;
+    color: red;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    margin-top: -150px;
+}
+.who .logo
+
+{
+    /*background-image: url('{{shop.logo}}');*/
+    position: absolute;
+    width: 100%;
+    height: 70px;
+    margin: 5px;
+    padding:5px;
+    border: solid 1px #000000;
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position: 50% 50%;
+}
+

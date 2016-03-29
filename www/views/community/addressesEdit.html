@@ -1,0 +1,78 @@
+<ion-view title="Addresses Edit">    
+	  	<ion-nav-buttons side="right">
+          <button class="button"  ng-click="save()">
+            Save
+          </button>
+        </ion-nav-buttons>	
+    <ion-content padding="false" scroll="true">	
+    
+    	<BR><BR>
+    	<div class="list">
+    		  <ion-item class="item item-input">
+    		  	<div class="input-label">Short name</div>
+			    <input type="text" placeholder="Name" ng-model="address.name">
+			  </ion-item>		  
+			  <ion-item class="item-divider"></ion-item>
+			  <label class="item item-input">
+			  	<div class="input-label">First Name</div>
+			    <input type="text" placeholder="First Name" ng-model="address.firstName">
+			  </label>
+			  <label class="item item-input">
+			  	<div class="input-label">Last Name</div>
+			    <input type="text" placeholder="Last Name"  ng-model="address.lastName">
+			  </label>
+			  <label class="item item-input">
+			  	<div class="input-label">Line1</div>
+			    <input type="text" placeholder="Address line 1" ng-model="address.line1">
+			  </label>
+			  <label class="item item-input">
+			  	<div class="input-label">Line2</div>
+			    <input type="text" placeholder="Address line 2" ng-model="address.line2">
+			  </label>
+			  <label class="item item-input">
+			  	<div class="input-label">City</div>
+			    <input type="text" placeholder="City" ng-model="address.city">
+			  </label>
+			  <label class="item item-input">
+			  	<div class="input-label">Zip</div>
+			    <input type="text" placeholder="Zip" ng-model="address.zip">
+			  </label>
+			  
+			  <label class="item item-input item-select">
+			  	 <div class="input-label">Country</div>			    			    
+			    <select ng-model="country" ng-change="countryChange()" ng-options="item as item.name for item in countries"></select>			    
+			  </label>			  
+		</div>
+		<!--ul class="list">
+		  <li class="item item-checkbox item-icon-right">
+		  <i class="icon ion-home"></i>
+		     <label class="checkbox">
+		       <input type="checkbox" ng-model="type.home">
+		     </label>
+		     Casa
+		  </li>
+		  <li class="item item-checkbox item-icon-right">
+		  <i class="icon ion-briefcase"></i>
+		     <label class="checkbox">
+		       <input type="checkbox" ng-model="type.work">
+		     </label>
+		     Lavoro
+		  </li>		
+		  <li class="item item-checkbox item-icon-right">
+		  <i class="icon ion-card"></i>
+		     <label class="checkbox">
+		       <input type="checkbox">
+		     </label>
+		     Fatturazione
+		  </li-->		
+		</ul>	
+				
+		  <div class="item tabs tabs-secondary tabs-icon-left">
+		    <button class="button button-full button-calm" ng-click="save()">Save</button>
+		  </div>
+		
+		
+		
+		
+    </ion-content>
+</ion-view>

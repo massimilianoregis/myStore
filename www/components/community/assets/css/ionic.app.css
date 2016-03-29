@@ -1,0 +1,181 @@
+
+
+.multi-bg-outer {
+  position: relative;
+  background-color: rgba(150, 150, 150, 0.7);
+  height: 100%;
+  -webkit-transition: all ease-in-out .3s;
+  transition: all ease-in-out .3s;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -2; }
+  .multi-bg-outer.finish-loading {
+    background-color: transparent; }
+  .multi-bg-outer .bg-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #303030;
+    z-index: -1;
+    opacity: 0.6; }
+  .multi-bg-outer .multi-bg {
+    display: none; }
+
+.modal-view {
+  background-color: #fcfcfc; }
+  .modal-view ion-header-bar {
+    background-color: #fcfcfc; }
+  .modal-view * {
+    color: #444; }
+  .modal-view .modal-title {
+    font-size: 22px;
+    font-weight: 400;
+    font-size: 16px; }
+
+.auth-outer {
+  background-color: transparent !important; }
+  .auth-outer ion-view {
+    background-color: transparent;
+    box-shadow: none !important; }
+  .auth-outer ion-header-bar {
+    background-color: transparent !important;
+    border: none !important;
+    background-size: 0px !important; }
+    .auth-outer ion-header-bar * {
+      color: #FFFFFF; }
+
+.auth-view .related-navigation {
+  padding-top: 0px;
+  padding-bottom: 0px; }
+  .auth-view .related-navigation .col {
+    padding-top: 0px;
+    padding-bottom: 0px; }
+  .auth-view .related-navigation .nav-right {
+    float: right; }
+  .auth-view .related-navigation .nav-left {
+    float: left; }
+.auth-view .related-copy h1 {
+  color: #FFFFFF;
+  text-align: center; }
+.auth-view .related-copy h2 {
+  color: #FFFFFF;
+  text-align: center; }
+.auth-view .related-copy h3 {
+  color: #FFFFFF;
+  text-align: center; }
+.auth-view .related-copy h4 {
+  color: #FFFFFF;
+  text-align: center; }
+.auth-view .related-copy h5 {
+  color: #FFFFFF;
+  text-align: center; }
+.auth-view .related-copy h6 {
+  color: #FFFFFF;
+  text-align: center; }
+.auth-view .form-wrapper .sign-up.button, .auth-view .form-wrapper .log-in.button {
+  background-color: #ff5a60;
+  color: #FFFFFF;
+  border-color: #ff5056;
+  font-weight: 500; }
+.auth-view .form-fields-outer {
+  margin: 0px;
+  padding: 0px 16px; }
+  .auth-view .form-fields-outer .item-input {
+    padding-left: 0px;
+    padding-right: 0px;
+    border-left: none;
+    border-right: none; }
+.auth-view .message {
+  text-align: center;
+  color: white; }
+.auth-view .message.error:before {
+  content: '*';
+  color: #ff5a60;
+  text-shadow: 1px 1px 0px rgba(243, 0, 9, 0.3);
+  margin-right: 5px;
+  font-size: 20px; }
+.auth-view .show-hide-input {
+  display: inherit;
+  width: 100%; }
+.auth-view .toggle-view-anchor {
+  position: absolute;
+  top: 6px;
+  right: 0px;
+  height: 34px;
+  line-height: 34px; }
+  .auth-view .toggle-view-anchor * {
+    color: #cccccc !important;
+    display: block;
+    font-size: 24px;
+    width: 45px;
+    text-align: center;
+    font-weight: 500; }
+
+.welcome-view .top-content {
+  height: 40%; }
+  .welcome-view .top-content .app-copy {
+    text-align: center;
+    padding-top: 10vh; }
+  .welcome-view .top-content .app-logo {
+    font-size: 50px;
+    font-family: cursive;
+    font-weight: 600;
+    font-style: italic;
+    color: #FFFFFF; }
+.welcome-view .bottom-content {
+  height: 60%; }
+  .welcome-view .bottom-content .google-sign-in, .welcome-view .bottom-content .facebook-sign-in, .welcome-view .bottom-content .twitter-sign-in {
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 500; }
+    .welcome-view .bottom-content .google-sign-in:before, .welcome-view .bottom-content .facebook-sign-in:before, .welcome-view .bottom-content .twitter-sign-in:before {
+      width: 30px;
+      text-align: center;
+      font-size: 32px; }
+    .welcome-view .bottom-content .google-sign-in .btn-copy, .welcome-view .bottom-content .facebook-sign-in .btn-copy, .welcome-view .bottom-content .twitter-sign-in .btn-copy {
+      margin-left: -30px; }
+  .welcome-view .bottom-content .google-sign-in {
+    background-color: #dd4c39;
+    border-color: rgba(220, 68, 48, 0.9); }
+  .welcome-view .bottom-content .facebook-sign-in {
+    background-color: #294886;
+    border-color: rgba(39, 68, 126, 0.9); }
+  .welcome-view .bottom-content .twitter-sign-in {
+    background-color: #00a3dc;
+    border-color: rgba(0, 155, 210, 0.9); }
+  .welcome-view .bottom-content .split-actions {
+    padding: 0px; }
+    .welcome-view .bottom-content .split-actions .col {
+      padding-top: 0px;
+      padding-bottom: 0px; }
+      .welcome-view .bottom-content .split-actions .col:first-child {
+        padding-left: 0px; }
+      .welcome-view .bottom-content .split-actions .col:last-child {
+        padding-right: 0px; }
+    .welcome-view .bottom-content .split-actions .button-outline {
+      color: #FFFFFF;
+      border-color: #FFFFFF;
+      font-weight: 500; }
+  .welcome-view .bottom-content .other-options-outer [ng\:cloak], .welcome-view .bottom-content .other-options-outer [ng-cloak], .welcome-view .bottom-content .other-options-outer [data-ng-cloak], .welcome-view .bottom-content .other-options-outer [x-ng-cloak], .welcome-view .bottom-content .other-options-outer .ng-cloak, .welcome-view .bottom-content .other-options-outer .x-ng-cloak {
+    display: none !important; }
+  .welcome-view .bottom-content .other-options-outer .other-options.ng-hide, .welcome-view .bottom-content .other-options-outer .hidden-actions.ng-hide {
+    display: none !important; }
+  .welcome-view .bottom-content .other-options-outer .other-options.ng-hide-add.ng-hide-add-active, .welcome-view .bottom-content .other-options-outer .other-options.ng-hide-remove.ng-hide-remove-active .hidden-actions.ng-hide-add.ng-hide-add-active, .welcome-view .bottom-content .other-options-outer .hidden-actions.ng-hide-remove.ng-hide-remove-active {
+    -webkit-transition: all 0s ease;
+    transition: all 0s ease; }
+  .welcome-view .bottom-content .other-options-outer .other-options {
+    color: #FFFFFF; }
+  .welcome-view .bottom-content .legal-notice {
+    color: #FFFFFF;
+    margin: 10px 0px;
+    text-align: center; }
+    .welcome-view .bottom-content .legal-notice a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #FFFFFF; }
+
+.home-view .welcome-message {
+  text-align: center;
+  margin-bottom: 40px; }

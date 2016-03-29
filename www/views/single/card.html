@@ -1,0 +1,19 @@
+
+<ion-view id="singleFidelityCard" title="Fidelity card" hide-nav-bar="true" hide-footer>
+    <ion-content scroll="false">
+            <div id="qrcard">
+               <A menu-close ui-sref="^.home"><div class="close">X</div></A>
+                <!--img src="img/qr/qrcode.jpg" class="qrcode"-->
+                <qr text="user.mail" class="qrcode" size="800" image="true"></qr>
+
+                <div class="bottom">
+                    <img src="{{user.avatar}}" class="utente">
+                    <div class="shop">
+                        <h2> {{shop.name}} </h2>
+                    </div>
+                </div>
+            </div>
+    </ion-content>
+</ion-view>
+
+

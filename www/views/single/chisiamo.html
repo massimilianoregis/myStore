@@ -1,0 +1,76 @@
+<style>
+	/*
+	ion-content.chisiamo {
+		top: 114px;
+	}*/
+</style>
+
+<ion-view title="{{shop.name}}" class="who" show-footer>
+
+	<div id="whoLogo">
+		<div class="logo" style="background-image: url('{{shop.logo||shop.background}}')"></div>
+	</div>
+
+	<ion-content padding="false" scroll="true" class="chisiamo">
+
+
+    	<!--
+    	<div style="background-image:url('{{shop.background}}'); background-size:cover;width:100%; height:200px; position:relative;">
+
+			<div class="logo"></div>
+    	</div>
+		-->
+
+		<ul class="social">
+			<li><i class="icon ion-social-facebook"></i></li>
+			<li><i class="icon ion-social-twitter"></i></li>
+			<li><i class="icon ion-social-instagram"></i></li>
+		</ul>
+
+
+		<!--NEWS-->
+		<div class=" col-sm-4 grid-top" >
+			<div class="top-grid">
+				<div class="whoNewsBg" ng-show="{{list.length>0}}">
+					<div class="fumettoIcona">
+					<i class="icon ion-ios-lightbulb-outline" style="font-size:50px;"></i>
+					<!--<i class="glyphicon glyphicon-"></i>-->
+					<!--<div ng-if="list.length==0" style="text-align: center;" class="icon ion-ios-lightbulb-outline void"></div>-->
+					<p>{{list[0].creationDate|date}}</p>
+					</div>
+					<h3 ng-bind-html="list[0].title"></h3>
+					<p  ng-bind-html="list[0].text"></p>
+				</div>
+			</div>
+		</div>
+
+    	<div style="padding:10px;">
+			<h3>{{shop.whoAreWe.title}}</h3>
+			<label id="whoLine"></label>
+			<P ng-bind-html="shop.whoAreWe.description">
+				
+			</P>
+    	</div>
+
+		<ion-slide-box slide-interval="2000" does-continue="true" auto-play="true" class="gallery" ng-show="shop.whoAreWe.gallery.length>0">		
+		  <ion-slide ng-repeat="item in shop.whoAreWe.gallery">
+		    <div class="slide" back-img="{{item.img}}"></div>
+		  </ion-slide>		  		  
+		</ion-slide-box>
+
+
+    	<div class="whoRagioneSociale" >
+			
+    		<P>{{shop.ragioneSociale}}<BR>
+    		{{shop.address.line1}} - {{shop.address.zip}} {{shop.address.city}}<BR>
+    		{{shop.piva}}<BR>
+    		{{shop.rea}}<BR>
+    		{{shop.capitale}}<BR>
+    		{{shop.web}}
+    		
+    	</div>
+
+    	<BR><BR><BR>
+    </ion-content>
+    
+</ion-view>

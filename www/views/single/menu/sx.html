@@ -1,0 +1,48 @@
+			<ion-header-bar ng-class="config.data.bar.menu.class">				
+				<h1 class="title" >{{shop.name}}</h1>
+				<button  ng-if="owner" class="button button-icon icon ion-settings stable" style="text-shadow: 0 0 1px black;"  ui-sref="pub.admin.good.list"></button>				
+			</ion-header-bar> 
+
+			<ion-content padding="false" scroll="true">
+				<ion-list>					
+					<div ng-show="user.logged">				
+					<ion-item menu-close class="profile" ui-sref=".profile" ng-bkg="{{shop.background|resize:500:400}}">					
+						<div class="avatar" ng-bkg="{{user.avatar}}"></div>
+						<div>{{user.firstName}} {{user.lastName}}</div>						
+					</ion-item>					
+					<!-- ion-item menu-close class="item-icon-left" ui-sref=".orders"><i class="icon ion-ios-cart"></i>Ordini</ion-item-->					
+					</div>					
+					<ion-item ui-sref-active="active" class="item-icon-left" ui-sref="community.welcome"  ng-if="!user.logged"><i class="icon ion-briefcase"></i>Login</ion-item>
+										
+					<ion-item class="item-divider"></ion-item>
+					<ion-item ui-sref-active="active" class="item-icon-left" ui-sref=".orders" menu-close>
+			    		<i class="icon ion-ios-cart"></i> Ordini
+			  		</ion-item>
+			  		
+			  		<ion-item class="item-divider"></ion-item>								
+					<ion-item ui-sref-active="active" menu-close class="item-icon-left" ui-sref=".goods({group:$index,groupName:item.name})" ng-repeat="item in groups"><i class="icon ion-ios-arrow-forward" ng-class="item.icon"></i>{{item.name}}</ion-item>					
+					<ion-item class="item-divider"></ion-item>
+					<ion-item ui-sref-active="active" ng-show="shop.whoarewe.gallery.length>0 || shop.whoarewe.description!=''" menu-close class="item-icon-left" ui-sref="pub.home"><i class="icon ion-home"></i>Chi siamo</ion-item>						 										
+					<ion-item ui-sref-active="active"  menu-close class="item-icon-left" ui-sref=".map"><i class="icon ion-flag"></i>Dove siamo</ion-item>					
+					
+					<!--ion-item class="item-divider"></ion-item>
+					
+					<ion-item menu-close class="item-icon-left" ui-sref=".wish"><i class="icon ion-heart"></i>Preferiti</ion-item>
+					<ion-item menu-close class="item-icon-left" ui-sref=".blog.list"><i class="icon ion-ios-lightbulb"></i>News</ion-item>
+					<ion-item menu-close class="item-icon-left" ui-sref=".messages.single"><i class="icon ion-email"></i>Chat<span class="badge badge-assertive">3</span></ion-item>
+					
+					
+					<ion-item menu-close class="item-icon-left confirm" ui-sref=".order" ng-show="order.status=='confirm'"><i class="icon ion-ios-cart"></i>In Attesa di conferma</ion-item>
+					<ion-item menu-close class="item-icon-left confirmed" ui-sref=".order" ng-show="order.status=='confirmed'"><i class="icon ion-ios-cart"></i>Confermato Ora:{{time|date:"shortTime"}}</ion-item>
+					<ion-item menu-close class="item-icon-left rejected" ui-sref=".order" ng-show="order.status=='rejected'"><i class="icon ion-ios-cart"></i>Rifiutato</ion-item-->
+					
+					
+					
+									
+					<!--ion-item class="item-divider"></ion-item>				
+					<ion-item  menu-close class="item-icon-left" ui-sref="pubs.list"><i class="icon ion-ios-telephone"></i>Lista</ion-item>
+					<ion-item  ng-controller="paypalController" class="item-icon-left" ng-click="pay()"><i class="icon ion-ios-telephone"></i>Paypal</ion-item>
+					<ion-item  ng-controller="paypalController" class="item-icon-left" ng-click="future()"><i class="icon ion-ios-telephone"></i>Paypal</ion-item-->
+										
+				</ion-list> 				
+			</ion-content>

@@ -1,0 +1,45 @@
+ 			<ion-view title="News" class="messageFS">
+ 				
+ 											                			
+                <ion-content padding="true" scroll="true">
+                
+                	<div ng-if="list==null || list.length==0" style="text-align:center" class="icon ion-speakerphone void">
+				 		<p>
+				 			Ciao!<BR> 
+				 			in questo momento non hai news.<BR>
+				 			Fatti sentire subito dai tuoi clienti
+				 		</p><BR>
+				 		<button class="button"  ui-sref="^.new()">Add News</button>
+				 	</div>
+				 	
+                	<div  ng-if="list.length>0">				                
+	 					<button class="button button-block button-stable" ui-sref="^.new()">
+						  Add News
+						</button>
+						<div class="list card" ng-repeat="item in list | orderBy:'-creationDate'">
+						
+						  <div class="item">							  					
+						    <h2>{{item.title}}</h2>
+						    <p>{{item.creationDate|date:'MMMM dd, yyyy'}}</p>
+						  </div>
+						
+						  <div class="item item-body">							    
+						    <img class="full-image" ng-src="{{item.image}}">
+						    <p>
+						     {{item.text}}
+						    </p>					    
+						  </div>
+						
+						  <div class="item tabs tabs-secondary tabs-icon-left">					   
+						    <a class="tab-item" ng-click="share(item.title,item.text,item.image,null)">
+						      <i class="icon ion-share"></i>
+						      Share
+						    </a>
+						  </div>
+						
+						</div>
+					</div>
+					
+                </ion-content>
+                
+            </ion-view>

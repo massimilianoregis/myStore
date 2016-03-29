@@ -1,0 +1,18 @@
+{
+"id":"2",
+"name":"Negozio 2",
+"type":"type",
+"img":"https://www.youdroop.com/wp-content/uploads/negozio1-1.jpg",
+"style":"css/style1.css",
+"gallery":[
+	{"src":"http://localhost:8100/img/moto2.jpg"}
+],
+"whoarewe":{
+	"text":"Chi siamo del negozio 2.<BR>I want to show side menu only when user logged in, is there a way I can conditionally enable or disable the slide menu? I am doing this, this works when user not logged in and after logged, But when user logged out the menu still slide in (which should not be), and the menu content id blank..",
+	"images":[
+		{"src":"https://farm4.staticflickr.com/3096/cameras/72157605564604036_model_huge_9b35338624.jpg"},
+		{"src":"https://farm4.staticflickr.com/3096/cameras/72157605564604036_model_huge_9b35338624.jpg"},
+		{"src":"https://farm4.staticflickr.com/3096/cameras/72157605564604036_model_huge_9b35338624.jpg"}
+		]
+	}
+}

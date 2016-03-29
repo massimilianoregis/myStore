@@ -1,0 +1,72 @@
+<ion-view class="walkthrough-view" cache-view="false">
+
+	<div class="walkthrough">
+		<!-- device="iphone5|iphone5 black|iphone5 white" -->
+		<!-- device="iphone6|iphone6 black|iphone6 white|iphone6 gold" -->
+		<!-- device="iphone6-plus|iphone6-plus black|iphone6-plus white|iphone6-plus gold" -->
+		<!-- device="galaxyS5|galaxyS5 black|galaxyS5 white|galaxyS5 gold" -->
+		<!-- device="nexus6" -->
+		<!-- device="auto" -->
+		<device-slider device="iphone6-plus white">
+			<ion-slide-box>
+				<ion-slide>
+					<div class="row slide-head">
+						<div class="col">
+							<h3>Benvenuto, da oggi il tuo catalogo sar&agrave; sempre online!</h3>
+						</div>
+					</div>
+					<div class="row slide-body">
+						<div class="col slide-body-wrapper">
+							<img class="full-width-image" ng-src="components/walkthrough/img/2.jpg">
+						</div>
+					</div>
+				</ion-slide>
+				<ion-slide>
+					<div class="row slide-head">
+						<div class="col col-center">
+							<h3>Presentati: cosa fai, dove sei, chi sei</h3>
+						</div>
+					</div>
+					<div class="row slide-body">
+						<div class="col slide-body-wrapper">
+							<img class="full-width-image" ng-src="components/walkthrough/img/1.jpg">
+						</div>
+					</div>
+				</ion-slide>
+				<ion-slide>
+					<div class="row slide-head">
+						<div class="col col-center">
+							<h3>Controlla e gestisci rapidamente i tuoi ordini</h3>
+						</div>
+					</div>
+					<div class="row slide-body">
+						<div class="col slide-body-wrapper">
+							<img class="full-width-image" ng-src="components/walkthrough/img/3.jpg">
+						</div>
+					</div>
+				</ion-slide>
+				<ion-slide>
+					<div class="row slide-head">
+						<div class="col col-center">
+							<h3>News e nuovi prodotti: lo sapranno tutti con un click!</h3>
+						</div>
+					</div>
+					<div class="row slide-body">
+						<div class="col slide-body-wrapper">
+							<img class="full-width-image" ng-src="components/walkthrough/img/4.jpg">
+						</div>
+					</div>
+				</ion-slide>				
+			</ion-slide-box>
+		</device-slider>
+
+		<div class="intro-buttons row">
+			<div class="col col-center">
+				<button class="button button-block button-positive" ui-sref="community.welcome">
+					Login 
+				</button>
+				<!--p class="button-info"><i class="icon ion-information-circled"></i> {{url}}</p-->
+			</div>
+		</div>
+	</div>
+</ion-view>

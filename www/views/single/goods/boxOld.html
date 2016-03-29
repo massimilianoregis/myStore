@@ -1,0 +1,23 @@
+<div class="good">	
+   	<div class="topbar" ng-class="{active:item.row.qta>0}">
+    	<div class="sub" ng-click="basket.sub(item)">					    		
+    		<i class="icon positive ion-ios-minus" ng-show="item.row.qta>0"></i>
+    	</div>
+    	<div class="qta positive" ng-show="item.row.qta>0">{{item.row.qta}}</div>
+    	<div class="add" ng-click="basket.sum(item,shop); shop.addWish();" ng-show="!item.colors && item.currency==currency">					    		
+    		<i class="icon positive" ng-class="{'ion-ios-cart-outline':item.row==null,'ion-ios-plus':item.row.qta>0}"></i>
+    	</div>
+    	<div class="add" ng-click="colorChoice(item); shop.addWish();"  ng-show="item.colors">    						    		
+    		<i class="icon positive" ng-class="{'ion-ios-cart-outline':item.row==null,'ion-ios-plus':item.row.qta>0}"></i>
+    	</div>
+   	</div>					      	   	 	   
+   	<img img-lazy-src src="img/placeholder.jpg" imagenie="{{::item.gallery[0].img|resize:500}}" ui-sref="pub.item({id:item.id,name:item.name})">
+   	<div class="bottombar" ng-class="{active:item.row.qta>0}">	
+  		<div class="preferred" >					    		
+	   		<i class="icon ion-ios-heart-outline" ng-hide="item.wish" ng-click="wish.add(item)"></i>
+	   		<i class="icon ion-ios-heart" ng-show="item.wish" ng-click="wish.remove(item)"></i>
+	   	</div>						    		   		   	
+   		<div class="price" ng-show="item.currency==currency"><SPAN ng-show="item.row.qta>0">{{item.row.qta}} X </SPAN> {{::item.price|currency}}</div>							    	
+   	</div>
+   <DIV class="name">{{::item.name}}</DIV>								   
+</div>

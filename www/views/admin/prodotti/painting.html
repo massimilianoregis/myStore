@@ -1,0 +1,48 @@
+
+<!-- admin/prodotti/categorie.html -->
+    
+    <ion-content padding="false" scroll="true" ng-controller="shopController" class="newgood" style="margin-top:-2px;">    	      	 
+		<ion-list>			
+			<presentation-bar 
+				title="Quadro" 
+				icon="ion-easel" 				 
+				text="Formato, tecnica..."				
+				>				
+			</presentation-bar>
+			  
+			<ion-item class="item item-divider">Dimensione</ion-item>			
+		 	<label class="item item-input">		
+		 		<input type="text" placeholder="Larghezza" ng-model="item.width"/>	      
+		    </label>
+		    <label class="item item-input">		
+		 		<input type="text" placeholder="Altezza" ng-model="item.height"/>	      
+		    </label>
+		    
+		    <ion-item class="item item-divider">Dettagli</ion-item>			
+		 	<label class="item item-input">		
+		 		<input type="text" placeholder="Tecnica" ng-model="item.technique"/>	      
+		    </label>
+		    <label class="item item-input">		
+		 		<input type="text" placeholder="Anno" ng-model="item.year"/>	      
+		    </label>
+		    <div class="item item-toggle">
+		     Stampa
+		     <label class="toggle toggle-assertive">
+		       <input type="checkbox" ng-model="item.isPrint">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  	</div>
+		  	<label class="item item-input" ng-show="item.isPrint">		
+		 		<input type="text" placeholder="Numero di copie" ng-model="item.printing"/>	      
+		    </label>
+		    
+		    				    						    		
+					
+		</ion-list>
+	
+	
+    </ion-content>
+    
+<!-- admin/prodotti//categorie.html -->

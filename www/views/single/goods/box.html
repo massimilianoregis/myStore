@@ -1,0 +1,37 @@
+<div class="good" ng-class="{inBasket:item.row.qta>0}">
+
+	<div class="preferred">
+		<i class="icon ion-ios-heart-outline" ng-hide="item.wish" ng-click="wish.add(item)"></i>
+		<i class="icon ion-ios-heart" ng-show="item.wish" ng-click="wish.remove(item)"></i>
+	</div>
+
+   	<div class="topbar qtaGroup">
+    	<div class="sub" ng-click="basket.sub(item)">					    		
+    		<i class="icon positive ion-ios-minus" ng-show="item.row.qta>0"></i>
+    	</div>
+    	<div class="qta positive" ng-show="item.row.qta>0">{{item.row.qta}}</div>
+    	<div class="add" ng-click="basket.sum(item)">
+    		<i class="icon positive" ng-class="{'ion-ios-cart':item.row==null,'ion-ios-plus':item.row.qta>0}"></i>
+    	</div>
+   	</div>
+
+	<div class="imgContainer">
+   		<img class="img" src="img/placeholder.jpg" imagenie="{{::item.gallery[0].img|resize:500}}" ui-sref="pub.item({id:item.id})">
+	</div>
+
+	<div class="priceGroup">
+		<div class="discount" ng-show="item.discount>0">-{{item.discount|percentage:0}}</div>
+		<div class="price base">{{::item.basePrice|currency:currs[item.currency].symbol:currscurrs[item.currency].fractionSize}}</div>
+		<div class="price"><SPAN ng-show="item.row.qta>0">{{item.row.qta}} X </SPAN> {{::item.price|currency:currs[item.currency].symbol:currscurrs[item.currency].fractionSize}}</div>
+	</div>
+
+	<div class="name">{{::item.name}}</DIV>
+	
+	<hr class="separator">
+	<div class="artGroup">
+		<div class="author">{{::item.author}}</div>
+		<div class="info-gallery tiratura" ng-show="item.tiratura">Tiratura opera: {{::item.tiratura}} pezzi</div>
+		<div class="info-gallery nPezzi" ng-show="item.nPezzi">Disponibilit&agrave;: {{::item.nPezzi}} pezzi</div>
+	</div>
+	
+</div>

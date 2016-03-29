@@ -1,0 +1,257 @@
+ 			<style>
+ 			.food.bar .button.button-icon .icon.food-italian:before , .food.bar .button.button-icon.food-italian:before, .food.bar .button.button-icon.icon-left.food-italian:before, .food.bar .button.button-icon.icon-right.food-italian:before 
+ 				{
+				vertical-align: top;
+				font-size: 34px;
+				line-height: 32px;
+				}
+ 			.food.bar .button.button-icon .icon:before, .food.bar .button.button-icon:before, .food.bar .button.button-icon.icon-left:before, .food.bar .button.button-icon.icon-right:before 
+ 				{
+				vertical-align: top;
+				font-size: 27px;
+				line-height: 32px;
+				}
+				
+			.preferred
+				{
+				position: absolute;
+			    font-size: 34px;
+			    }
+			.goods .slider
+				{
+				height:100%;
+				}
+				
+			.goods.gallery .masonry
+				{
+				-webkit-column-count:2;
+    			-webkit-column-gap: 2px;  
+				}
+			.goods.gallery .good 
+				{
+				width:100%;
+				}
+			.goods.gallery .good img
+				{
+				height:initial;
+				width:100%;					
+				} 
+ 	
+ 				
+ 				.lista .row .col
+ 					{
+ 					overflow:hidden;
+ 					position:relative;
+ 					}
+ 				.good
+ 					{ 		 					 				
+ 					width:100%;
+ 					position:relative;
+ 					border:solid 1px black;
+ 					margin-bottom:10px;			
+ 					}
+ 				.good .name
+ 					{
+ 					text-align:center;
+ 					}
+ 				.good img
+ 					{ 					
+ 					width:100%;
+ 					margin-bottom: -5px;
+ 					} 				
+ 				.good .add
+ 					{ 					
+ 					  position: absolute;
+					  font-size: 33px;
+					  right: 2px;
+					  top: 2px;
+					  font-weight: bold;
+					  background: white;
+					  color: black;
+					  border-radius: 50px;
+					  width: 33px;
+					  border-top-right-radius: 0px; 	
+					   padding-left: 3px;
+					  				
+ 					}
+ 				.good .sub
+ 					{ 					
+ 					position: absolute;
+				  font-size: 33px;
+				  left: 5px;
+				  top: 2px;
+				  font-weight: bold;
+				  background: white;
+				  color: black;
+				  border-radius: 50px;
+				  width: 33px;
+				  border-top-left-radius: 0px;
+ 					}
+ 				.good .qta
+ 					{
+ 					position:absolute;
+ 					font-size:20px;
+ 					left:50%;
+ 					top:10px;
+ 					}
+ 
+ 				.good .topbar
+ 					{
+ 					transition-duration:1s;
+ 					position: absolute; 					
+				    left: 0;
+				    right: 0;
+				    height: 46px;
+ 					}
+ 				
+ 				.good .bottombar
+ 					{
+ 					  transition-duration: 1s;
+					  position: absolute;
+					  right: 0;
+					  height: 35px;
+					  bottom: 18px;
+					  background: rgba(255,255,255,.7);
+					  line-height: 35px;
+					  text-align: right;
+					  padding-right: 10px;
+					  padding-left: 10px;
+					  font-size: 20px;
+					  width: 100%;
+					  border-top: solid 1px;
+					  border-bottom: solid 1px black;
+					  color:black;
+					 }
+			    .good .bottombar.active
+			    	{
+			      background: black;
+				  color: white;
+				  border-bottom: solid 1px white;
+  					}
+ 				.good .bottombar .price
+ 					{}
+ 				.good .topbar.active
+ 					{ 					
+				  //  background: rgba(255,255,255,.8);
+				    }
+				    
+				 .item-icon-left.confirm A
+				 	{
+				 	background:#f0b840; 
+				 	color:white;
+				 	}
+				 .item-icon-left.confirmed A
+				 	{
+				 	background:#498f24; 
+				 	color:white;				 	
+				 	}
+				 .item-icon-left.rejected A
+				 	{
+				 	background:#ef4e3a; 
+				 	color:white;
+				 	}
+				 	.view-container {    
+    top: 0px;
+}
+				
+			.preferred
+				{
+				position: absolute;
+			    font-size: 34px;
+			    }
+			    
+			.preferiti .scroll
+				{
+				height:100%;
+				}
+			.preferiti .void
+				{
+				width: 100%;			    
+			    font-size: 150px;
+			    text-align: center;
+			    color: red;
+			    height: 300px;
+			    position: absolute;
+			    top: 50%;
+			    margin-top: -150px;
+				}
+			.preferiti .void p
+				{
+				font-size:14px;
+				color:black;
+				}
+ 			</style>
+ 		
+ 			<ion-view class="lista preferiti" title="Preferiti" show-footer>
+ 			
+ 			<ion-content scroll="true" padding="false">	            	  		
+ 				 	<div ng-if="list.length==0" style="text-align:center" class="icon ion-ios-heart-outline void">
+ 				 		<p>
+ 				 			Ciao!<BR> 
+ 				 			in questo momento la tua lista preferiti &egrave; vuota.<BR>
+ 				 			Personalizza la tua lista
+ 				 		</p><BR>
+ 				 		<button class="button icon-left ion-home" ui-sref="pub.goods()">Torna indietro</button>
+ 				 	</div>
+ 				 		  						
+	  				<div class="list"  ng-if="list.length>0">	  				  				
+	  					<div class="list list-inset">
+	  						<label class="item item-input">	  						
+            				<i class="icon ion-search placeholder-icon"></i><input type="text" placeholder="to search..." ng-model="filter">
+            				</label>
+            			</div>    
+  				  	
+	  				  	<div class="row" style="min-height:{{device.height}}px">
+		            		<div class="col col-50">		  			
+				  				<div class="good" ng-repeat="item in list | filter:{name:filter}"  ng-if="$even" ui-sref="pub.goods({shop:item.id})">	  		  			              						    
+								    	<!--div class="topbar" ng-class="{active:item.row.qta>0}">
+									    	<div class="sub" ng-click="basket.sub(item)">					    		
+									    		<i class="icon ion-ios-minus" ng-show="item.row.qta>0"></i>
+									    	</div>
+									    	<div class="qta" ng-show="item.row.qta>10">{{item.row.qta}}</div>
+									    	<div class="add" ng-click="basket.sum(item)">					    		
+									    		<i class="icon" ng-class="{'ion-ios-plus-outline':item.row==null,'ion-ios-plus':item.row.qta>0}"></i>
+									    	</div>
+								    	</div-->
+								    						    	
+								    	<img ng-src="{{item.gallery[0].img}}" ui-sref="index.item({id:item.id})">
+								    	
+								    	<div class="bottombar" ng-class="{active:item.row.qta>0}">	
+								    		<div class="preferred">					    		
+									    		<i class="icon ion-ios-heart-outline" ng-hide="wish.inside(item)" ng-click="wish.add(item)"></i>
+									    		<i class="icon ion-ios-heart" ng-show="wish.inside(item)" ng-click="wish.remove(item)"></i>
+									    	</div>						    	
+									    	<div class="price"><SPAN ng-show="item.row.qta>0">{{item.row.qta}} X </SPAN> {{item.price|currency}}</div>							    	
+								    	</div>						    						    				    					 
+								</div>
+							</div>
+							<div class="col col-50">		  			
+				  				<div class="good" ng-repeat="item in list | filter:{name:filter}"  ng-if="$odd"  ui-sref="pub.goods({shop:item.id})">	  		  			              						    
+								    	<!--div class="topbar" ng-class="{active:item.row.qta>0}">
+									    	<div class="sub" ng-click="basket.sub(item)">					    		
+									    		<i class="icon ion-ios-minus" ng-show="item.row.qta>0"></i>
+									    	</div>
+									    	<div class="qta" ng-show="item.row.qta>10">{{item.row.qta}}</div>
+									    	<div class="add" ng-click="basket.sum(item)">					    		
+									    		<i class="icon" ng-class="{'ion-ios-plus-outline':item.row==null,'ion-ios-plus':item.row.qta>0}"></i>
+									    	</div>
+								    	</div-->
+								    						    	
+								    	<img ng-src="{{item.gallery[0].img}}" ui-sref="index.item({id:item.id})">
+								    	
+								    	<div class="bottombar" ng-class="{active:item.row.qta>0}">	
+								    		<div class="preferred">					    		
+									    		<i class="icon ion-ios-heart-outline" ng-hide="wish.inside(item)" ng-click="wish.add(item)"></i>
+									    		<i class="icon ion-ios-heart" ng-show="wish.inside(item)" ng-click="wish.remove(item)"></i>
+									    	</div>						    	
+									    	<div class="price"><SPAN ng-show="item.row.qta>0">{{item.row.qta}} X </SPAN> {{item.price|currency}}</div>							    	
+								    	</div>						    						    				    					 
+								</div>
+							</div>
+						</div>
+					</div>	  					
+					
+			</ion-content>	
+					
+            </ion-view>
+

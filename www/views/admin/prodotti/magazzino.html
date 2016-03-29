@@ -1,0 +1,32 @@
+<ion-view title="Magazzino" class="newgood">
+    					
+    <ion-content padding="false" scroll="true">
+        	
+        <div  ng-controller="shopController">
+    	<presentation-bar    			
+				title="Magazzino" 
+				icon="ion-cash" 
+				background="{{shop.background}}" 
+				text="quanto costa? e a quanto lo vendi sull'app?">				
+		</presentation-bar>
+		</div>		
+		
+		<ion-list>		
+			<ion-item class="item item-divider">Base</ion-item>        		     												  
+			  <label class="item item-input">
+			    <span class="input-label">Code</span>
+			    <input type="text"  placeholder="AB123HY" ng-model="item.code">
+			  </label>			  
+			  <label class="item item-input">
+			    <span class="input-label">Quantity</span>
+			    <input type="number"  placeholder="1" ng-model="item.qta">
+			  </label>
+		</ion-list>
+		
+    </ion-content>
+    <ion-footer-bar class="bar-positive">
+    	<button class="button button-small button-clear icon-left ion-chevron-left" ui-sref="^.gallery">Gallery</button>
+    	<button class="button button-small button-clear icon-right ion-chevron-right" ui-sref="^.prezzi">Next</button>		
+    </ion-footer-bar>
+
+</ion-view>

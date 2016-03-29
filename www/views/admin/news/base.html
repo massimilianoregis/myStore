@@ -1,0 +1,25 @@
+<ion-view title="News">
+    					
+    <ion-content padding="false" scroll="true">
+    	
+		<ion-list>
+			<ion-item class="item item-divider">Immagine</ion-item>
+			  <label class="item item-input" ng-click="setImage()">
+			    <div style="width:100%;min-height:200px;" ><img ng-src="{{item.image}}" style="width:100%"></div>
+			  </label>
+			<ion-item class="item item-divider">Nome</ion-item>        		     												  
+			  <label class="item item-input">
+			    <span class="input-label">Titolo</span>
+			    <input type="text"  placeholder="AB123HY" ng-model="item.title">
+			  </label>
+			  <label class="item" style="height: 200px;">			    
+			    <textarea style="width:100%; height:100%;" ng-model="item.text"></textarea>
+			  </label>
+		</ion-list>
+		
+    </ion-content>
+    <ion-footer-bar>
+    	<button class="button button-small" style="display:none"></button>
+    	<button class="button button-small" ng-click="save('^.list')">Aggiungi</button>		
+    </ion-footer-bar>
+</ion-view>

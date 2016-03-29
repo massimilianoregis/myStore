@@ -1,0 +1,45 @@
+<ion-view title="Addresses Edit" class="newshop" hide-nav-bar="true">     
+	  	
+    <ion-content padding="false" scroll="true" >	
+    <presentation-bar 
+				title="Address" 
+				icon="ion-location" 
+				background="{{shop.background}}" 
+				text="Dove sei? come ti trovo?"
+				on-save-click="saveShop('pub.admin.settings')">			
+			</presentation-bar>
+    	
+    	<div class="list">
+    			<label class="item item-divider">Indirizzo</label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Address line 1" ng-model="shop.address.line1">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Address line 2" ng-model="shop.address.line2">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="City" ng-model="shop.address.city">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Zip" ng-model="shop.address.zip">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Country" ng-model="shop.address.country">
+			  </label>
+			  
+			  <label class="item item-divider">GPS</label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Latitude" ng-model="shop.gps.latitude">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Longitude" ng-model="shop.gps.longitude">			    
+			  </label>
+			  <label class="item item-button-right" ng-click="here()">
+			  	Actual position
+			    <button class="button button-positive "><i class="icon ion-pinpoint"></i></button>
+			  </label>
+		</div>
+
+		
+    </ion-content>
+</ion-view>

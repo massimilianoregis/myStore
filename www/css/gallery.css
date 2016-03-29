@@ -1,0 +1,166 @@
+/*
+===========================================
+		MENU
+===========================================
+*/
+    .bar.bar-positive
+        {
+        background: #888888;
+        color: white;
+        }
+    .tabs
+        {
+        /*background: #888888;*/
+        background: white;
+        color: #888888;
+        }
+    .menu-left .bar-header
+        {
+        background: rgba(0,0,0,.2);
+        }
+    ion-side-menu .list
+        {background:#000000;}
+/*
+===========================================
+		vetrina
+===========================================
+*/
+
+    .pane, .view
+        {
+        background-color:#000000;
+        }
+/*
+===========================================
+       GOOD
+===========================================
+*/
+
+    .good
+        {
+        background-color: white;
+        border: groove 6px rgb(64, 64, 64);
+        margin-bottom: 54px;
+        }
+    .good img
+        {
+        width: 100%;
+        margin-bottom: 25px;
+        padding: 20px;
+        }
+    .good .add
+        {
+        position: absolute;
+        font-size: 25px;
+        background-color: transparent;
+        right: 2px;
+        bottom: -43px;
+        top: inherit;
+        z-index: 200;
+        width: 45px;
+        padding-left: 12px;
+        border-left: solid 1px black;
+        border-radius: initial;
+        }
+    .good .add .ion-ios-cart
+        {
+        color: #000000;
+        }
+    .good .preferred
+        {
+        position: absolute;
+        bottom: -50px;
+        }
+    .good .priceGroup
+        {
+        transition-duration: 1s;
+        height: 35px;
+        background: rgba(255,255,255,.7);
+        line-height: 35px;
+        text-align: right;
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 20px;
+        width: 100%;
+        border-top: solid 1px;
+        border-bottom: solid 1px black;
+        color: black;
+        margin-bottom: -75px;
+        }
+    .good .price
+        {
+        font-size: 15px;
+        margin-right: 30%;
+        }
+    .good .discount
+       {
+        display:block;
+        background-color: #B32134;
+        color: white;
+        font-size: 12px;
+        line-height: 12px;
+        text-align: center;
+        position: absolute;
+        top: 20px;
+        right: -46px;
+        padding: 4px;
+        min-width: 160px;
+        transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+        /* display: none; */
+    }
+
+    .goods ion-content.shrink
+        {
+        background-image:url(../img/bgGallery.jpg);
+        background-repeat:repeat;
+        background-size: 50%;
+        }
+/*
+===========================================
+    WHO
+===========================================
+*/
+    .who
+        {
+        color: white;
+        background-color: #6a6a6a;
+        }
+    .who h3
+    {
+        color: white;
+    }
+    #whoLogo
+        {
+        background-color: white;
+        }
+    .top-grid
+        {
+        border: groove 6px white /*rgb(64, 64, 64)*/;
+        background-image:url(../img/bgGallery.jpg);
+        background-size: 60%;
+        padding: 45px;
+        }
+    .top-grid p, .top-grid h3
+        {
+        padding: 10px;
+        color:#000000;
+        }
+    .whoNewsBg
+        {
+        background-color: white;
+        padding: 10px;
+        border: solid 1px #000000;
+        }
+    .fumettoIcona > i
+        {
+        color: #000000;
+        }
+    .fumettoIcona > p
+    {
+        text-align: center;
+    }
+

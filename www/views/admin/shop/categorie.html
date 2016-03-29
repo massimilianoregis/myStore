@@ -1,0 +1,46 @@
+<ion-content padding="false" scroll="true" has-bouncing="false" class="newshop">		
+						
+		<presentation-bar 
+					title="Nuovo Negozio" 
+					icon="ion-power" 
+					background="img/background.png" 
+					text="Poche informazioni, giusto quello che serve per capire cosa vendi"					
+					>				
+		</presentation-bar>		 
+		
+		<ion-list>			
+			<ion-item class="item item-divider">Negozio</ion-item>
+			<ion-item menu-close class="item-icon-left item-icon-right" ng-click="fb.pages()">
+				<i class="icon ion-social-facebook"></i>
+				Importa da facebook
+				<i class="icon ion-chevron-right"></i></ion-item>							
+		 	<label class="item item-input">		
+		 		<input type="text" placeholder="Name" ng-model="shop.name" name="name" required/>	      
+		    </label>				    							
+			<ion-item class="item item-divider">
+				<div ng-hide="firstLevel">Tipo di prodotti</div>
+				<div ng-show="firstLevel" ng-click="classRoot()"><i class="icon ion-chevron-left"></i>&nbsp;{{firstLevel.it}}</div>
+			</ion-item>			
+			<ion-slide-box delegate-handle="classes" show-pager="false">
+			  <ion-slide>
+			  	<ion-list>				    
+					<a class="item item-icon-right" ng-repeat="item in goodClasses" ng-class="{'positive':item.selected>0}" ng-click="selectClass(item)">
+					     {{item.it}}
+					    <div class="item-note" ng-show="item.selected>0">({{item.selected}})</div>
+					    <i class="icon ion-chevron-right"></i>
+					  </a>					   				  
+				</ion-list>
+			  </ion-slide>
+			  <ion-slide>
+				 <ion-list>			  	
+				  	<ion-checkbox ng-repeat="item in classChildren" ng-model="item.selected" ng-click="addClass(item)">{{item.it}}</ion-checkbox>		   			   
+				</ion-list>				  
+			  </ion-slide>
+			  
+			</ion-slide-box>		
+					
+		</ion-list>
+		
+		
+    </ion-content>
+    

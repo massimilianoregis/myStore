@@ -1,0 +1,46 @@
+<ion-view title="Who are we" hide-nav-bar="true">
+    			
+    <ion-content padding="false" scroll="true" class="whoare newshop">
+    		<presentation-bar 
+				title="Who are we" 
+				icon="ion-pin" 
+				background="{{shop.background}}" 
+				text="Una breve presentazione per far capire chi sei anche a chi non ti conosce"
+				on-save-click="saveShop('pub.admin.settings')"
+				>				
+			</presentation-bar>
+    <ion-list>  
+    	<ion-item class="item-divider">Gallery</ion-item>
+    	<div class="gallery">	    
+	    	<div class="row">	    	
+    			<div class="col-50" >
+    				<div ng-repeat="item in shop.whoAreWe.gallery" ng-if="$even" class="img">    				
+    					<i class="icon ion-close-circled remove" ng-click="shop.whoAreWe.gallery.splice($index,1)"></i>
+    					<img ng-src="{{item.img}}"/>
+    				</div> 
+    			</div>
+    			<div class="col-50">
+    				<div ng-repeat="item in shop.whoAreWe.gallery" ng-if="$odd" class="img">
+    					<i class="icon ion-close-circled remove" ng-click="shop.whoAreWe.gallery.splice($index,1)"></i>
+    					<img  ng-src="{{item.img}}"/>
+    				</div>
+    			</div>
+    		</div>	    	
+	    	<div class="row">
+    			<div class="col" >
+	    			<button class="button button-block icon ion-camera" ng-click="addImage()"></button>
+	    		</div>
+	    	</div>
+	    </div>
+    				                   
+		      		     						
+			<ion-item class="item-divider">Description</ion-item>						
+			<ion-item class="item-input">
+	    		<textarea ng-model="shop.whoAreWe.description" style="height:200px;"></textarea>
+	    	</ion-item>
+			<!--ion-item class="item-icon-left item-icon-right" ui-sref=".description"><i class="icon ion-ios-paper-outline"></i>Descrizione<i class="icon ion-chevron-right"></i></ion-item-->
+						
+		</ion-list>
+    </ion-content>
+    
+</ion-view>

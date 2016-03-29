@@ -1,0 +1,80 @@
+.bar.bar-positive
+	{
+	background:black;
+	}
+.tabs
+	{
+    background: black;
+    color: white;
+    }
+.menu-left .bar-header
+	{
+	background: rgba(0,0,0,.6);
+	}
+.menu-left .bar-header H1
+	{
+	color:white;
+	} 
+.bar.bar-positive.bar-footer 
+	{
+    background-image: linear-gradient(180deg, black, black 50%, transparent 50%);
+	}
+/*
+ion-item.item-text-wrap.item-complex
+		{
+		max-height: 100px;
+		overflow: hidden; !important
+		}
+	ion-item.item-text-wrap a
+		{
+		max-height: 100px;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	    -webkit-line-clamp: 4;
+	    display: -webkit-box;
+	    -webkit-box-orient: vertical;
+	    }
+
+	ion-item.profile
+		{
+		text-align:center;
+		}
+	ion-item.profile a
+		{
+		padding:15px;
+		}
+	ion-item.profile  div.avatar
+		{
+	    width: 100px;
+	    height: 100px;
+	    border: solid 4px white;
+	    border-radius: 100px;
+	    text-align: center;
+	    padding: 0;
+	    margin: auto;
+	    background-image: url(img/moto2.jpg);
+	    background-size:110px;
+	    }
+	    */
+
+	ion-side-menu[side=left] .item, ion-side-menu .item .item-content
+		{
+		background-color:transparent;
+		color:white;
+		}
+	ion-side-menu[side=left] .item-divider
+		{
+		background-color:rgba(0,0,0,.4)
+		}
+	/*ion-side-menu .list
+		{
+		background:linear-gradient(#eacf51, #9d0525);
+		}
+*/
+
+.item.active, .item.activated, .item-complex.active .item-content, .item-complex.activated .item-content, .item .item-content.active, .item .item-content.activated
+		{
+		border-color: #ccc;
+		background-color: rgba(0,0,0,.6);
+		font-weight: bold;
+		}

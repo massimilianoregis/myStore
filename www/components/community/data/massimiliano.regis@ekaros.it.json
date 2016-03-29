@@ -1,0 +1,32 @@
+{
+	"mail":"massimiliano.regis@gmail.com",
+	"background":"http://www.bestourism.com/img/items/big/1090/Canada_Canada-landscape_5903.jpg",
+	"img":"/img/moto2.jpg",
+	"first_name":"Massimiliano",
+	"last_name":"Regis",
+	"addresses":
+		{
+		"casa":{
+			"firstName":"Michela",
+			"lastName":"Manesco",
+			"line1":"via San Giovanni 1",
+			"line2":"",
+			"zip":"13898",
+			"city":"Occhieppo Superiore",
+			"country":"Italia",
+			"type":"home"
+			},
+		"ronco":{
+			"firstName":"Oriella",
+			"lastName":"Zaghi",			
+			"line1":"via Roma 72",
+			"line2":"",
+			"zip":"13845",
+			"city":"Ronco Biellese",
+			"country":"Italia",
+			"type":"work"
+			}
+		},
+	"shop":["1","3"],
+	"data":{}
+	}

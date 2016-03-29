@@ -1,0 +1,44 @@
+ 			<ion-view title="Offers">								                			
+                <ion-content padding="true" scroll="true">					                
+ 
+					<div class="list card" ng-repeat="item in list">
+					
+					  <div class="item item-avatar">		
+					  	<img src="http://lorempixel.com/40/40/city">					
+					    <h2>{{item.title}}</h2>
+					    <p>{{item.date|date:'MMMM dd, yyyy'}}</p>
+					  </div>
+					
+					  <div class="item item-body">							    
+					    <img class="full-image" src="http://lorempixel.com/400/400/city/{{$index}}/">
+					    <p>
+					      This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+					      the content is from a card-body consisting of an image and paragraph text. The footer
+					      consists of tabs, icons aligned left, within the card-footer.
+					    </p>
+					    <p>
+					      <a href="#" class="subdued">1 Like</a>
+					      <a href="#" class="subdued">5 Comments</a>
+					    </p>
+					  </div>
+					
+					  <div class="item tabs tabs-secondary tabs-icon-left">
+					    <a class="tab-item" href="#">
+					      <i class="icon ion-thumbsup"></i>
+					      Like
+					    </a>
+					    <a class="tab-item" href="#">
+					      <i class="icon ion-chatbox"></i>
+					      Comment
+					    </a>
+					    <a class="tab-item" href="#">
+					      <i class="icon ion-share"></i>
+					      Share
+					    </a>
+					  </div>
+					
+					</div>
+						
+					
+                </ion-content>
+            </ion-view>

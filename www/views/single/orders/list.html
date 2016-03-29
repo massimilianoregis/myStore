@@ -1,0 +1,29 @@
+
+<ion-view title="Ordini" class="ordini shop" show-footer>    	
+    	<ion-content>    		    	
+    		<div ng-if="orders==null || orders.length==0" style="text-align:center" class="icon ion-ios-cart-outline void">
+		 		<p>
+		 			Ciao!<BR> 
+		 			in questo momento non hai ordini.<BR>
+		 			Procedi ad un acquisto!
+		 		</p><BR>
+		 		<button class="button icon-left ion-home" ui-sref="pub.goods()">Torna indietro</button>
+		 	</div>
+		 	
+    	    <div ng-if="orders.length>0">
+    	    	<presentation-bar 
+				title="{{shop.name}}" 
+				icon="ion-ios-cart-outline" 
+				background="img/background.png" 				
+				>				
+			</presentation-bar>	       	    
+				<ion-list>												 
+					<ion-item class="item-divider">Orders</ion-item>											
+					<ion-item  ng-repeat="item in orders" class="item-icon-left" ng-class="item.status" ui-sref="pub.order({id:item.id,shop:item.shop})">
+						<i class="icon ion-ios-cart"></i>{{item.easycode}} {{item.date|date:"dd/MM/yyyy HH:mm"}}
+					</ion-item> 														
+				</ion-list>
+				
+			</div>		
+    	</ion-content>
+</ion-view>

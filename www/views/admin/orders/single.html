@@ -1,0 +1,89 @@
+<style>
+.closed
+	{
+	color:green;
+	border-bottom:solid 2px green;
+	}
+.new
+	{
+	color:red;
+	border-bottom:solid 2px red;
+	}
+.order .qta
+	{
+	text-align:center;
+	position:absolute;
+	left:50%;
+	width:60px;
+	margin-left:-30px;
+	font-size:20px;
+	}
+.order .img
+	{	
+	height:60px;
+	position:absolute;
+	top:0;
+	}
+.order P
+	{	
+	margin-left:60px;
+	}
+</style>
+
+<ion-view title="Order">				
+           <ion-content padding="false" scroll="true" class="shop order">
+                				<presentation-bar 
+				title="Orders" 
+				icon="ion-ios-cart-outline" 
+				background="{{shop.background}}" 
+				text="your orders are here... please remember its"
+				>				
+			</presentation-bar>	                   
+ 					<ion-list>
+ 						
+ 						<ion-item class="item-divider">Working</ion-item>	        		     						
+						<ion-item class="item-icon-left item-icon-right " ng-repeat="row in order.rows" ng-class="row.status">
+							<i class="icon ion-minus-circled" ng-show="row.inboxQta>0"  ng-click="sub(row)"></i>
+							<i class="icon ion-close-circled" ng-show="row.inboxQta==0" ng-click="stop(row)"></i>
+							<img ng-src="{{row.img}}" class="img">
+							<div class="qta">{{row.inboxQta}}/{{row.qta}}</div>
+							<H2>{{row.code}} </H2>
+							<p>{{row.name}}</p>							
+							<i class="icon ion-plus-circled" ng-if="row.inboxQta<row.qta" ng-click="add(row)"></i>
+						</ion-item>
+						<ion-item class="item-icon-right" ng-show="order.status=='topack'" ng-click="pack(order)">
+							Close the pack
+							<i class="icon ion-thumbsup"></i>
+						</ion-item>		
+						
+						<span ng-show="order.status=='packed' || order.status=='shipped'">
+						<ion-item class="item-divider">Shipping</ion-item>
+						
+						<ion-item class="item-icon-right" ng-click="send(order)">						
+							<B>{{order.shipping.firstName}} {{order.shipping.lastName}}</B><BR>
+							{{order.shipping.line1}}, {{order.shipping.zip}} {{order.shipping.city}} ({{order.shipping.country}})							
+						</ion-item>
+						<label class="item item-input">
+						    <span class="input-label">Courier</span>
+						    <input type="text" ng-model="order.shipping.courier">
+						  </label>
+						  <label class="item item-input">
+						    <span class="input-label">Track number</span>
+						    <input type="text" ng-model="order.shipping.courierTrack">
+						  </label>
+						  <ion-item class="item-icon-right" ng-click="send(order)">						
+							<B>Pacco inviato</B><BR>							
+							<i class="icon ion-thumbsup" ng-show="order.status=='packed'"></i>
+						</ion-item>
+						</span>
+						<ion-item class="item-divider">User data</ion-item>	 												
+ 						<ion-item class="item-icon-left item-icon-right" ui-sref="^.^.users.single.messages({mail:order.user})"><i class="icon ion-chatbubble-working"></i>{{order.shipping.firstName}} {{order.shipping.lastName}}<A ng-show="{{order.shipping.phone}}" href="tel:{{order.shipping.phone}}"><i class="icon ion-ios-telephone-outline"></i></A></ion-item>
+ 						<ion-item class="item-icon-right" ng-show="order.status=='shipped'"> 							
+ 							waiting for client the response...
+ 							<I class="icon ion-loading-a"></I>
+ 						</ion-item>						
+					</ion-list>
+
+					
+                </ion-content>
+            </ion-view>

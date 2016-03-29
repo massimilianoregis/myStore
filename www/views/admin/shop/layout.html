@@ -1,0 +1,32 @@
+<ion-view ng-controller="sliderController" class="wizard">
+
+	<!-- admin/shop/layout.html -->
+	<form name="form" ng-submit="saveShop(form)" novalidate>	 
+		<div class="close ion-close-circled" ui-sref="shops.list"></div>
+		<div class="save ion-checkmark-circled" ng-click="saveShop(form)"></div>
+	
+		<ion-content padding="false" scroll="false" has-bouncing="false">		
+			<ion-slide-box on-slide-changed="change()" delegate-handle="wizard">
+			  <ion-slide>
+			    <ng-include src="'views/admin/shop/categorie.html'"/>
+			  </ion-slide>
+			  <ion-slide>
+			    <ng-include src="'views/admin/shop/currency.html'"/>
+			  </ion-slide>
+			  <ion-slide>
+			    <ng-include src="'views/admin/shop/gallery.html'"/>
+			  </ion-slide>
+			  <ion-slide>
+			    <ng-include src="'views/admin/shop/colors.html'"/>
+			  </ion-slide>
+			</ion-slide-box>
+		</ion-content>
+	</form>
+	
+	<ion-footer-bar class="bar-positive">
+    	<button class="button button-small button-clear icon-left ion-chevron-left" ng-show="hasBack" ng-click="backSlide()">BACK</button>
+    	<button class="button button-small button-clear icon-right ion-chevron-right" ng-show="hasNext"  ng-click="nextSlide()">NEXT</button>		
+    </ion-footer-bar>
+	<!--ion-nav-view></ion-nav-view-->
+	<!--/ admin/shop/layout.html -->
+</ion-view>

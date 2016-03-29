@@ -1,0 +1,89 @@
+<style>
+.goods.lista.admin .close
+	{
+	position: absolute;
+    top: -5px;
+    right: -5px;
+    opacity: 1;
+    font-size: 30px;
+	}
+ .goods .placeholder
+ 	{
+ 	min-height:200px;
+ 	}
+</style>
+
+<ion-view class="goods lista admin" title="{{activeGroup}}">
+ 				
+ 			
+ 			<ion-content scroll="false" padding="false">
+ 			
+ 			<div ng-if="list.length==0" style="text-align:center" class="icon ion-ios-cart void">
+		 		<p>
+		 			Ciao!<BR> 
+		 			in questo momento non hai prodotti.<BR>
+		 			Ti consigliamo di aggiungere subito il tuo primo prodotto
+		 		</p><BR>
+		 		<button class="button icon-left ion-pricetag"  ng-click="addGood()">Aggiungi</button>
+		 	</div>
+		 	
+		 	
+ 			<span  ng-if="list!=null && list.length>0" ng-controller="sliderController">         	  		
+	 		<ion-slide-box  on-slide-changed="change($index)">	 		
+
+	  			<ion-slide ng-repeat="i in groups" ng-init="updateSlider()"> 				
+	  				<ion-content scroller scroll="true" padding="false" start-y="80" delegate-handle="main">	  						
+	  				<div>
+	  					
+	  					<div class="list list-inset">
+	  						<label class="item item-input">	  						
+            				<i class="icon ion-search placeholder-icon"></i><input type="text" placeholder="to search..." ng-model="filter">
+            				</label>
+            			</div>  
+            			          				 
+
+            			 <div class="row">
+	            			 <div class="col col-50">
+	            			 	<div class="good">			    	            			 	
+								    	<img ng-src="{{shop.placeholder}}" ng-click="addGood(activeGroup)"/>								    	
+								   		<DIV class="name">Nuovo Prodotto</DIV>
+			                    </div>
+			                    <div class="good" ng-repeat="item in list | filter:{categories:i.name,name:filter}" ng-if="$odd">
+			                    		<div class="close" ng-click="removeGood(item,list)"><I class="icon ion-close-circled"></I></div>
+										
+										<div ng-bkg="{{shop.placeholder}}" class="placeholder">													    				    
+								    		<img imagenie="{{item.gallery[0].img}}" ui-sref="^.item({id:item.id})">
+								    	</div>								    	
+								    	
+								   		<DIV class="name">{{item.name}}</DIV>
+			                    </div>
+			                </div>  				            			  
+	            			 <div class="col col-50">	            		            			 		
+	            			 	<div class="good" ng-show="groupDetail[i.name]==null && groupDetail[i.id]==null" ng-click="removeGroup(i); ">			                    															    				    
+								    	<ion-item class="item-icon-right item-text-wrap "><i class="icon ion-ios-trash" ng-class="item.icon"></i>Cancella questa categoria</ion-item>
+								   		
+			                    </div>
+			                    <div class="good" ng-repeat="item in list | filter:{categories:i.name,name:filter}" ng-if="$even">
+										<div class="close" ng-click="removeGood(item,list)"><I class="icon ion-close-circled"></I></div>
+								    	
+								    	<div ng-bkg="{{shop.placeholder}}" class="placeholder">				    	
+								    		<img imagenie="{{item.gallery[0].img}}" ui-sref="^.item({id:item.id})">
+								    	</div>
+								    	
+								   <DIV class="name">{{item.name}}</DIV>
+			                    </div>
+			                </div>
+		                </div>
+		                
+					</div>
+					
+	               
+					</ion-content>													
+				</ion-slide>										
+			</ion-slide-box>
+			</span>
+			</ion-content>	
+			
+			
+					
+            </ion-view>

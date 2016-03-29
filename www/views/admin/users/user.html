@@ -1,0 +1,33 @@
+<ion-view title="{{client.email}}" class="newgood singleUser">
+<!-- admin/prodotti/categorie.html -->
+    <form ng-submit="go('^.gallery')">
+    	
+    <ion-content padding="false" scroll="true" ng-controller="shopController">    	      	 
+		<ion-list>			
+			<div ng-bkg="{{client.avatar|resize:200:200}}" class="avatar"></div>
+			<presentation-bar 
+				title="{{client.firstName}} {{client.lastName}}" 
+				icon="ion-person" 
+				background="{{client.background||shop.background}}" 
+				text=""				
+				>				
+			</presentation-bar>
+			
+			  
+			<ion-item class="item item-divider">New Item</ion-item>
+			
+			<a class="item item-icon-left item-icon-right" ui-sref="pub.admin.users.single.messages">
+			    <i class="icon ion-chatbubbles"></i>
+			    Chat
+			    <i class="icon ion-chevron-right"></i>
+			  </a>
+		 	
+			
+		</ion-list>
+	
+	
+    </ion-content>
+   
+    </form>
+<!-- admin/prodotti//categorie.html -->
+</ion-view>

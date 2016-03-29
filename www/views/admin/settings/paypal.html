@@ -1,0 +1,55 @@
+<ion-view title="Dati legali" class="newshop" hide-nav-bar="true">
+    			
+    <ion-content padding="false" scroll="true" class="whoare" ng-controller="paypalEditController">
+    		<presentation-bar 
+				title="Paypal" 
+				icon="fa fa-paypal" 
+				background="{{shop.background}}" 
+				text=""
+				on-save-click="saveShop('pub.admin.settings')"
+				>				
+			</presentation-bar>
+    
+    	<div class="list">    
+    		  <label class="item item-divider item-icon-right">Informazioni</label>
+    		  <ion-item class="item-text-wrap">
+    		  	La procedura di registrazione su paypal può essere complessa....
+    		  </ion-item>
+    		  <label ng-click="credential.show()" class="item item-divider item-icon-right">Credential<i class="icon ion-information-circled"></i></label>    		 
+    		  <label class="item item-input">
+			    <input type="text" placeholder="Mail" ng-model="shop.email">
+			  </label>
+			  <label class="item item-input">
+			    <input type="text" placeholder="Client id" ng-model="shop.paypal.clientId">
+			  </label>
+			  <label class="item item-divider">Privacy Policy</label>
+			  <label class="item item-input">
+			    <textarea ng-model="shop.paypal.privacy"></textarea>
+			  </label>
+			  <label class="item item-divider">User Agreement</label>
+			  <label class="item item-input">
+			    <textarea ng-model="shop.paypal.agreement"></textarea>
+			  </label>
+		</div>
+		
+		<!--button class="button button-full button-positive" ng-click="save()">Save</button-->
+    </ion-content>
+    
+</ion-view>
+
+
+<script id="paypal/credential.html" type="text/ng-template">
+ <ion-modal-view>
+    <ion-header-bar class="bar-positive"">      
+        <h1 class="title">Paypal credentials</h1>
+    	<div class="button button-clear" ng-click="credential.hide()"><span class="icon ion-close"></span></div>      
+    </ion-header-bar>
+    <ion-content class="lista">
+		<div class="row">
+			<div class="col-50">
+				testo 123...testo
+			</div>
+		</div>
+    </ion-content>
+  </ion-modal-view>
+ </script>
