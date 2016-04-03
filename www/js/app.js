@@ -54,6 +54,55 @@ angular.module("inpub",[
 		});	
 	return result;
 	}])
+.service("$beacon",["$state","$cordovaLocalNotification","$cordovaBeacon","$rootScope","$cordovaVibration",function($state,$cordovaLocalNotification,$cordovaBeacon,$rootScope,$cordovaVibration){
+	
+	
+	
+	$rootScope.$on('$cordovaLocalNotification:click', function(event, n, state) 
+		{				
+		var data = angular.fromJson(n.data)
+		if(data.type=='good')
+			$state.go("pub.item",{shop:data.shop,id:data.id,name:data.name});
+		});
+	$rootScope.$on('$cordovaBeacon:didEnterRegion', function(event, result) 
+		{							
+		 var msg ={
+            	id:Math.random(),
+            	title:"Sei vicino",
+            	text:result.region.identifier,
+            	data:{
+            		shop:'5505e0d5-b23e-4b10-8550-f6445b75ca75',
+            		id:'0.15285666869021952',
+            		name:'Ulisse di Milo Manara',
+            		type:'good'}		 
+            };
+		 $cordovaLocalNotification.schedule(msg);
+		});
+	
+	return {
+		clearAll:function(){
+			$cordovaBeacon.getMonitoredRegions().then(function(data)
+				{
+				console.log(data);
+				angular.forEach(data,function(item)
+					{
+					$cordovaBeacon.stopMonitoringForRegion(item);	
+					})									
+				})			
+			},
+		addList:function(list)
+			{
+			for(item in list)
+				this.add(list[item].uuid,list[item].name,list[item].minor,list[item].major);
+			},
+		add:function(uuid,name,minor,major){			
+				if(name==null) name=uuid;
+				var beacon = $cordovaBeacon.createBeaconRegion(name,uuid,major,minor,true);
+				$cordovaBeacon.requestAlwaysAuthorization();
+				$cordovaBeacon.startMonitoringForRegion(beacon);
+			}	
+	};
+}])
 .service("templates",["$resource",function($resource){
 	return $resource("http://95.110.228.140:8080/openIndex/template/templates.json");
 }])
@@ -160,11 +209,18 @@ angular.module("inpub",[
 		$scope.data.push({from:from,message:message});
 		}
 	}])
-.run(["$rootScope","$ionicPlatform","community",function($rootScope,$ionicPlatform,community){
+.run(["$beacon","$rootScope","$ionicPlatform","community",function($beacon,$rootScope,$ionicPlatform,community){
 	    
 	 $ionicPlatform.ready(function() {
 		 	
-
+		 	try{
+		 		$beacon.clearAll();
+				$beacon.add("ACFD065E-C3C0-11E3-9BBE-1A514932AC01","Ulisse di Milo Manara");
+				}
+			catch (e) {
+				alert("add beacon error "+e);
+			}
+			
 		    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
 		      
 		      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -376,7 +432,9 @@ angular.module("inpub",[
 					    if(payload.type=="order" && payload.target=="shop")
 					    	$state.go("pub.admin.orders.item",{shop:payload.to,id:payload.from})
 					    if(payload.type=="order" && payload.target=="user")
-					    	$state.go("pub.order",{id:payload.from})
+					    	$state.go("pub.order",{id:payload.from})					    
+					    if(payload.type=="good")
+					    	$state.go("pub.item",{shop:payload.shop,id:payload.id,name:payload.name})
 					  },
 					  "onRegister": function(data) {
 					    console.log(data.token);
@@ -396,8 +454,8 @@ angular.module("inpub",[
 			}
 	};
 }])
-.controller("appController",["countries","$interval","$ionicLoading","$timeout","$sce","ngToast","$locale","notification","$cordovaTouchID","$cordovaVibration","$cordovaToast","$rootScope","$ionicPlatform","$ionicNavBarDelegate","community","shop","$cordovaSocialSharing","pubs","$stateParams","$scope","groups","$ionicSlideBoxDelegate","config","$ionicModal","$ionicSideMenuDelegate","basket","popup","user","$http","order","$ionicScrollDelegate","$state","currency",
-                             function(countries,$interval,loader,$timeout,$sce,ngToast,$locale,notification,$cordovaTouchID,$cordovaVibration,$cordovaToast,$rootScope,$ionicPlatform,$ionicNavBarDelegate,community,shop,$cordovaSocialSharing,pubs,$stateParams,$scope,groups,$ionicSlideBoxDelegate,config,$ionicModal,$ionicSideMenuDelegate,basket,popup,user,$http,order,$ionicScrollDelegate,$state,currency)
+.controller("appController",["$beacon","countries","$interval","$ionicLoading","$timeout","$sce","ngToast","$locale","notification","$cordovaTouchID","$cordovaVibration","$cordovaToast","$rootScope","$ionicPlatform","$ionicNavBarDelegate","community","shop","$cordovaSocialSharing","pubs","$stateParams","$scope","groups","$ionicSlideBoxDelegate","config","$ionicModal","$ionicSideMenuDelegate","basket","popup","user","$http","order","$ionicScrollDelegate","$state","currency",
+                             function($beacon,countries,$interval,loader,$timeout,$sce,ngToast,$locale,notification,$cordovaTouchID,$cordovaVibration,$cordovaToast,$rootScope,$ionicPlatform,$ionicNavBarDelegate,community,shop,$cordovaSocialSharing,pubs,$stateParams,$scope,groups,$ionicSlideBoxDelegate,config,$ionicModal,$ionicSideMenuDelegate,basket,popup,user,$http,order,$ionicScrollDelegate,$state,currency)
     {				
 	
 	$scope.sliding=function(slider,name)
