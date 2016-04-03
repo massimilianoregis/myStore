@@ -2,3 +2,6 @@
 1.0.1
 	-fix login 
 	-fix placeholder visualization
+	-fix 'passo in negozio' address list
+	-fix shrink original position
+	-new slide and shop build errors message
