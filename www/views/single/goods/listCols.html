@@ -32,10 +32,11 @@
  			<span ng-if="groups.length>1"> 			
  			<ion-content  scroll="false" padding="false" class="has-footer shrink" style="padding-top: 0px !important;">	 				 
 	 			<span  ng-controller="sliderController"> 				
-		 		<ion-slide-box on-slide-changed="change($index)" active-slide="active">	 		  		 					
-		  			<ion-slide ng-repeat="i in groups" ng-init="updateSlider($index)" class="gooditem"> 				
-		  				<ion-content class="shrink" scroller scroll="true" style="padding-top:90px" padding="false" start-y="0" delegate-handle="main" header-shrink>
-		  					
+		 		<ion-slide-box on-slide-changed="change($index); openHeader();" active-slide="active">
+		 			 		  		 					
+		  			<ion-slide ng-repeat="i in groups" ng-init="updateSlider($index)" class="gooditem">
+		  				  				
+		  				<ion-content class="shrink" scroller scroll="true" style="padding-top:90px" padding="false" start-y="0" delegate-handle="main" header-shrink>		  					
 	            			 <div class="row" ng-if="$index>=current-1 && $index<=current+1" >
 		            			 <div class="col col-50">		            			 
 				                    <div class="gooditem" ng-include="'views/single/goods/box.html'" ng-repeat="item in list | filter:{categories:i.name,name:search.value}" ng-if="$even"></div>

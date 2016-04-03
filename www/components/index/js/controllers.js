@@ -12,11 +12,7 @@ angular.module("ngIndex.controllers",["ngBase"])
 	$scope.cerca=function()	{
 		$scope.newAuthor=false;
 	}
-	$scope.beacon=false;
-	$scope.addBeacon=function(){
-		debugger;
-		$scope.beacon=true;
-	}
+	
 }])
 .controller("indexPricingController",["$scope","pricing","config",function($scope,pricing,config)
    {
@@ -91,7 +87,8 @@ angular.module("ngIndex.controllers",["ngBase"])
      }])
 .controller("indexController",["$timeout","goodType","$ionicActionSheet","$ionicModal","$stateParams","$ionicHistory","indexItems","$scope","$state","wish","basket","groups","catalogues","$q","popup",
                               function($timeout,goodType,$ionicActionSheet,$ionicModal,$stateParams,$ionicHistory,items,$scope,$state,wish,basket,groups,catalogues,$q,popup)
-    {
+    {	
+	
 	
 	$scope.$root.cls="indexlist";
 	$scope.$root.activeGroup=$stateParams.groupName;	
@@ -220,6 +217,7 @@ angular.module("ngIndex.controllers",["ngBase"])
 	$scope.wish=wish;
 	$scope.items = [];
 	
+	
 	$scope.item 	= {name:$stateParams.name,discount:null,price:null,base:null};	
 	items.get({id:$stateParams.id,shop:shop},function(data)
 			{				
@@ -291,11 +289,21 @@ angular.module("ngIndex.controllers",["ngBase"])
 .controller("indexSingleEditController",["popup","$sce","$ionicHistory","$stateParams","indexItems","$scope","$state","groups","pricing","config","upload",
                                          function(popup,$sce,$ionicHistory,$stateParams,items,$scope,$state,groups,pricing,config,upload)
     {			
+	
+	$scope.data = {};
+	
+	
 	var shop= $stateParams.shop||config.shop.base;
 	$scope.colors=false;
 	$scope.addColors=function()
 		{
 		$scope.colors=true;
+		}
+	
+	$scope.beacon=false;
+	$scope.addBeacon=function()
+		{		
+		$scope.beacon=true;
 		}
 	
 	$scope.groups=groups;
@@ -317,13 +325,14 @@ angular.module("ngIndex.controllers",["ngBase"])
 		}
 	$scope.inGroup=false;
 	$scope.inGroupCount=function(data)
-		{		
+		{				
 		if(data == null) data =$scope.item; 
-		$scope.inGroup=false;
+		var result=0;
 		angular.forEach(data.groups,function(item)
 			{
-			if(item.checked) $scope.inGroup=true;
-			})		
+			if(item.checked) result++;
+			})	
+		return result;
 		}
 	
 	
@@ -340,12 +349,13 @@ angular.module("ngIndex.controllers",["ngBase"])
 	
 	$scope.save=function(stateok)
 		{
-		var errors=[];				
-		if(this.item.name=="") 				errors.push({txt:"choice a name"});		
-		if($scope.isGroupRequired()) 		errors.push({txt:"choice at least one category"});
-		if(this.item.gallery.length==0) 	errors.push({txt:"choice at least one image"});
-		if(errors.length>0)					return alert(errors);
 		debugger;
+		var errors=[];				
+		if(this.item.name=="") 					errors.push({txt:"choice a name"});		
+		if($scope.inGroupCount(this.item)==0)	errors.push({txt:"choice at least one category"});
+		if(this.item.gallery.length==0) 		errors.push({txt:"choice at least one image"});
+		if(errors.length>0)						return alert(errors);
+		
 		var obj = 
 			{
 			"name":this.item.name,
@@ -357,6 +367,7 @@ angular.module("ngIndex.controllers",["ngBase"])
 			"prices":[],	
 			"categories":[],
 		 	"gallery":[],
+		 	"qta":this.item.qta,
 			"extra":this.item.extra,
 			"shop":shop
 		 	}		
@@ -405,6 +416,7 @@ angular.module("ngIndex.controllers",["ngBase"])
 		
 		if(data.gallery==null) data.gallery=[];			
 		$scope.colors=data.colors!=null;
+		
 		groups.query({shop:shop},function(groups)
 			{							
 			angular.forEach(groups,function(cat)
@@ -451,7 +463,7 @@ angular.module("ngIndex.controllers",["ngBase"])
 		return;}
 	
 	items.get({id:$stateParams.id,shop:shop},function(data)
-		{				
+		{					
 		$scope.item=filter(data);
 		console.log($scope.item);
 		$scope.$root.item=$scope.item;	
@@ -603,27 +615,36 @@ angular.module("ngIndex.controllers",["ngBase"])
 		$scope.setShipping(value);
 		$scope.add=false;
 		}
-	$scope.setShipping=function(value)
-		{			
-		
-		value.country;
-		value.area;
+	$scope.setShipping=function(value,name, price)
+		{							
 		basket.get($scope.shop.id,function(bsk)
 			{
-			var country 	= value.country.toLowerCase();
-			var area	 	= value.area.toLowerCase();
-			bsk.shipping=value;
-			
-			var curShipping = $scope.shop.shipping[$locale.NUMBER_FORMATS.CURRENCY];
-			var shipping=null;
-			angular.forEach(curShipping,function(price,sh)
+			if(price==null)
 				{
-				if(sh=="europe")		sh="EU";
-				if(sh=="world" && shipping==null) 	shipping	= price;
-				if(sh==country) 					shipping	= price;
-				if(sh==area && shipping==null) 		shipping	= price;
-				})
-			bsk.shipping.price=shipping;
+				var country 	= value.country.toLowerCase();
+				var area	 	= null
+				if(value.area!=null) area = value.area.toLowerCase();
+				bsk.shipping=value;
+				
+				var curShipping = $scope.shop.shipping[$locale.NUMBER_FORMATS.CURRENCY];
+				var shipping=null;
+				angular.forEach(curShipping,function(price,sh)
+					{
+					if(sh=="europe")		sh="EU";
+					if(sh=="world" && shipping==null) 	shipping	= price;
+					if(sh==country) 					shipping	= price;
+					if(sh==area && shipping==null) 		shipping	= price;
+					});
+				bsk.shipping.price=shipping;
+				}
+			else
+				{
+				bsk.shipping=value;
+				bsk.shipping.price=price;
+				bsk.shipping.name=name;
+				}
+			
+			
 			bsk.calc();
 			})
 		

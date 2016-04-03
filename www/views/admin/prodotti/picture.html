@@ -7,39 +7,40 @@
 		
 		<ion-content padding="false" scroll="false" has-bouncing="false" ng-controller="paintingController" >
 				
-		<ion-slide-box on-slide-changed="change()" delegate-handle="wizard">	
-		  <ion-slide>
+		<ion-slides  options="{loop: false,effect: 'slide',speed: 500}"  slider="data.slider">
+		  <ion-slide-page name="categorie">
 		    <ng-include src="'views/admin/prodotti/categorie.html'"/>
-		  </ion-slide>
-		  <ion-slide>
+		  </ion-slide-page>
+		  <ion-slide-page name="gallery">
 		    <ng-include src="'views/admin/prodotti/gallery.html'"/>
-		  </ion-slide>
+		  </ion-slide-page>
 		  <ion-slide>
 		    <ng-include src="'views/admin/prodotti/painting.html'"/>
 		  </ion-slide>
 		  <ion-slide>
 		    <ng-include src="'views/admin/prodotti/autore.html'"/>
 		  </ion-slide>
-		  <ion-slide>
+		  <ion-slide-page name="prezzi">
 		    <ng-include src="'views/admin/prodotti/prezzi.html'"/>
-		  </ion-slide>
-		  <ion-slide>
+		  </ion-slide-page>
+		  <ion-slide-page name="descrizione">
 		    <ng-include src="'views/admin/prodotti/descrizione.html'"/>
-		  </ion-slide>
-		  <ion-slide ng-if="beacon">
+		  </ion-slide-page>		  
+		  <ion-slide-page name="beacon" ng-if="beacon">
 		    <ng-include src="'views/admin/prodotti/beacon.html'"/>
-		  </ion-slide>
-		  <ion-slide ng-if="!beacon">
+		  </ion-slide-page>
+		  <ion-slide-page ng-if="!beacon">
 		    <ng-include src="'views/admin/prodotti/optionPicture.html'"/>
-		  </ion-slide>
-		</ion-slide-box>
+		  </ion-slide-page>
+		</ion-slides>
+		
 	</ion-content>
 	</form>
 	<!--ion-nav-view cache-view='false'></ion-nav-view-->
 	<!-- /admin/prodotti/layout.html -->
 	<ion-footer-bar class="bar-positive">
-    	<button class="button button-small button-clear icon-left ion-chevron-left" ng-show="hasBack" ng-click="backSlide()">BACK</button>
-    	<button class="button button-small button-clear icon-right ion-chevron-right" ng-show="hasNext"  ng-click="nextSlide()">NEXT</button>		
+    	<button class="button button-small button-clear icon-left ion-chevron-left" ng-hide="data.slider.isBeginning" ng-click="data.slider.slidePrev()">BACK</button>
+    	<button class="button button-small button-clear icon-right ion-chevron-right" ng-hide="data.slider.isEnd"  ng-click="data.slider.slideNext()">NEXT</button>		
     </ion-footer-bar>
     
 </ion-view>

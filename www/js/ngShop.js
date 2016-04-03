@@ -60,7 +60,7 @@ angular.module("ngShop",["ngBase","ngCommunity","ngToast"])
 .controller("shopController",["goodType","$cordovaFacebook","$timeout","$ionicModal","popup","wish","gps","$ionicSlideBoxDelegate","goodClass","community","$state","$rootScope","$state","injectCSS","$scope","upload","shop","$stateParams","config","user","basket","$locale",
                       function(goodType,$cordovaFacebook,$timeout,$ionicModal,popup,wish,gps,$ionicSlideBoxDelegate,goodClass,community,$state,$rootScope,$state,injectCSS,$scope,upload,shop,$stateParams,config,user,basket,$locale){	
 	var id = $stateParams.shop;	
-	
+	$scope.data = {};	
 	
 	$scope.fb={
 		showPagesList:function(){
@@ -126,7 +126,7 @@ angular.module("ngShop",["ngBase","ngCommunity","ngToast"])
 		$scope.classChildren=[];
 		$scope.classRoot=function(){
 			$scope.firstLevel=null;
-			$ionicSlideBoxDelegate._instances[1].previous();
+			$ionicSlideBoxDelegate._instances[0].previous();
 			//$ionicSlideBoxDelegate.$getByHandle("classes").previous();
 			}
 		$scope.selectClass=function(item){					
@@ -137,7 +137,7 @@ angular.module("ngShop",["ngBase","ngCommunity","ngToast"])
 				item.selected=$scope.shop.goodClasses.indexOf(item)>=0;
 				})			
 			//$ionicSlideBoxDelegate.$getByHandle("classes").next()
-			$ionicSlideBoxDelegate._instances[1].next();
+			$ionicSlideBoxDelegate._instances[0].next();
 			}
 		$scope.addClass=function(item){			
 			if(!item.selected)
@@ -285,14 +285,47 @@ angular.module("ngShop",["ngBase","ngCommunity","ngToast"])
 		txt+="</UL>"
 		return popup.show("Errors",txt,[{text:"close"}]);
 		}
-	
+	function currenciesCount(data)
+		{				
+		if(data == null) data =$scope.shop; 
+		var result=0;
+		angular.forEach(data.currencies,function(item)
+			{
+			if(item.selected) result++;
+			})	
+		return result;
+		}
 	
 	$scope.saveShop=function(go){		
-		var errors=[];				
-		if($scope.shop.name=="")	 			errors.push({txt:"choice a name"});
-		if($scope.shop.goodClasses.length==0)	errors.push({txt:"at least one category"});
-		if($scope.shop.gallery.length==0)		errors.push({txt:"at least one photo"});				
-		if($scope.shop.style==null)				errors.push({txt:"at least one style"});
+		var errors=[];
+			
+		if($scope.shop.name=="")	 			
+			{
+			errors.push({txt:"choice a name"});
+			$scope.sliding($scope.data.slider,'categorie');
+			$scope.enterName=true;			
+			}
+		if($scope.shop.goodClasses.length==0)	
+			{
+			errors.push({txt:"at least one category"});
+			if(errors.length==1) $scope.sliding($scope.data.slider,'categorie');
+			$scope.enterClasses=true;
+			}
+		if(currenciesCount($scope.shop)==0)
+			{
+			errors.push({txt:"at least one currency"});
+			if(errors.length==1) $scope.sliding($scope.data.slider,'currencies');			
+			}
+		if($scope.shop.gallery.length==0)		
+			{
+			errors.push({txt:"at least one photo"});				
+			if(errors.length==1) $scope.sliding($scope.data.slider,'gallery');			
+			}
+		if($scope.shop.style==null)				
+			{
+			errors.push({txt:"at least one style"});
+			if(errors.length==1) $scope.sliding($scope.data.slider,'style');
+			}
 		if(errors.length>0)						return alert(errors);		
 		
 		if($scope.shop.background==null) $scope.shop.background=$scope.shop.gallery[0].img;

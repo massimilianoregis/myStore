@@ -12,11 +12,11 @@
 			</presentation-bar>
 			  
 			<ion-item class="item item-divider">Options</ion-item>
-			
+						
 		 	<ion-item>
-		 		<button class="button button-block button-positive" ng-click="addColors(); updateSlider();" ng-hide="colors">Voglio aggiungere dei colors</button>		 		
-		 	</ion-item>				    			
-			
+		 		<A class="button button-block button-positive" ng-hide="colors" ng-click="addColors(); sliding(data.slider,'colors');">Voglio aggiungere dei colori</A>
+		 		<A class="button button-block button-positive" ng-hide="beacon" ng-click="addBeacon(); sliding(data.slider,'beacon');">Voglio aggiungere iBeacon</A>		 		
+		 	</ion-item>				    				
 		</ion-list>
 		
     </ion-content>    

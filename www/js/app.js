@@ -400,6 +400,23 @@ angular.module("inpub",[
                              function(countries,$interval,loader,$timeout,$sce,ngToast,$locale,notification,$cordovaTouchID,$cordovaVibration,$cordovaToast,$rootScope,$ionicPlatform,$ionicNavBarDelegate,community,shop,$cordovaSocialSharing,pubs,$stateParams,$scope,groups,$ionicSlideBoxDelegate,config,$ionicModal,$ionicSideMenuDelegate,basket,popup,user,$http,order,$ionicScrollDelegate,$state,currency)
     {				
 	
+	$scope.sliding=function(slider,name)
+		{
+		
+		var pos=0;
+		for(i in slider.slides)
+			{			
+			try{if($(slider.slides[i]).attr("name")==name)			
+				slider.slideTo(pos);				}
+			catch(e){}
+			
+			pos++;
+			}
+		}
+	
+	$scope.openHeader=function(){
+		$scope.$root.$emit("open-header");
+	}
 	//comunicazioni
 	/*
 	$timeout(function()
@@ -618,6 +635,7 @@ angular.module("inpub",[
 		}
 	$scope.updateSlider = function (index) {					    	    
 	    $scope.change();
+	    $scope.slideTo(index);
 		}
 	$scope.slideTo = function (index) {
 		if(index<0) return;

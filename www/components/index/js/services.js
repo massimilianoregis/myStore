@@ -246,6 +246,7 @@ angular.module("ngIndex.services",[])
 	   	   {		   
 		   row.obj.row=null;
 		   row.obj.inBasket=false;
+		   row.obj.bskQta=0;
 		   row.qta=0;
 		   this.rows.splice(act.rows.indexOf(row),1);	
 		   this.total-=parseFloat(row.price);
@@ -266,7 +267,7 @@ angular.module("ngIndex.services",[])
 	   total:0,
 	   sub:function(obj)
 	   	   {
-		   if(obj.row!=null) 	obj.row.qta--;
+		   if(obj.row!=null) 	{obj.row.qta--;  obj.bskQta--;}
 		   if(obj.row.qta>0) return this.calc();
 		   
 		   this.remove(obj.row);
@@ -275,7 +276,7 @@ angular.module("ngIndex.services",[])
 	   	   },
 	   sum:function(obj,shop)
 	   	   {		   
-		   if(obj.row!=null) 	obj.row.qta++;
+		   if(obj.row!=null) 	{obj.row.qta++; obj.bskQta++;}
 		   else 				this.add(obj);
 		   this.calc();
 	   	   },
@@ -298,8 +299,8 @@ angular.module("ngIndex.services",[])
 				basket:act,
 				img:obj.gallery[0].img,
 				code:obj.code,
-				sum:function(){this.qta++; this.calc();},
-				sub:function(){this.qta--;this.calc();},
+				sum:function(){this.qta++; this.obj.bskQta++; this.calc();},
+				sub:function(){this.qta--; this.obj.bskQta--; this.calc();},
 				calc:function()
 					{
 					this.price=this.obj.price;
@@ -317,7 +318,7 @@ angular.module("ngIndex.services",[])
 			    row.img = extra.color.image;
 			    row.code=obj.code+"-"+extra.color.name;
 			   	}
-		   
+		   obj.bskQta=1;
 		   obj.inBasket=true;
 		   obj.row=row;		  
 		   

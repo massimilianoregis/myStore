@@ -21,7 +21,7 @@
 	      		<B>{{address.name}}</B><BR>
 	      		{{address.line1}} {{address.zip}} {{address.city}} {{address.country}}
       		</ion-radio>										
-			<ion-radio ng-show="shop.address" ng-model="choice" ng-click="setShippingToShop(shop.address)">
+			<ion-radio ng-show="shop.address" ng-model="choice" ng-click="setShipping(shop.address,'In Negozio',0)">
 				<B>Passo in negozio</B><BR>
 				{{shop.address.line1}} {{shop.address.zip}} {{shop.address.city}} {{shop.address.country}}
 			</ion-radio>

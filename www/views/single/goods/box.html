@@ -10,7 +10,7 @@
     		<i class="icon positive ion-ios-minus" ng-show="item.row.qta>0"></i>
     	</div>
     	<div class="qta positive" ng-show="item.row.qta>0">{{item.row.qta}}</div>
-    	<div class="add" ng-click="basket.sum(item)">
+    	<div class="add" ng-show="item.qta-item.bskQta>0 || item.qta==null" ng-click="basket.sum(item)">
     		<i class="icon positive" ng-class="{'ion-ios-cart':item.row==null,'ion-ios-plus':item.row.qta>0}"></i>
     	</div>
    	</div>

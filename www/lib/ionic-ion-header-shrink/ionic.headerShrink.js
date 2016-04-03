@@ -1,10 +1,8 @@
 angular.module('ionic.ion.headerShrink', [])
-.directive('headerShrink', function($document) {
+.directive('headerShrink', function($interval,$document) {
     var fadeAmt;
-    var shrink = function(tabs, subHeader, header, delta) {
-    	
-        ionic.requestAnimationFrame(function() { 
-          
+    var shrink = function(tabs, subHeader, header, delta) {    	
+        ionic.requestAnimationFrame(function() {           
           var y = (subHeader.y||0)+delta;
           if(y<0) y=0;
           if(y>subHeader.outerHeight()+header.outerHeight()) y=subHeader.outerHeight()+header.outerHeight();                  	 
@@ -22,15 +20,19 @@ angular.module('ionic.ion.headerShrink', [])
          
         	
           y = (tabs.y||0)+delta;
-          if(y<tabs.outerHeight() && y>0)
-        	  {
-        	  tabs.y =y;
-        	  tabs.css(ionic.CSS.TRANSFORM,'translate3d(0,' + tabs.y + 'px, 0)');
-        	  }
+          if(y<0) y=0;
+          if(y>tabs.outerHeight()) y=tabs.outerHeight();
+  
+          tabs.y =y;        	  
+          tabs.css(ionic.CSS.TRANSFORM,'translate3d(0,' + tabs.y + 'px, 0)');
+        	
         });
+        
+        return ((subHeader.y||0)+delta)<0;
+        //return ((header.y||0)+delta)<0;
       };
     return {
-      restrict: 'A',
+      restrict: 'A',      
       link: function($scope, $element, $attr) {
         var starty = 0;
         var shrinkAmt;
@@ -51,9 +53,20 @@ angular.module('ionic.ion.headerShrink', [])
         var dir = 1
         var prevDir = 1
         var prevShrinkAmt = 0;
-        var prevTabsShrinkAmt = 0;        
+        var prevTabsShrinkAmt = 0;    
+        
+        $scope.$root.$on('open-header',function(e){        	
+        	var timer = $interval(function(){
+        		if(shrink(tabs,subHeader,header,-2)) 
+        			{
+        			$interval.cancel(timer);
+        			}
+        	},10);        		
+        });
+        
         $element.bind('scroll', function(e) {
-        	var scroll=e.originalEvent.detail.scrollTop;          
+        	
+        	var scroll=e.currentTarget.scrollTop || e.originalEvent.detail.scrollTop;          
             if(scroll < 0)	return false;
             delta = scroll - prev;
             

@@ -4,7 +4,7 @@ angular.module('app')
 	{
 	version:"0.9.11",
 	style:"css/style1.css",
-	placeholder:"/img/placeholder.jpg",
+	placeholder:"img/placeholder.jpg",
 //	name:"My Shop",
 //	shop:"My Shop",
 //	tel:"+393284590306",

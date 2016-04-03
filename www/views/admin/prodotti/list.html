@@ -28,10 +28,10 @@
 		 	</div>
 		 	
 		 	
- 			<span  ng-if="list!=null && list.length>0" ng-controller="sliderController">         	  		
-	 		<ion-slide-box  on-slide-changed="change($index)">	 		
+ 			<span  ng-if="list!=null && list.length>0"> <!-- ng-controller="sliderController"--> 			
+	 		<ion-slides  on-slide-changed="change($index)">	 		
 
-	  			<ion-slide ng-repeat="i in groups" ng-init="updateSlider()"> 				
+	  			<ion-slide-page ng-repeat="i in groups" ng-init="updateSlider()"> 				
 	  				<ion-content scroller scroll="true" padding="false" start-y="80" delegate-handle="main">	  						
 	  				<div>
 	  					
@@ -79,8 +79,8 @@
 					
 	               
 					</ion-content>													
-				</ion-slide>										
-			</ion-slide-box>
+				</ion-slide-page>										
+			</ion-slides>
 			</span>
 			</ion-content>	
 			

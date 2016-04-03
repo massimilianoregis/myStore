@@ -20,8 +20,9 @@
 			<ion-item class="item item-divider">
 				<div ng-hide="firstLevel">Tipo di prodotti</div>
 				<div ng-show="firstLevel" ng-click="classRoot()"><i class="icon ion-chevron-left"></i>&nbsp;{{firstLevel.it}}</div>
-			</ion-item>			
-			<ion-slide-box delegate-handle="classes" show-pager="false">
+			</ion-item>		
+			
+			<ion-slide-box disable-scroll="true" show-pager="false">
 			  <ion-slide>
 			  	<ion-list>				    
 					<a class="item item-icon-right" ng-repeat="item in goodClasses" ng-class="{'positive':item.selected>0}" ng-click="selectClass(item)">
@@ -35,10 +36,9 @@
 				 <ion-list>			  	
 				  	<ion-checkbox ng-repeat="item in classChildren" ng-model="item.selected" ng-click="addClass(item)">{{item.it}}</ion-checkbox>		   			   
 				</ion-list>				  
-			  </ion-slide>
-			  
-			</ion-slide-box>		
-					
+			  </ion-slide>			  
+			</ion-slide-box>				
+			<BR><BR>
 		</ion-list>
 		
 		
