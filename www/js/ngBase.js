@@ -145,6 +145,10 @@ angular.module("ngBase",["ngResource",
 		{				
 		$ionicPopup.alert({title:title,template:msg,buttons:buttons})
 		}
+	this.prompt=function(title,msg,placeholder,ok)
+		{				
+		$ionicPopup.prompt({title:title,template:msg,inputType:'text',inputPlaceholder: placeholder}).then(ok)
+		}
 	}])
 .service("base64",["$q",function($q)
    {

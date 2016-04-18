@@ -217,9 +217,7 @@ angular.module("inpub",[
 		 		$beacon.clearAll();
 				$beacon.add("ACFD065E-C3C0-11E3-9BBE-1A514932AC01","Ulisse di Milo Manara");
 				}
-			catch (e) {
-				alert("add beacon error "+e);
-			}
+			catch (e) {}
 			
 		    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
 		      
@@ -335,6 +333,12 @@ angular.module("inpub",[
 	
 	$rootScope.$on("logged",calcolo);
 	}])    
+.controller("planController",["$timeout","$scope",function($timeout,$scope){
+	$scope.magneticHeading=0;
+	window.addEventListener('deviceorientation', function(event) {
+		$timeout(function(){$scope.magneticHeading = event.alpha;});
+	});
+}])
 .controller("mapController",["$scope","gps","uiGmapIsReady","config",function($scope,gps,uiGmapIsReady,config)
     {	
 	
@@ -437,7 +441,7 @@ angular.module("inpub",[
 					    	$state.go("pub.item",{shop:payload.shop,id:payload.id,name:payload.name})
 					  },
 					  "onRegister": function(data) {
-					    console.log(data.token);
+					    console.log("device token:"+data.token);
 					    $resource(config.community.url.device,{mail:mail,id:data.token}).query();					    
 					  },
 					pluginConfig: {
@@ -1082,6 +1086,30 @@ angular.module("inpub",[
 			})
 		}
 	
+	}])
+.controller("mapAutosizeController",["$timeout","$scope","uiGmapGoogleMapApi","uiGmapIsReady",function($timeout,$scope,uiGmapGoogleMapApi, uiGmapIsReady){
+	 $scope.markers={};
+	 uiGmapIsReady.promise()
+	    .then(function (map_instances) {
+	    	var map = map_instances[0].map;
+	    	
+	    
+	    	var markers= $scope.markers.getGMarkers()
+	    	
+	    	 var bounds = new google.maps.LatLngBounds();
+	         for (var i in markers) {
+	           var marker = markers[i].getPosition();	           
+	           bounds.extend(new google.maps.LatLng(marker.lat(), marker.lng()));
+	         }
+
+	         $timeout(function() {	        	 
+	           map.fitBounds(bounds);	           
+	           if(map.getZoom()==21)
+	        	   map.setZoom(14);
+	         }, 100);
+	    });
+      
+     
 	}])
 .directive('hideFooter', function($rootScope) {	
   return {

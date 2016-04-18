@@ -48,6 +48,11 @@ angular.module('app')
 	    templateUrl: "views/single/map/base.html",
 	    controller:"mapController"
 	    })
+	 .state('pub.plan', {
+	    url: "/plan",	  	    
+	    templateUrl: "views/single/map/plan.html",
+	    controller:"planController"
+	    })
     .state('pub.chisiamo', {
 	    url: "/chisiamo",	  	    
 	    templateUrl: "views/single/chisiamo.html"

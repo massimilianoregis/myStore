@@ -30,6 +30,13 @@
 				<ion-item class="item-icon-left item-icon-right" ng-if="item.currency==currency" ng-click="pay(item.code,item.name,item.price)"><i class="icon ion-bag"></i>Buy now!!<i class="icon ion-chevron-right"></i></ion-item>				
 				<ion-item ng-show="item.description" class="item-icon-left item-icon-right" ui-sref="#" ng-click="modal.show()"><i class="icon ion-document-text"></i><span ng-bind-html="item.description"></span><i class="icon ion-chevron-right"></i></ion-item>
 				
+				<video controls style="width:100%;" poster="http://www.html5rocks.com/en/tutorials/video/basics/poster.png">
+				  <source src="data/devstories.webm" 
+				          type='video/webm;codecs="vp8, vorbis"' />
+				  <source src="data/devstories.mp4" 
+				          type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />	
+				</video>
+				
 				<div ng-if="item.colors.length>0">
 				<ion-item class="item-divider"> Choice your preferite color</ion-item>
 				<ion-item>

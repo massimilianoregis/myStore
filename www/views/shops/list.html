@@ -10,6 +10,35 @@
 		right:60px;
 		top:4px;
 		}
+	.lista .swiper-slide img
+		{
+		width: 100%;
+    	max-height: initial;
+		}
+	.lista .scroll
+		{
+		height:100%;
+		}
+	.angular-google-map,.angular-google-map-container{
+	height:100%;
+	width:100%;
+	}
+	.myStore 
+		{
+		margin-top:-10px;
+		height: 55px;
+		}
+	.myStore .icon	
+		{
+		width: 54px;
+	    border-radius: 50px;
+	    background: #f8f8f8;
+	    height: 54px;
+	    line-height: 38px;
+	    border: solid 1px #b2b2b2;
+	    margin-bottom: -23px;
+	    box-shadow: 0 0 9px -4px black;
+	    }
 </style>
 <ion-view class="lista" title="Lista Negozi" hideFooter>
 
@@ -17,46 +46,83 @@
 	       	<ion-search class="search-wrapper-light" placeholder="Cerca un negozio" min-length="1" filter="search"></ion-search> 
 	</div>	
 		    		  		   		
-	<ion-content scroll="true" padding="false" class="inArt shrink" scroller header-shrink scroll-event-interval="5" ng-controller="shopWishController">
+	
+	<ion-slides options="data.options"  slider="data.slider">
+		<ion-slide-page>
+			<ion-content scroll="true" padding="false" class="inArt shrink" scroller header-shrink scroll-event-interval="5">
+			<div class="list card pub" ng-if="item.visible" ng-repeat="item in list |filter:{name:search.value}">
+			  <div class="item">	    	  
+			  
+			  	<a ng-class="{'ion-ios-heart-outline':!item.wish,'ion-ios-heart':item.wish}" class="button button-icon icon  wish" ng-click="item.setWish()"></a>	  	
+			    <h2>{{item.name}}</h2>
+			    <p>{{item.type}}</p>		    	    
+			    <a ng-if="user.canAccess('base.admin')" class="button button-icon icon ion-trash-b" ng-click="delete(item)"></a>    
+			  </div>	
+			  <div class="item item-body"  ui-sref="pub.goods({shop:item.id})">
+			  	<div class="arrow-down"></div>
+			  	<div style="width:100%; height:200px; overflow:hidden; background-color:rgba(0,0,0,.1)">
+			  		<img class="full-image" imagenie="{{item.background|resize:1080:750}}">
+			  	</div>   
+			  </div>	
+			</div>
+			
+			<div ng-if="secret" class="list card pub" >
+			  <div class="item">	
+			  	<a ng-class="{'ion-ios-heart-outline':!secret.wish,'ion-ios-heart':secret.wish}" class="button button-icon icon  wish" ng-click="wish.set(secret);"></a>    	  
+			    <h2>{{secret.name}}</h2>
+			    <p>{{secret.type}}</p>	
+			    
+			    <a ng-if="user.canAccess('base.admin')" class="button button-icon icon ion-trash-b" ng-click="delete(secret)"></a>    
+			  </div>	
+			  <div class="item item-body" ui-sref="pub.goods({shop:secret.id})">
+			  	<div class="arrow-down"></div>
+			  	<div style="width:100%; height:200px; overflow:hidden; background-color:rgba(0,0,0,.1)">
+			  		<img class="full-image" imagenie="{{secret.background|resize:1080:750}}">	  		
+			  	</div>   
+			  </div>	
+			</div>
+			 </ion-content>
+		</ion-slide-page> 	
+		<ion-slide-page>
+			<ion-content ng-controller="mapAutosizeController">
+			<div id="map_canvas" tap-disabled="true"> 					
+			    		<ui-gmap-google-map 
+							center=" { latitude: 49.362357, longitude: 9.155887 }" 
+							zoom="12" 
+							dragging="false">	
+							<ui-gmap-marker 
+								ng-repeat="item in list |filter:{name:search.value,visible:true}"
+						        idKey='item.id'
+						        coords='item.gps'	
+						        control='markers'					        
+						        >
+							</ui-gmap-marker>	
+								
+			    		</ui-gmap-google-map>			    		
+					</div>
+			</ion-content>
+		</ion-slide-page>
+	</ion-slides>		   
+	
+	
+	<!--ion-footer-bar align-title="left" class="bar-positive"-->
 		
-	<div class="list card pub" ng-if="item.visible" ng-repeat="item in list |filter:{name:search.value}">
-	  <div class="item">	    	  
-	  
-	  	<a ng-class="{'ion-ios-heart-outline':!item.wish,'ion-ios-heart':item.wish}" class="button button-icon icon  wish" ng-click="item.setWish()"></a>	  	
-	    <h2>{{item.name}}</h2>
-	    <p>{{item.type}}</p>		    	    
-	    <a ng-if="user.canAccess('base.admin')" class="button button-icon icon ion-trash-b" ng-click="delete(item)"></a>    
-	  </div>	
-	  <div class="item item-body"  ui-sref="pub.goods({shop:item.id})">
-	  	<div class="arrow-down"></div>
-	  	<div style="width:100%; height:200px; overflow:hidden; background-color:rgba(0,0,0,.1)">
-	  		<img class="full-image" imagenie="{{item.background|resize:1080:750}}">
-	  	</div>   
-	  </div>	
-	</div>
-	
-	<div ng-if="secret" class="list card pub" >
-	  <div class="item">	
-	  	<a ng-class="{'ion-ios-heart-outline':!secret.wish,'ion-ios-heart':secret.wish}" class="button button-icon icon  wish" ng-click="wish.set(secret);"></a>    	  
-	    <h2>{{secret.name}}</h2>
-	    <p>{{secret.type}}</p>	
-	    
-	    <a ng-if="user.canAccess('base.admin')" class="button button-icon icon ion-trash-b" ng-click="delete(secret)"></a>    
-	  </div>	
-	  <div class="item item-body" ui-sref="pub.goods({shop:secret.id})">
-	  	<div class="arrow-down"></div>
-	  	<div style="width:100%; height:200px; overflow:hidden; background-color:rgba(0,0,0,.1)">
-	  		<img class="full-image" imagenie="{{secret.background|resize:1080:750}}">	  		
-	  	</div>   
-	  </div>	
-	</div>	  	
-		   
-	<BR><BR><BR>        	  		
-	</ion-content>	
-	
-	<ion-footer-bar align-title="left" class="bar-positive">  
-		<div class="button-bar">					
-		<button class="button icon-left ion-ios-color-wand button-stable" ui-sref="shop">Make your shop</button>						
+		<div class="tabs tabs-icon-top" shrink-height="60">
+		  <a class="tab-item" ng-click="data.slider.slideTo(0)">
+		  	<i class="icon ion-ios-list-outline"></i>
+		    Shop List
+		  </a>
+		  <a class="tab-item myStore" ui-sref="shop">		  
+		  	<i class="icon ion-easel"></i>
+		    myStore
+		  </a>
+		  <a class="tab-item" ng-click="data.slider.slideTo(1)">
+		  	<i class="icon ion-map"></i>
+		    Shop Map
+		  </a>
 		</div>
-	</ion-footer-bar>		
+				
+	  
+		
+	<!--/ion-footer-bar-->		
 </ion-view>

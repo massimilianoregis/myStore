@@ -19,13 +19,12 @@ angular.module('ionic.ion.headerShrink', [])
         	  }
          
         	
-          y = (tabs.y||0)+delta;
+          y = (tabs.y||0)+delta;          
           if(y<0) y=0;
-          if(y>tabs.outerHeight()) y=tabs.outerHeight();
+          if(y>(parseInt(tabs.attr("shrink-height"))||tabs.outerHeight())) y=(parseInt(tabs.attr("shrink-height"))||tabs.outerHeight());
   
           tabs.y =y;        	  
           tabs.css(ionic.CSS.TRANSFORM,'translate3d(0,' + tabs.y + 'px, 0)');
-        	
         });
         
         return ((subHeader.y||0)+delta)<0;
@@ -41,12 +40,9 @@ angular.module('ionic.ion.headerShrink', [])
         var threshold = 88;
         // header        
         var header 			= $document.find('.bar-header');
-        var subHeader 		= $document.find('.bar-subheader');
-        var headerHeight 	= header.outerHeight();
-        var subHeaderHeight = subHeader.outerHeight();
+        var subHeader 		= $document.find('.bar-subheader');        
         // tabs
-        var tabs 			= $document.find('.bar-footer');
-        var tabsHeight 		= tabs.outerHeight();
+        var tabs 			= $document.find('.bar-footer,.tabs');        
 
         var prev = 0
         var delta = 0

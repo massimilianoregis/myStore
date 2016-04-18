@@ -1,4 +1,5 @@
 angular.module("inpubCordova",["inpub","ngCordova","paypal","ionic"])
+
 .service("upload",["base64","$q","$ionicActionSheet","$cordovaImagePicker","$cordovaCamera",function(base64,$q,$ionicActionSheet,$cordovaImagePicker,$cordovaCamera)
     {
 	this.upload=function(w,h)

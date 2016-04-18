@@ -96,6 +96,28 @@ angular.module("ngIndex.controllers",["ngBase"])
 	$scope.filter="";	
 	$scope.wish=wish;	
 	$scope.group=null;
+	$scope.slider={}
+	$scope.$watch("slider.data",function(val){
+		$scope.slider.data.slideTo($stateParams.group);
+		$scope.activeGroup=$scope.groups[$scope.slider.data.activeIndex].name;
+		})
+	$scope.slider={
+				options:{
+				loop: false,
+				effect: 'slide',
+				speed: 500,			
+				onSlideChangeEnd:function(slide)
+					{
+					$scope.activeGroup=$scope.groups[slide.activeIndex].name;
+					},
+				onSlideChangeStart:function()
+					{
+
+					$scope.$root.$emit("open-header");
+					}
+				}
+			};
+
 	$scope.removeGroup=function(item)
 		{
 		popup.confirm("Sicuro?","Vuoi rimuovere '"+item.name+"'",function()

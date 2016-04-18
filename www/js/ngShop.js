@@ -19,7 +19,17 @@ angular.module("ngShop",["ngBase","ngCommunity","ngToast"])
 		{		
 		injectCSS.set("custom",config.style);
 		})
-	
+	$scope.data={
+		options:{
+			loop: false,
+			effect: 'slide',
+			speed: 500,			
+			onSlideChangeStart:function()
+				{
+				$scope.$root.$emit("open-header");
+				}
+			}
+	};	
 	
 	var wish= wish.get("shops")	
 	shops.query(function(data)
@@ -61,6 +71,7 @@ angular.module("ngShop",["ngBase","ngCommunity","ngToast"])
                       function(goodType,$cordovaFacebook,$timeout,$ionicModal,popup,wish,gps,$ionicSlideBoxDelegate,goodClass,community,$state,$rootScope,$state,injectCSS,$scope,upload,shop,$stateParams,config,user,basket,$locale){	
 	var id = $stateParams.shop;	
 	$scope.data = {};	
+	
 	
 	$scope.fb={
 		showPagesList:function(){
@@ -161,7 +172,13 @@ angular.module("ngShop",["ngBase","ngCommunity","ngToast"])
 		gallery:[],
 		goodClasses:[],
 		currencies:[{name:"EUR"},{name:"USD"}]
-		}
+		};
+	$scope.sendShop=function()
+		{			
+		popup.prompt("Invia","vuoi inviare una mail per regalare questo negozio?","prova@mail.it",function(res){
+			console.log(res);
+			});
+		};
 	$scope.visible=function()
 		{
 		popup.confirm("Apri","Sei pronto? vuoi rendere visibile a tutti il tuo negozio?",function()
@@ -169,7 +186,7 @@ angular.module("ngShop",["ngBase","ngCommunity","ngToast"])
 			$scope.shop.visible=true;
 			$scope.saveShop();
 			});
-		}
+		};
 	//oggetto per strutturazione dello shipping
 	var shippingData=function(shop)
 		{

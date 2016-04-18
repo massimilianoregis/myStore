@@ -3159,6 +3159,10 @@ ngCordovaMocks.factory('$cordovaToast', ['$q', function ($q) {
   };
 }]);
 
+
+ngCordovaMocks.factory('$cordovaBeacon',[function(){
+	return {};
+}]);
 /**
  * @ngdoc service
  * @name ngCordovaMocks.cordovaVibration
